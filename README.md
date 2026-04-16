@@ -24,7 +24,7 @@ EL SERVIDOR ENCARA NO ESTÁ PROBAT A WINDOWS. SI EL PROBES I ET FUNCIONA, BORRA 
 
 Per iniciar la base de dades amb la informació i esquemes ja fets, s'ha d'intoduir dintre del directori /db/init els scripts .sql que es volen usar, tan els create com els inserts i totes les dades.
 NO es guardará la base de dades sola quan la empenyeu a github, per a compartir el vostre progres en la base de dades l'haureu d'exportar i colocar en /db/init.
-Si que es guardará a traves de inicis i parades de servidor.
+Si que es guardará a traves de inicis i parades de servidor, pero no dins del script.
 
 ### Credencials
 
