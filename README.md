@@ -29,8 +29,13 @@ Si que es guardará a traves de inicis i parades de servidor, pero no dins del s
 ### Credencials
 
 (subjecte a cambi, el equip de DBA decideix)
+
 Port: 3306
+
 Root Pswd: root
+
 Base de dades: smxchange
+
 Usuari: user
+
 Password: password
