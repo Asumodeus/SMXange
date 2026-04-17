@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
+
   <head>
     <meta charset="utf-8">
     <title>SMXchange</title>
+    <link rel="stylesheet" href="styles_login.css">
   </head>
+
   <body>
     <script src="./index.ts"></script>
     <header>
       <h1>SMXchange</h1>
     </header>
-    <main>
+    <div class="wrpaper">
       <form id="login">
-        <label for="uName">Nom</label><br>
-        <input type="text" id="uName" name="uName" required><br>
-        <label for="uPassword">Contrasenya</label><br>
-        <input type="password" id="uPassword" name="uPassword" autocomplete="new-password"><br>
+        <div class="input-box">
+          <label for="uName">Nombre</label><br>
+          <input type="text" id="uName" name="uName" required><br>
+        </div>
+        <div class="input-box">
+          <label for="uPassword">Contraseña</label><br>
+          <input type="password" id="uPassword" name="uPassword" autocomplete="new-password"><br>
+        </div>
+        <div class="remember-forgot">
+          <a href="/forgotPswd">¿Has olvidado tu contrasenya?</a>
+        </div>
         <button type="submit">Iniciar Sessió</button><br>
+        <div class="register-link">
+          <p>¿No tiene una cuenta?<a href="#">¡Regístrate!</a></p>
+        </div>
       </form>
-      <a href="/forgotPswd">Has oblidat la contrasenya?</a>
       <p id="msgSpot"></p>
-    </main>
+    </div>
     <footer></footer>
   </body>
 </html>
