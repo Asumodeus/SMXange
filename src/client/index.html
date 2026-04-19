@@ -4,7 +4,6 @@
   <head>
     <meta charset="utf-8">
     <title>SMXchange</title>
-    <link rel="stylesheet" href="styles_login.css">
   </head>
 
   <body>
@@ -16,20 +15,20 @@
       <form id="login">
         <div class="input-box">
           <label for="uName">Nombre</label><br>
-          <input type="text" id="uName" name="uName" required><br>
+          <input type="text" name="uName" required><br>
         </div>
         <div class="input-box">
           <label for="uPassword">Contraseña</label><br>
-          <input type="password" id="uPassword" name="uPassword" autocomplete="new-password"><br>
+          <input type="password" name="uPassword" autocomplete="new-password"><br>
         </div>
+        <button type="submit">Iniciar Sessió</button><br>
+      </form>
         <div class="remember-forgot">
           <a href="/forgotPswd">¿Has olvidado tu contrasenya?</a>
         </div>
-        <button type="submit">Iniciar Sessió</button><br>
         <div class="register-link">
-          <p>¿No tiene una cuenta?<a href="#">¡Regístrate!</a></p>
+          <p>¿No tiene una cuenta?<a href="/register">¡Regístrate!</a></p>
         </div>
-      </form>
       <p id="msgSpot"></p>
     </div>
     <footer></footer>

@@ -14,6 +14,7 @@ async function sendData() {
       body: JSON.stringify(loginData),
     });
 
+    console.log(`${response.status}`);
     const msg = response.ok ? "Login Aconseguit" : `Login no conseguit ${response.statusText}`;
     document.getElementById("msgSpot")!.innerText = msg;
   }
@@ -27,7 +28,6 @@ form.addEventListener("submit", (event) => {
 
 
 function verifyCredentialValidity(credentials: any ) :boolean {
-  
   //Meter verificación de login (¡LISANDRO!)
 
   return true;
