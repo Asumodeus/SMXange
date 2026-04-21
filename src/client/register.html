@@ -1,27 +1,33 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8">
+<html lang="es"> 
+<head>
+    <meta charset="UTF-8">
     <title>SMXchange</title>
-  </head>
-  <body>
-    <script src="./register.ts"></script>
-    <header>
-      <h1>Registrar</h1>
-    </header>
-    <main>
+</head>
+<body>
+  <script src="./register.ts"></script>
+  <header class="navbar">
+  </header>
+      <main>
       <form id="register">
-        <label for="name">Nom</label><br>
+        <label for="name">Nombre</label><br>
         <input type="text" name="user" required><br>
-        <label for="passwordOnce">Contrasenya</label><br>
+        <label for="apellido">Apellido</label><br>
+        <input type="text" name="Apellido" required><br>
+        <label for="usuario">Usuario</label><br>
+        <input type="text" name="Usuario" required><br>
+        <label for="telefono">Numero de telefono</label><br>
+        <input type="text" name="Telefono" required><br>
+        <label for="email">Email</label><br>
+        <input type="text" name="email" required><br>
+        <label for="passwordOnce">Contraseña</label><br>
         <input type="password" name="passwordOnce" required><br>
-        <label for="passwordTwice">Repeteix contrasenya</label><br>
+        <label for="passwordTwice">Repíte contrasenña</label><br>
         <input type="password" name="passwordTwice" required><br>
-        <button type="submit">Registrat</button><br>
+        <button type="submit">Registrado</button><br>
       </form>
-      <a href="/login">Inicia sessió</a> <br>
+      <a href="index.html">Volver al inicio</a> <br>
       <p id="msgSpot"></p>
     </main>
-    <footer></footer>
-  </body>
-</html>
+</body>
+</html> 
