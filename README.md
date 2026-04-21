@@ -8,13 +8,11 @@ Instruccións per a instalar, junt al instalador, es troben a la documentació o
 
 Un cop instalat docker, que es tan simple com seguir els pasos en el instalador amb les opcións per defecte, podeu fer anar els scripts per a engegar i apagar el servidor. engegarServior.bat i pararServidor.bat
 
-Asegureu-vos de que la aplicació está oberta en segon pla o no funcionará el script.
+Asegureu-vos de que la aplicació de docker está oberta en segon pla o no funcionará el script.
 
 Podeu apagar el servidor o tancar l'ordinador en cuansevol moment, no hi ha perdua de progrés.
 
 Es possible que per a cambis a backend s'hagi de tancar i tornar a engegar el servidor.
-
-EL SERVIDOR ENCARA NO ESTÁ PROBAT A WINDOWS. SI EL PROBES I ET FUNCIONA, BORRA AQUESTA LINEA.
 
 ---
 
