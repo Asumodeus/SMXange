@@ -3,31 +3,37 @@
 
   <head>
     <meta charset="utf-8">
-    <title>SMXchange</title>
+    <title>SMXCHANGE</title>
+    <link rel="stylesheet" href="styles_login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   </head>
 
   <body>
     <script src="./index.ts"></script>
-    <header>
-      <h1>SMXchange</h1>
-    </header>
-    <div class="wrpaper">
+    <div class="wrapper">
+      <header>
+        <h1>Inici de sessió</h1>
+      </header>
       <form id="login">
         <div class="input-box">
-          <label for="uName">Nombre</label><br>
-          <input type="text" name="uName" required><br>
+          <label for="uName"></label>
+          <input type="text" id="uName" placeholder="Usuari" name="uName" required>
+          <i class='bx bxs-user'></i>
         </div>
+
         <div class="input-box">
-          <label for="uPassword">Contraseña</label><br>
-          <input type="password" name="uPassword" autocomplete="new-password"><br>
+          <label for="uPassword"></label>
+          <input type="password" id="uPassword" placeholder="Contrasenya" name="uPassword" autocomplete="new-password">
+          <i class='bx bxs-lock-alt'></i>
         </div>
-        <button type="submit">Iniciar Sessió</button><br>
-      </form>
+
         <div class="remember-forgot">
-          <a href="/forgotPswd">¿Has olvidado tu contrasenya?</a>
+          <a href="/forgotPswd">Has oblidat la teva contrasenya?</a>
         </div>
+
+        <button type="submit" class="button">Iniciar Sessió</button>
         <div class="register-link">
-          <p>¿No tiene una cuenta?<a href="/register">¡Regístrate!</a></p>
+          <p>No tens un compte? <a href="#">Registra't</a></p>
         </div>
       <p id="msgSpot"></p>
     </div>
