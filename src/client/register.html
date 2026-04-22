@@ -1,33 +1,71 @@
 <!DOCTYPE html>
 <html lang="es"> 
+
 <head>
     <meta charset="UTF-8">
-    <title>SMXchange</title>
+    <title>SMXCHANGE</title>
+    <link rel="stylesheet" href="styles_register.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
   <script src="./register.ts"></script>
-  <header class="navbar">
-  </header>
-      <main>
+  <div class="wrapper">
+    <header>
+      <h1>Crear un compte</h1>
+    </header>
+    <main>
       <form id="register">
-        <label for="name">Nombre</label><br>
-        <input type="text" name="user" required><br>
-        <label for="apellido">Apellido</label><br>
-        <input type="text" name="Apellido" required><br>
-        <label for="usuario">Usuario</label><br>
-        <input type="text" name="Usuario" required><br>
-        <label for="telefono">Numero de telefono</label><br>
-        <input type="text" name="Telefono" required><br>
-        <label for="email">Email</label><br>
-        <input type="text" name="email" required><br>
-        <label for="passwordOnce">Contraseña</label><br>
-        <input type="password" name="passwordOnce" required><br>
-        <label for="passwordTwice">Repíte contrasenña</label><br>
-        <input type="password" name="passwordTwice" required><br>
-        <button type="submit">Registrado</button><br>
+        <div class="input-box">
+          <label for="name"></label>
+          <input type="text" placeholder="Nom" name="user" required>
+          <i class="bx bx-user-id-card"></i>
+        </div>
+        
+        <div class="input-box">
+          <label for="apellido"></label>
+          <input type="text" placeholder="Cognom" name="Apellido" required>
+        </div>
+
+        <div class="input-box">
+          <label for="usuario"></label>
+          <input type="text" placeholder="Usuari" name="Usuario" required>
+          <i class='bx bxs-user'></i>
+        </div>
+
+        <div class="input-box">
+          <label for="telefono"></label>
+          <input type="text" placeholder="Número de telèfon" name="Telefono" required>
+          <i class="bx bx-phone"></i>
+        </div>
+
+        <div class="input-box">
+          <label for="email"></label>
+          <input type="text" placeholder="Correu electrònic" name="email" required>
+          <i class="bx bx-envelope"></i>
+        </div>
+
+
+        <div class="input-box">
+          <label for="passwordOnce"></label>
+          <input type="password" placeholder="Contrasenya" name="passwordOnce" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+
+        <div class="input-box">
+          <label for="passwordTwice"></label>
+          <input type="password" placeholder="Confirma la contrasenya" name="passwordTwice" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+
+        
+        <a href=""><button type="submit" class="button">Registra't</button></a>
       </form>
-      <a href="index.html">Volver al inicio</a> <br>
-      <p id="msgSpot"></p>
+      <div class="register-link">
+      <p>Ja tens un compte? <a href="/login">Inicia sessió</a></p>
+      </div>
+  </div>
+  <p id="msgSpot"></p>
     </main>
 </body>
 </html> 
