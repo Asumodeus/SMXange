@@ -1,4 +1,5 @@
 // Per a implementar la base de dades quan la tinguem 
+import { password } from "bun";
 import {db} from "./db_connection.ts";
 
 export async function registerRequest(req: Request) {
@@ -10,12 +11,29 @@ export async function registerRequest(req: Request) {
   const userExists = await db`
   SELECT EXISTS(
     SELECT 1 FROM alumn
-    WHERE first_name = ${registerParameters.user}
+    WHERE first_name = ${registerParameters.Usuario}
   ) AS exist;`;
 
   //Si el valor és 0, l'usuari no existeix, i per a tant podem inserir els valors a la base de dades
   if (userExists[0].exist === 0) {
-    await db`INSERT INTO alumn (first_name, password) VALUES (${registerParameters.user}, ${registerParameters.passwordOnce})`; //Password once és degut a que encara usem el Form
+
+    if (!(registerParameters.passwordOnce === registerParameters.passwordTwice)) {
+      return Response.json(
+        {error:"Contrasenya Invlálida"},
+        {status:400}
+      );
+    }
+    
+    const user = {
+      Nom: registerParameters.user,
+      Cognom: registerParameters.Apellido,
+      Numero_de_telefon: registerParameters.Telefono,
+      Username: registerParameters.Usuario,
+      Password: registerParameters.passwordOnce,
+      Mail: registerParameters.email,
+    }
+
+    await db`INSERT INTO alumn ${db(user)}`;
     
     return Response.json(
       {message:"Usuari Registrat"},
