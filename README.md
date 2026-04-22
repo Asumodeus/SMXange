@@ -14,6 +14,9 @@ Podeu apagar el servidor o tancar l'ordinador en cuansevol moment, no hi ha perd
 
 Es possible que per a cambis a backend s'hagi de tancar i tornar a engegar el servidor.
 
+A windows els bat a vegades son bloquejats per windows defender (concretament Control Inteligente de Aplicaciones)
+Si pasa aixo, copieu el codi del bat i feu el vostre propi bat.
+
 ---
 
 ## Base de dades
