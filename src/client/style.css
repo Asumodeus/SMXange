@@ -53,9 +53,10 @@ p{
     font-weight: 600;
 }
 body{
-    background: radial-gradient(circle at top right, #1e3a8a, #0f172a 50%), /*Aparece de un punto y se expande en circulo*/
-                radial-gradient(circle at center, #1e40af, #020617 50%); /*Luego del centro se queda con el color que queda*/
-   background-attachment: fixed; /*Bloquear*/
+    background-position: center;
+    background: url(assets/fondo_01.png);
+    background-size: cover;
+    background-attachment: fixed;
 }
 .btn{
     position: relative; /*absolut = otra dimension*/
