@@ -1,10 +1,17 @@
-
 CREATE TABLE Preguntes_de_seguretat (
 IDps INT auto_increment NOT NULL,
 Com_et_dius VARCHAR(30),
 El_teu_numero_de_telefon VARCHAR(20),
 El_teu_mail VARCHAR(60),
 PRIMARY KEY (IDps)
+
+);
+CREATE TABLE Login (
+IDlogin INT auto_increment NOT NULL	,
+Username VARCHAR(50),
+Password VARCHAR(255),
+IDusuari INT, 
+PRIMARY KEY (IDlogin, username)
 );
 
 CREATE TABLE Usuari (
@@ -12,21 +19,16 @@ IDusuari INT auto_increment NOT NULL,
 Nom VARCHAR(50) NOT NULL,
 Cognom VARCHAR(50) NOT NULL,
 Numero_de_telefon VARCHAR(20),
-Username VARCHAR(50) NOT NULL,
+FKusername VARCHAR(50) NOT NULL,
 Password VARCHAR(50) NOT NULL,
 Mail VARCHAR(100) NOT NULL,
-PRIMARY KEY (IDusuari) 
-);
+IDLogin INT,
+Username INT,
+PRIMARY KEY (IDusuari), 
+Constraint fk_login
+foreign key (IDLogin, FKusername)
+References Login(IDLogin, Username)
 
-CREATE TABLE Login (
-IDlogin INT auto_increment NOT NULL	,
-Username VARCHAR(50),
-Password VARCHAR(255),
-IDusuari INT, 
-PRIMARY KEY (IDlogin),
-CONSTRAINT fk_user
-FOREIGN KEY (IDusuari)
-REFERENCES Usuari(IDusuari) 
 );
 
 create user 'Smxange' identified by 'DnhYKQ49gQ';
