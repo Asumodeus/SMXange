@@ -2,7 +2,7 @@
    
 body {
   min-height: 100vh;
-  background-image: url('fondo_login.webp');
+  background-image: url('assets/fondo_login.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
