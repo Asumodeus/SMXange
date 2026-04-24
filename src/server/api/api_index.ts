@@ -2,4 +2,3 @@
 //De froma que es pugui usar desde el arxiu del servidor. 
 export * from "./login.ts";
 export * from "./register.ts";
-export * from "./cursos.ts";
