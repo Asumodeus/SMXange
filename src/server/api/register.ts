@@ -19,7 +19,7 @@ export async function registerRequest(req: Request) {
 
     if (!(registerParameters.passwordOnce === registerParameters.passwordTwice)) {
       return Response.json(
-        {error:"Contrasenya Invlálida"},
+        {error:"Contrasenya Invlalida"},
         {status:400}
       );
     }
