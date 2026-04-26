@@ -14,9 +14,18 @@ async function sendData() {
       body: JSON.stringify(loginData),
     });
 
-    console.log(`${response.status}`);
-    const msg = response.ok ? "Login Aconseguit" : `Login no conseguit ${response.statusText}`;
+    // Extraiem les dades de la resposta (message o error)
+    const result = await response.json();
+    const msg = result.message || result.error || response.statusText;
+    
     document.getElementById("msgSpot")!.innerText = msg;
+
+    // Espai per a logica basada en codis d'estat (redireccions, etc.)
+    if (response.ok) {
+        // window.location.href = "/Portada.html"; // Exemple de redirecció
+    } else {
+        console.error(`Error de login: ${response.status}`);
+    }
   }
 }
 
