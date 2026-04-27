@@ -1,8 +1,8 @@
 //Funció de mostra per ensenyar com podria el codi de client cridar a el servidor a través de una ruta de API
 //Aixo es una prova
 const form = document.getElementById("login") as HTMLFormElement;
-const usernameInput = document.getElementById("uName") as HTMLInputElement;
-const passwordInput = document.getElementById("uPassword") as HTMLInputElement;
+const usernameInputField = document.getElementById("uName") as HTMLInputElement;
+const passwordInputField = document.getElementById("uPassword") as HTMLInputElement;
 const msgSpot = document.getElementById("msgSpot") as HTMLInputElement;
 
 async function sendData() {
@@ -14,8 +14,7 @@ async function sendData() {
   const loginData = Object.fromEntries(formData.entries());
 
   if (!verifyCredentialValidity(loginData)) {
-    usernameInput.classList.add('error-vibracion');
-    passwordInput.classList.add('error-vibracion');
+    resetPasswordField();
     msgSpot.innerText = "Si us plau, omple els camps requerits.";
     return;
   }
@@ -46,9 +45,9 @@ form.addEventListener("submit", (event) => {
 });
 
 function resetPasswordField() {
-  usernameInput.classList.add('error-vibracion');
-  passwordInput.classList.add('error-vibracion');
-  passwordInput.value = "";
+  usernameInputField.classList.add('error-vibracion');
+  passwordInputField.classList.add('error-vibracion');
+  passwordInputField.value = "";
 }
 
 function verifyCredentialValidity(credentials: any ) :boolean {
