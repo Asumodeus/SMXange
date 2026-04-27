@@ -2,6 +2,7 @@ import landingPage from "../client/Portada.html"
 import loginPage from "../client/index.html";
 import forgotPswd from "../client/forgotPswd.html"
 import registerPage from "../client/register.html"
+import academiaPage from "../client/academia.html"
 import * as api from "./api/api_index"
 
 
@@ -21,6 +22,8 @@ Bun.serve({
         "/forgotPswd": forgotPswd,
 
         "/register":  registerPage,
+
+        "/academia":  academiaPage,
 
         "/api/login": async (req) => {
             return await api.loginVerification(req);
