@@ -16,7 +16,7 @@ export async function loginVerification(req: Request){
     } 
 
     //Extraiem de la base de dades la constrasenya del usuari que el front-end ens ha dit que validem
-    const dbPassword = await db`SELECT password FROM alumn WHERE first_name = ${credentials.uName}`
+            const dbPassword = await db`SELECT password FROM Usuari WHERE Username = ${credentials.uName}`
     
     //Comprobem que la base de dades haigi extret una contrasenya, si no es el cas, vol dir que l'usuari no existeix
     //Peró no volem dir si el que falla és la contrasenya o el usuari, així que retornem el mateix error que si la contrasenya és incorrecte (mirar el final d'aquest script)
@@ -36,6 +36,7 @@ export async function loginVerification(req: Request){
             {status: 200}
         );
     }
+    console.log("asd")
 
     //Si les credencials són incorrectes, retornem un error
     return Response.json(
