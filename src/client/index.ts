@@ -28,7 +28,7 @@ async function sendData() {
       });
 
       if (response.ok) {
-        window.location.href = "/"
+        window.location.href = "/academia"
       }else{
         userInput.classList.add('error-vibracion');
         passInput.classList.add('error-vibracion');

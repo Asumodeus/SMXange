@@ -12,9 +12,10 @@ async function sendData() {
       user: registerData.user,
       Apellido: registerData.Apellido,
       Usuario: registerData.Usuario,
-      Telefono: registerData. Telefono,
+      Telefono: registerData.Telefono,
       email: registerData.email,
-      password: registerData.passwordOnce
+      passwordOnce: registerData.passwordOnce,
+      passwordTwice: registerData.passwordTwice
     };
     
     try {
@@ -31,7 +32,7 @@ async function sendData() {
 
     if (response.ok) {
       setTimeout(() => {
-        window.location.href = "/login.html";
+        window.location.href = "/login";
       }, 1000);
     }
 
