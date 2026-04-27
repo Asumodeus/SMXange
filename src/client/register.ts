@@ -1,6 +1,23 @@
 //Aquest script és practicament copiat de la página per a login, ja que la funcionalitat per a registrar és bastant semblant
 const form = document.getElementById("register") as HTMLFormElement;
 
+function mostrarFinestra(missatge: string, urlRedireccio?: string) {
+  const finestra = document.getElementById("finestraEmergent") as HTMLElement;
+  const textFinestra = document.getElementById("textFinestra") as HTMLParagraphElement;
+  const btnAceptar = document.getElementById("btnAceptarFinestra") as HTMLButtonElement;
+
+  textFinestra.innerText = missatge;
+  finestra.style.display = "flex";
+
+  btnAceptar.onclick = () => {
+    finestra.style.display = "none";
+    if (urlRedireccio){
+      window.location.href = urlRedireccio;
+    }
+  }
+}
+
+
 async function sendData() {
   // Associate the FormData object with the form element
   // Create (1) and convert (2) the FormData entries into a plain object
@@ -27,18 +44,15 @@ async function sendData() {
       body: JSON.stringify(datosToSend),
     });
 
-    const msg = response.ok ? "Usuari Registrat" : `Registre fallit`;
-    document.getElementById("msgSpot")!.innerText = msg;
-
     if (response.ok) {
-      setTimeout(() => {
-        window.location.href = "/login";
-      }, 1000);
+      mostrarFinestra("Compte creat amb èxit", "/login");
+    }else{
+      mostrarFinestra("Registre fallit. Verifica les dades i torna a intentar-ho.")
     }
 
   }catch (error){
      console.error("Error de connexió", error);
-     document.getElementById("msgSpot")!.innerText= "Error de connexió amb el servidor.";
+     mostrarFinestra("Error de connexió amb el servidor.")
     }
   }
 }
@@ -46,7 +60,6 @@ async function sendData() {
 // Take over form submission
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  document.getElementById("msgSpot")!.innerText = "";
   sendData();
 });
 
@@ -56,12 +69,12 @@ function verifyCredentialValidity(credentials: any ) :boolean {
   //Aquí, aixó incou verificar que les dos contrasenyes siguin iguals i retornar només una.
   //Avisa al gerard quan així sigui per a actualizar la api de registre
   if (credentials.passwordOnce !== credentials.passwordTwice) {
-    document.getElementById("msgSpot")!.innerText = "Les contrasenyes no coincideixen.";
+    mostrarFinestra("Les contrasenyes no coincideixen.");
     return false;
   }
 
   if (credentials.passwordOnce.length < 6) {
-    document.getElementById("msgSpot")!.innerText = "La contrasenya ha de tenir almenys 6 caràcters.";
+    mostrarFinestra("La contrasenya ha de tenir al menys 6 caràcters.")
     return false;
   }
   return true;
