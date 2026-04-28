@@ -47,7 +47,8 @@ async function sendData() {
     if (response.ok) {
       mostrarFinestra("Compte creat amb èxit", "/login");
     }else{
-      mostrarFinestra("Registre fallit. Verifica les dades i torna a intentar-ho.")
+      const result = await response.json();
+      mostrarFinestra(result.error || "Registre fallit. Verifica les dades i torna a intentar-ho.")
     }
 
   }catch (error){

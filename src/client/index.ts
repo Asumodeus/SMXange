@@ -8,8 +8,6 @@ const msgSpot = document.getElementById("msgSpot") as HTMLInputElement;
 async function sendData() {
   // Associate the FormData object with the form element
   // Create (1) and convert (2) the FormData entries into a plain object
-  resetPasswordField();
-
   const formData = new FormData(form);
   const loginData = Object.fromEntries(formData.entries());
 
