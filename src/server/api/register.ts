@@ -10,8 +10,8 @@ export async function registerRequest(req: Request) {
   //Aixó provoca un camp dintre del array userExists anomenat exist que será 0 si no existeix i 1 si sí
   const userExists = await db`
   SELECT EXISTS(
-    SELECT 1 FROM alumn
-    WHERE first_name = ${registerParameters.Usuario}
+    SELECT 1 FROM Usuari
+    WHERE Username = ${registerParameters.Usuario}
   ) AS exist;`;
 
   //Si el valor és 0, l'usuari no existeix, i per a tant podem inserir els valors a la base de dades
@@ -19,7 +19,7 @@ export async function registerRequest(req: Request) {
 
     if (!(registerParameters.passwordOnce === registerParameters.passwordTwice)) {
       return Response.json(
-        {error:"Contrasenya Invlálida"},
+        {error:"Contrasenya Invlalida"},
         {status:400}
       );
     }
@@ -33,7 +33,7 @@ export async function registerRequest(req: Request) {
       Mail: registerParameters.email,
     }
 
-    await db`INSERT INTO alumn ${db(user)}`;
+    await db`INSERT INTO Usuari ${db(user)}`;
     
     return Response.json(
       {message:"Usuari Registrat"},

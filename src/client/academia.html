@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ca"> 
+<head>
+    <meta charset="UTF-8">
+    <title>Acadèmia - SMXchange</title>
+    <link rel="stylesheet" href="styles_academia.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="assets/logo.webp" alt="Logo">
+        </div>
+        <nav class="menu">
+            <a href="/">Tornar a l'Inici</a>
+        </nav>
+    </header>
+
+    <main class="wrapper-academia">
+        <h1>Curs Bàsic de Criptomonedes</h1>
+        
+        <section class="teoria">
+            <h2>Lliçó 1: Què és una criptomoneda?</h2>
+            <p>
+                Una criptomoneda és una moneda digital o virtual dissenyada per funcionar com a mitjà d'intercanvi. 
+                Utilitza la criptografia per assegurar i verificar les transaccions, així com per controlar la creació de noves unitats.
+            </p>
+            <p>
+                A diferència dels diners tradicionals, les criptomonedes estan descentralitzades i funcionen mitjançant una tecnologia anomenada <strong>Blockchain</strong> (cadena de blocs).
+            </p>
+        </section>
+
+        <section class="exercici">
+            <h2>Exercici Pràctic</h2>
+            <p>Posa a prova els teus coneixements:</p>
+            
+            <form id="form-exercici">
+                <p class="pregunta">Quina tecnologia s'utilitza principalment per fer funcionar les criptomonedes?</p>
+                
+                <label>
+                    <input type="radio" name="resposta" value="a" required> Intel·ligència Artificial
+                </label>
+                <label>
+                    <input type="radio" name="resposta" value="b"> Blockchain (Cadena de blocs)
+                </label>
+                <label>
+                    <input type="radio" name="resposta" value="c"> Realitat Virtual
+                </label>
+
+                <button type="submit" class="button">Comprovar Resposta</button>
+            </form>
+            
+            <p id="missatge-resultat"></p>
+        </section>
+    </main>
+    
+    <script src="./academia.ts"></script>
+</body>
+</html>

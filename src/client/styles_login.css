@@ -74,6 +74,7 @@ body {
 .remember-forgot a{
     color: #fff;
     text-decoration: none;
+    padding: 8px;
 }
 .remember-forgot a:hover {
     text-decoration: underline;
@@ -105,4 +106,25 @@ body {
 }
 .register-link p {
     color: #fff;
+}
+#msgSpot {
+    position: absolute;
+    left: 10px;
+    color:#ff4d4d;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    margin: 0;
+    top: 100%;
+}
+.error-vibracion {
+    border: 2px solid #ff4d4d !important;
+    animation: shake 0.3s ease-in-out;
+}
+@keyframes shake {
+    0% {transform: translateX(0);}
+    25% {transform: translateX(6px);}
+    50% {transform: translateX(-6px);}
+    75% {transform: translateX(6px);}
+    100% {transform: translateX(0);}
 }

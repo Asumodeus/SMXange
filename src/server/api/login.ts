@@ -16,7 +16,7 @@ export async function loginVerification(req: Request){
     } 
 
     //Extraiem de la base de dades la constrasenya del usuari que el front-end ens ha dit que validem
-    const dbPassword = await db`SELECT password FROM alumn WHERE first_name = ${credentials.uName}`
+            const dbPassword = await db`SELECT Password FROM Usuari WHERE Username = ${credentials.uName}`
     
     //Comprobem que la base de dades haigi extret una contrasenya, si no es el cas, vol dir que l'usuari no existeix
     //Peró no volem dir si el que falla és la contrasenya o el usuari, així que retornem el mateix error que si la contrasenya és incorrecte (mirar el final d'aquest script)
@@ -30,12 +30,13 @@ export async function loginVerification(req: Request){
     //Finalment, comprobem si la contrasenya del front-end és igual a la de la base de dades.
     //Si ho és, retornem un éxit
     //Aquesta és la part que necesitará encriptació, junt amb la base de dades.
-    if (dbPassword[0].password === credentials.uPassword) {
+    if (dbPassword[0].Password === credentials.uPassword) {
         return Response.json(
             {message:"Login exitos"}, 
             {status: 200}
         );
     }
+    console.log("asd")
 
     //Si les credencials són incorrectes, retornem un error
     return Response.json(
