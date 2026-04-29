@@ -98,31 +98,38 @@ CREATE TABLE Activitats (
     FOREIGN KEY (ID_Temes) REFERENCES Temes(ID_Temes)
 );
 
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Joan', 'Garcia', '123456789', 'joangarcia', 'password123', 'joan.garcia@exemple.com');
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Maria', 'Lopez', '987654321', 'marialopez', 'password456', 'maria.lopez@exemple.com');  
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Carlos', 'Sanchez', '555555555', 'carlossanchez', 'password789', 'carlos.sanchez@exemple.com'); 
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Ana', 'Martinez', '444444444', 'anamartinez', 'password321', 'ana.martinez@exemple.com');    
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Luis', 'Gomez', '333333333', 'luisgomez', 'password654', 'luis.gomez@exemple.com');    
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'David', 'Rodriguez', '111111111', 'davidrodriguez', 'password111', 'david.rodriguez@exemple.com');      
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Laura', 'Gonzalez', '666666666', 'lauragonzalez', 'password222', 'laura.gonzalez@exemple.com');      
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Javier', 'Perez', '777777777', 'javierperez', 'password333', 'javier.perez@exemple.com');      
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Elena', 'Sanchez', '888888888', 'elenasanchez', 'password444', 'elena.sanchez@exemple.com');
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Miguel', 'Diaz', '999999999', 'migueldiaz', 'password555', 'miguel.diaz@exemple.com');
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Isabel', 'Ramirez', '777777777', 'isabelramirez', 'password666', 'isabel.ramirez@exemple.com');
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Pablo', 'Vazquez', '888888888', 'pablovazquez', 'password777', 'pablo.vazquez@exemple.com');
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Sara', 'Mendez', '999999999', 'saramendez', 'password888', 'sara.mendez@exemple.com');
-INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Username, Password, Mail)
-VALUES ( 'Albert', 'Santos', '111111111', 'albertosantos', 'password999', 'albert.santos@exemple.com');
+INSERT INTO Usuari ( Nom, Cognom, Numero_de_telefon, Mail)
+VALUES 
+( 'Joan', 'Garcia', '123456789', 'joan.garcia@exemple.com'),
+( 'Maria', 'Lopez', '987654321', 'maria.lopez@exemple.com'),  
+( 'Carlos', 'Sanchez', '555555555', 'carlos.sanchez@exemple.com'), 
+( 'Ana', 'Martinez', '444444444', 'ana.martinez@exemple.com'),    
+( 'Luis', 'Gomez', '333333333', 'luis.gomez@exemple.com'),    
+( 'David', 'Rodriguez', '111111111', 'david.rodriguez@exemple.com'),      
+( 'Laura', 'Gonzalez', '666666666', 'laura.gonzalez@exemple.com'),      
+( 'Javier', 'Perez', '777777777', 'javier.perez@exemple.com'),      
+( 'Elena', 'Sanchez', '888888888', 'elena.sanchez@exemple.com'),
+( 'Miguel', 'Diaz', '999999999', 'miguel.diaz@exemple.com'),
+( 'Isabel', 'Ramirez', '777777777', 'isabel.ramirez@exemple.com'),
+( 'Pablo', 'Vazquez', '888888888', 'pablo.vazquez@exemple.com'),
+( 'Sara', 'Mendez', '999999999', 'sara.mendez@exemple.com'),
+( 'Albert', 'Santos', '111111111', 'albert.santos@exemple.com');
+
+INSERT INTO Login ( Username, Password)
+Values
+( 'joangarcia', 'password123'),
+( 'marialopez', 'password456'),
+( 'carlossanchez', 'password789'),
+( 'anamartinez', 'password321'),
+( 'luisgomez', 'password654'),
+( 'davidrodriguez', 'password111'),
+( 'lauragonzalez', 'password222'),
+( 'javierperez', 'password333'),
+( 'elenasanchez', 'password444'),
+( 'migueldiaz', 'password555'),
+( 'isabelramirez', 'password666'),
+( 'pablovazquez', 'password777'),
+( 'saramendez', 'password888'),
+('albertosantos', 'password999');
+
+commit;
