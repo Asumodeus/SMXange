@@ -6,22 +6,42 @@
     <link rel="stylesheet" href="styles_forgot.css">
 </head>
 <body>
-    <header>
+    <script src="./forgotPswd.ts"></script>
 
-    </header>
-<div class="card">
-  <h1>Restableix la contrasenya</h1>
-  
-  <input type="password" placeholder="Nova contrasenya">
-  <p>8 caràcters com a mínim, distingeix majúscules de minúscules</p>
-  
-  <input type="password" placeholder="Torneu a escriure la contrasenya">
-  
-  <div class="actions">
-    <a href="/login"><button class="btn-cancel">Cancel·lar</button></a>
-    <button class="btn-confirm">Confirma</button>
-  </div>
-</div>
+    <div class="card">
+        <h1>Restableix la contrasenya</h1>
+        
+        <form id="forgotForm">
+            <input 
+                type="text" 
+                id="Usuario" 
+                name="Usuario" 
+                placeholder="Usuari"
+                required
+            >
+
+            <p>6 caràcters com a mínim, distingeix majúscules de minúscules</p>
+            
+            <input 
+                type="password" 
+                id="newPassword" 
+                name="newPassword" 
+                placeholder="Escriu la nova contrasenya"
+                required
+            >
+
+            <p id="msgSpot"></p>
+            
+            <div class="actions">
+                <button type="button" class="btn-cancel" id="cancelButton">
+                    Cancel·lar
+                </button>
+
+                <button type="submit" class="btn-confirm">
+                    Confirma
+                </button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
-
