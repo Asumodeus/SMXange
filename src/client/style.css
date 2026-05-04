@@ -1,0 +1,155 @@
+.navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 50px;
+    box-sizing: border-box;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: rgba(0, 0, 0, 0.171);
+}
+.logo img {
+    height: 60px; 
+}
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.menu a:hover {
+    opacity: 1; 
+}
+
+.menu2 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.login {
+    background-color: #1199fa; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+h1{
+    text-align: center;
+    font-size: 90px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+}
+p{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 30px;
+    margin: 0;
+    text-align: center;
+    color: rgb(170, 169, 169);
+    font-weight: 600;
+}
+body{
+    background-position: center;
+    background: url(assets/fondo_01.png);
+    background-size: cover;
+    background-attachment: fixed;
+}
+.btn{
+    position: relative; /*absolut = otra dimension*/
+    left: 50%;
+    transform: translateX(-50%); /* Mueve hacia la izquierda una distancia igual a la mitad de su propio ancho */
+    margin-top: 30px;
+    padding: 15px 40px;/*arriba abajo y derecha izquierda */
+    border: none; /*Elimina el contorno que viene predeterminado*/
+    color: #fff;
+    cursor: pointer; /*Indica que se puede clicar*/
+    z-index: 0; /*Capa 0*/
+    border-radius: 12px; /*Redondear las esquinas*/
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500; /*Sirve para resaltar el texto*/
+    font-size: 15px;
+}
+.btn::after{ /*Crear otro boton pero solo con fondo de color*/
+    content: ""; /*Calcar el tamaño y el posicion pero sin texto*/
+    z-index: -1; /* Manda hacia atras el rectangulo azul */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #1199fa;
+    left: 0; /*Borde del boton*/
+    top: 0; /*El techo del boton*/
+    border-radius: 10px; /*Redondear los bordes*/
+}
+.btn::before{
+    content: "";
+    background: linear-gradient( /*Transiciones suaves*/
+        45deg, /*Diagonal*/
+        #FFFFFF, #E0F2FE, #1199FA, #00FFFF, #FFFFFF, #7DD3FC, #0EA5E9,#FFFFFF 
+    );
+    position: absolute;
+    top: -2px; /*Sacar por los bordes*/
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px); /*100% = porque no se sabe cuantos pixeles son*/
+    height: calc(100% + 4px); /*se le +4 pixeles para sobre salir del boton para luego darle un difuminado*/
+    filter: blur(8px); /*Difuminar o desenfocar*/
+    animation: glowing 20s linear infinite;
+    transition: opacity .3s ease-in-out; /*Lento, acelera, frena suave*/
+    border-radius: 10px;
+    opacity: 1; /*Iluminación*/
+}
+@keyframes glowing{ /*Guion*/
+    0% {background-position: 0 0;} /*Izquierda derecha*/
+    50% {background-position: 400% 0;}
+    100% {background-position: 0 0;}
+}
+.btn:hover::before{ /*Encima*/
+    opacity: 1; /*Mas iluminado*/
+}
+.btn:active::after{
+    background: transparent;
+}
+.btn:active{
+    color: #000;
+    font-weight: bold;
+}
+.banner{ /*Bloque principal*/
+    width: 100%; 
+    height: 100vh; /*Altura de la ventana, llenar la pantalla*/
+    overflow:hidden; /*Evita que aparezcan barras de desplazamiento hotizontales*/
+    position: relative;
+}
+.banner .slider{
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    top: 10%;
+    left: calc(51% - 100px); /*Forma matemática para centrar la caja (50% espació de izquierda i 100px le resta para centrarlo)*/
+    transform-style: preserve-3d; /*Dentro de esta caja hay aire y profundidad*/
+    transform: perspective(1000px); /*Determinando el eje Z que seria la profundidad*/
+    animation: autoRun 20s linear infinite; /*"autoRun = clase", "20s tiempo que tarda en dar una vuelta", "linear = ir a una velocidad constante (ease-in = lento)", "infinite = repetir en bucle" */
+}
+@keyframes autoRun{ /*Del 0s punto A, al 20s debe de llegar al punto B*/
+    from{
+        transform: perspective(1000px) rotateX(-2deg) rotateY(0deg); /*rotateX(-2deg = -2 grados) = relog ("+" hacia derecha y "-" izquierda)*/
+    }to{
+        transform: perspective(1000px) rotateX(-2deg) rotateY(360deg); /*como un palo clavado*/
+    }
+}
+.banner .slider .items{
+    position: absolute; /*Imagenes todo pegado, no = uno abajo del otro*/
+    inset: 0 0 0 0; /*top, right, bottom, left = permite que todas las imagenes tenga las mismas medidas*/
+    transform: 
+        rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) /*calc = cerebro matematico de css, var = buscador*/
+        translateZ(500px); /*Radio del circulo*/
+}
+.banner .slider .items img{
+    width: 100%; /*Ocupar todo del slider = width: 150px*/
+    height: 100%;
+    object-fit: contain; /*Mantener la forma de circulo, si uno se choca */
+}

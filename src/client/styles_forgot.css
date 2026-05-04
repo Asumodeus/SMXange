@@ -1,0 +1,98 @@
+/*Página entera*/
+   
+body {
+  min-height: 100vh;
+  background-image: url('assets/fondo_login.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+   /*Tarjeta central*/
+
+.card {
+  background: transparent;  
+  width: 420px;
+  background: blueviolet;
+  color: black;
+  border-radius: 10px;
+  padding: 30px 40px;
+  background: transparent;
+  backdrop-filter: blur(20px);  /*desenfoca el fondo detrás de la tarjeta*/
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  border: 2px solid rgba(255, 255, 255,.2);
+}
+
+   /*Textos*/
+
+h1 {
+  color: #efefef;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+} 
+
+p {
+  color: #e4dada;
+  font-size: 13px;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  color: #8aafd4;
+  font-size: 6px;
+  margin-bottom: 6px;
+}
+
+   /*Campos de texto*/
+   
+input {
+  width: 100%;
+  background: rgba(13, 27, 42, 0.85);  /*semitransparente también*/
+  border: 1px solid #2a3f5a;
+  border-radius: 8px;
+  padding: 16px 14px;
+  color: #e8f4ff;
+  font-size: 14px;
+  margin-bottom: 1rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #378add;
+}
+
+   /*Botones*/
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid #2a3f5a;
+  border-radius: 8px;
+  color: #8aafd4;
+  cursor: pointer;
+}
+
+.btn-confirm {
+  flex: 2;
+  padding: 10px;
+  background: #185fa5;
+  border: none;
+  border-radius: 8px;
+  color: #e8f4ff;
+  font-weight: 500;
+  cursor: pointer;
+}

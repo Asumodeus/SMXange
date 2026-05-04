@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url(assets/fondo_01.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 50px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.logo img { height: 60px; }
+.menu a { color: white; text-decoration: none; font-weight: 500; font-size: 16px; }
+.menu a:hover { text-decoration: underline; }
+
+.wrapper-academia {
+    max-width: 800px;
+    margin: 40px auto;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    padding: 40px;
+}
+
+.wrapper-academia h1 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1199fa;
+}
+
+h2 { margin-bottom: 15px; font-size: 24px; color: #7DD3FC; }
+
+p { margin-bottom: 15px; line-height: 1.6; font-size: 18px; }
+
+.exercici {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pregunta { font-weight: bold; }
+
+label {
+    display: block;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+label:hover { border: 1px solid #1199fa; }
+label input { margin-right: 10px; accent-color: #1199fa; }
+
+.button {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-top: 20px;
+}
+.button:hover { background: #e0f2fe; }
+
+#missatge-resultat {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}

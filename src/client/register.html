@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es"> 
+
+<head>
+    <meta charset="UTF-8">
+    <title>SMXCHANGE</title>
+    <link rel="stylesheet" href="styles_register.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <script src="./register.ts"></script>
+  <div class="wrapper">
+    <header>
+      <h1>Crear un compte</h1>
+    </header>
+    <main>
+      <form id="register">
+        <div class="input-box">
+          <label for="name"></label>
+          <input type="text" placeholder="Nom" name="user" required>
+          <i class="bx bx-user-id-card"></i>
+        </div>
+        
+        <div class="input-box">
+          <label for="apellido"></label>
+          <input type="text" placeholder="Cognom" name="Apellido" required>
+        </div>
+
+        <div class="input-box">
+          <label for="usuario"></label>
+          <input type="text" placeholder="Usuari" name="Usuario" required>
+          <i class='bx bxs-user'></i>
+        </div>
+
+        <div class="input-box">
+          <label for="telefono"></label>
+          <input type="text" placeholder="Número de telèfon" name="Telefono" required>
+          <i class="bx bx-phone"></i>
+        </div>
+
+        <div class="input-box">
+          <label for="email"></label>
+          <input type="text" placeholder="Correu electrònic" name="email" required>
+          <i class="bx bx-envelope"></i>
+        </div>
+
+
+        <div class="input-box">
+          <label for="passwordOnce"></label>
+          <input type="password" placeholder="Contrasenya" name="passwordOnce" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+
+        <div class="input-box">
+          <label for="passwordTwice"></label>
+          <input type="password" placeholder="Confirma la contrasenya" name="passwordTwice" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+
+        
+        <button type="submit" class="button">Registra't</button>
+      </form>
+      <div class="register-link">
+      <p>Ja tens un compte? <a href="/login">Inicia sessió</a></p>
+      </div>
+    </main>
+  </div>
+  <div id="finestraEmergent" class="fons" style="display: none">
+    <div class="contingut-finestra">
+      <p id="textFinestra">Missatge</p>
+      <button id="btnAceptarFinestra">Accetar</button>
+  </div>
+</body>
+</html> 
