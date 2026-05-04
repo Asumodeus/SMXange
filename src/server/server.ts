@@ -33,6 +33,10 @@ Bun.serve({
             return await api.registerRequest(req);
         },
 
+        "/api/forgotPswd": async (req) => {
+    return await api.forgotPasswordRequest(req);
+},
+
         //Servim el favicon (El incone de la página) quan el servidor el demana
         "/favicon.ico": Bun.file("./src/client/assets/favicon.ico"),
 
