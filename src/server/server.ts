@@ -2,6 +2,7 @@ import landingPage from "../client/Portada.html"
 import loginPage from "../client/index.html";
 import forgotPswd from "../client/forgotPswd.html"
 import registerPage from "../client/register.html"
+import pagina_principal from "../client/pagina_principal.html"
 import academiaPage from "../client/academia_1_1.html"
 import academiaPage2 from "../client/academia_1_2.html"
 import academiaPage3 from "../client/academia_1_3.html"
@@ -25,6 +26,8 @@ Bun.serve({
         "/forgotPswd": forgotPswd,
 
         "/register":  registerPage,
+
+        "/principal": pagina_principal,
 
         "/academia1_1":  academiaPage,
         "/academia1_2":  academiaPage2,

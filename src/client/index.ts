@@ -24,7 +24,7 @@ async function sendData() {
     });
 
     if (response.ok) {
-      window.location.href = "/academia"
+      window.location.href = "/principal"
     } else {
       resetPasswordField();
       const result = await response.json();
