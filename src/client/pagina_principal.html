@@ -1,28 +1,151 @@
-    <!DOCTYPE html>
-    <html lang="ca">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SMXCHANGE</title> 
-        <link rel="stylesheet" href="pagina_principal.css">
-    </head>
-    <body>
-        
-        <header class="navbar">
-            <div class="logo">
-                <img src="assets/logo_dorado.webp" alt="Logo SMXCHANGE">
-            </div>
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMXCHANGE</title>
 
-            <nav class="menu">
-                <a href="#">Historial</a>
-                <a href="#">Ranking</a>
-                <a href="#">Donacions</a>
-            </nav>
-        </header>
-        
-        <div class="container">
-            <h1 style="text-align: center;">SMXCHANGE</h1>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pagina_principal.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <img src="./assets/logo_dorado2.webp" alt="Logo">
+    </div>
+
+    <nav class="menu">
+        <a href="#">Historial</a>
+        <a href="#">Ranking</a>
+        <a href="#">Donacions</a>
+    </nav>
+</header>
+
+<main class="container">
+    <h1>El teu portal de criptomonedes</h1>
+</main>
+
+<section class="hero-info">
+    <p>
+        Consulta preus en temps real, aprèn trading i segueix les principals monedes del mercat.
+    </p>
+
+    <div class="hero-stats">
+        <div class="stat">
+            <h3>20+</h3>
+            <p>Criptomonedes</p>
         </div>
 
-    </body>
-    </html>
+        <div class="stat">
+            <h3>Temps real</h3>
+            <p>Preus actualitzats</p>
+        </div>
+
+        <div class="stat">
+            <h3>SMX</h3>
+            <p>Plataforma educativa</p>
+        </div>
+    </div>
+</section>
+
+<!-- 💰 CRYPTO TABLE -->
+<section class="seccion-oscura">
+    <h2>Monedes populars</h2>
+
+    <div class="crypto-box">
+        <table class="crypto-table">
+
+            <thead>
+                <tr>
+                    <th>Moneda</th>
+                    <th>Preu</th>
+                    <th>24h</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td class="coin-name">
+                        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="">
+                        Bitcoin
+                    </td>
+                    <td>$64,200</td>
+                    <td class="positive">+2.4%</td>
+                </tr>
+
+                <tr>
+                    <td class="coin-name">
+                        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="">
+                        Ethereum
+                    </td>
+                    <td>$3,100</td>
+                    <td class="negative">-1.1%</td>
+                </tr>
+
+                <tr>
+                    <td class="coin-name">
+                        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="">
+                        Solana
+                    </td>
+                    <td>$145</td>
+                    <td class="positive">+5.6%</td>
+                </tr>
+
+                <tr>
+                    <td class="coin-name">
+                        <img src="https://cryptologos.cc/logos/cardano-ada-logo.png" alt="">
+                        Cardano
+                    </td>
+                    <td>$0.55</td>
+                    <td class="negative">-0.8%</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- 📊 INVESTING WIDGET -->
+<section class="seccion-oscura">
+    <h2>Panell de seguiment en temps real</h2>
+
+    <div class="margen-contenedor">
+        <div class="tabla-scroll-intern">
+            <iframe
+                src="https://es.widgets.investing.com/top-cryptocurrencies?theme=darkTheme&cols=symbol,priceUsd,marketCap,vol24h,chg24h&limit=100"
+                width="100%"
+                height="1000"
+                frameborder="0">
+            </iframe>
+        </div>
+
+        <div class="footer-widget">
+            Dades de <a href="https://es.investing.com/" target="_blank">Investing.com</a>
+        </div>
+    </div>
+</section>
+
+<!-- 🎓 ACADEMIA (INTACTA) -->
+<section class="seccion-oscura">
+
+    <h2>Academia</h2>
+
+    <p class="academia-texto">
+        Domina el món cripte des de zero fins a nivell avançat.
+    </p>
+
+    <div class="academia-opciones">
+        <a href="academia.html" class="tarjeta-nivel">
+            <div class="imagen-wrapper">
+                <img src="assets/academia_logo.webp">
+            </div>
+            <span>Accedeix al curs</span>
+        </a>
+    </div>
+
+</section>
+
+</body>
+</html>

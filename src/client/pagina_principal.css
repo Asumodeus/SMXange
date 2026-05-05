@@ -1,52 +1,253 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    
-    /* Corrección del fondo para que no se repita */
-    background-image: url('assets/fondo_pagina_principal.webp');
-    background-color: #2c3e50;
-    background-size: cover;          /* Hace que la imagen cubra toda la pantalla */
-    background-repeat: no-repeat;    /* Evita el efecto mosaico */
-    background-attachment: fixed;    /* Mantiene el fondo fijo al hacer scroll */
-    background-position: center;     /* Centra la imagen de fondo */
-    
+    background-image: url('assets/fondo_01.png');
+    background-color: #0f172a;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: #dfdfdf;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    background-color: rgba(10, 15, 30, 0.8);
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 110px;
+}
+
+.menu {
+    display: flex;
+    gap: 35px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* HERO */
+.container {
+    text-align: center;
+    padding: 100px 20px 40px;
+}
+
+.container h1 {
+    font-size: 5rem;
+    font-weight: 800;
+}
+
+/* HERO INFO */
+.hero-info {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero-info p {
+    max-width: 650px;
+    margin: auto;
+    color: rgba(255,255,255,0.7);
+}
+
+/* STATS */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.stat h3 {
     color: #b09b11;
 }
 
-/* Uso de Flexbox para una barra de navegación estructurada */
-.navbar {
+/* SECCIONES */
+.seccion-oscura {
+    padding: 80px 0;
+    text-align: center;
+}
+
+/* CRYPTO TABLE */
+.crypto-box {
     display: flex;
-    justify-content: space-between;  /* Separa el logo (izq) del menú (der) */
-    align-items: center;             /* Centra los elementos verticalmente */
-    padding: 20px 50px;              /* Espaciado interno: 20px arriba/abajo, 50px lados */
-    background-color: rgba(44, 62, 80, 0.6); /* Un fondo semitransparente para que se lea mejor */
+    justify-content: center;
+    margin-top: 30px;
 }
 
-/* Control del tamaño del logo */
-.logo img {
-    height: 60px; /* Ajusta este valor según el tamaño que quieras para tu logo */
-    width: auto;
+.crypto-table {
+    width: 65%;
+    border-collapse: collapse;
+    background: rgba(10, 15, 30, 0.85);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-/* Estructura de los enlaces del menú */
-.navbar .menu {    
+.crypto-table th,
+.crypto-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.crypto-table th {
+    background: rgba(176, 155, 17, 0.2);
+    color: #b09b11;
+}
+
+/* FIX ICONOS (IMPORTANTE) */
+.coin-name {
     display: flex;
-    gap: 30px; /* Espacio entre los enlaces */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
-.navbar .menu a {
+.crypto-table img {
+    width: 28px !important;
+    height: 28px !important;
+    object-fit: contain;
+}
+
+/* COLORS */
+.positive {
+    color: #00ff9c;
+    font-weight: 600;
+}
+
+.negative {
+    color: #ff4d4d;
+    font-weight: 600;
+}
+
+/* INVESTING PANEL */
+.margen-contenedor {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.tabla-scroll-intern {
+    height: 520px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(10,15,30,0.7);
+    border: 1px solid rgba(176,155,17,0.3);
+}
+
+.footer-widget {
+    margin-top: 10px;
+    font-size: 0.85rem;
+}
+
+.footer-widget a {
+    color: #b09b11;
+}
+
+/* ACADEMIA */
+.academia-texto {
+    max-width: 650px;
+    margin: auto;
+    color: rgba(255,255,255,0.7);
+}
+
+.imagen-wrapper {
+    width: 450px;
+    height: 450px;
+}
+
+/* 🎓 ACADEMIA - ESTILO PRO */
+
+.academia-texto {
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+}
+
+/* CONTENEDOR */
+.academia-opciones {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* TARJETA PRINCIPAL */
+.tarjeta-nivel {
     text-decoration: none;
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: bold;
-    transition: color 0.3s ease; /* Efecto suave al pasar el ratón */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(145deg, rgba(15,23,42,0.9), rgba(10,15,30,0.95));
+    padding: 40px;
+    border-radius: 25px;
+    border: 1px solid rgba(176,155,17,0.25);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    transition: all 0.4s ease;
 }
 
-.navbar .menu a:hover {
-    color: #b09b11; /* Se vuelve dorado al pasar el ratón */
+/* EFECTO HOVER PREMIUM */
+.tarjeta-nivel:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 25px 70px rgba(176,155,17,0.25);
+    border: 1px solid rgba(176,155,17,0.6);
 }
 
-.container {
-    padding: 60px 20px;
+/* IMAGEN */
+.imagen-wrapper {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 25px;
+    transition: transform 0.4s ease;
 }
+
+.tarjeta-nivel:hover .imagen-wrapper {
+    transform: scale(1.08) rotate(-2deg);
+}
+
+.tarjeta-nivel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* TEXTO */
+.tarjeta-nivel span {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* DETALLE BRILLO */
+.tarjeta-nivel::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: #b09b11;
+    transition: 0.4s;
+}
+
+.tarjeta-nivel:hover::before {
+    width: 80%;
+    left: 10%;
+}
+
