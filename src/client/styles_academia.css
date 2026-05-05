@@ -2,88 +2,270 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
-    min-height: 100vh;
-    background: url(assets/fondo_01.png);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    height: 100vh;
+    background: url(assets/fondo_01.png) center/cover fixed;
+    background-color: #0f172a; 
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+}
+
+.glass {
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .navbar {
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    padding: 15px 50px;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-.logo img { height: 60px; }
-.menu a { color: white; text-decoration: none; font-weight: 500; font-size: 16px; }
-.menu a:hover { text-decoration: underline; }
-
-.wrapper-academia {
-    max-width: 800px;
-    margin: 40px auto;
-    background: transparent;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 10px;
-    padding: 40px;
+    padding: 0 20px;
+    height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10;
+    flex-shrink: 0;
 }
 
-.wrapper-academia h1 {
-    font-size: 32px;
-    text-align: center;
-    margin-bottom: 30px;
-    color: #1199fa;
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-h2 { margin-bottom: 15px; font-size: 24px; color: #7DD3FC; }
+.logo img { height: 40px; }
 
-p { margin-bottom: 15px; line-height: 1.6; font-size: 18px; }
-
-.exercici {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+.course-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #e2e8f0;
 }
 
-.pregunta { font-weight: bold; }
-
-label {
-    display: block;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 1px solid transparent;
+.menu {
+    display: flex;
+    gap: 15px;
 }
 
-label:hover { border: 1px solid #1199fa; }
-label input { margin-right: 10px; accent-color: #1199fa; }
+.menu a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
 
-.button {
-    width: 100%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
+.menu a:hover { color: #fff; text-decoration: underline; }
+
+.course-container {
+    display: flex;
+    flex: 1; 
+    height: calc(100vh - 60px);
+    overflow: hidden; 
+}
+
+.sidebar {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 5;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.sidebar-header h3 {
     font-size: 16px;
-    color: #333;
+    color: #fff;
     font-weight: 600;
-    margin-top: 20px;
 }
-.button:hover { background: #e0f2fe; }
 
-#missatge-resultat {
-    text-align: center;
-    margin-top: 15px;
-    font-weight: bold;
+.sidebar-progress {
+    padding: 20px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #cbd5e1;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #00c4cc;
+    border-radius: 3px;
+    transition: width 0.3s;
+}
+
+.module-list {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; 
+    flex: 1;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.5); }
+
+.module-item {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #cbd5e1;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.module-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.module-item.active {
+    background: rgba(0, 196, 204, 0.1);
+    border-left-color: #00c4cc;
+    color: #fff;
+    font-weight: 600;
+}
+
+.module-item .icon {
+    font-size: 16px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+}
+
+.module-item.completed .icon { color: #22c55e; font-weight: bold; }
+.module-item.active .icon { color: #00c4cc; font-size: 12px; }
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.4);
+    overflow-y: auto; 
+    padding: 50px 80px;
+}
+
+.module-section {
+    max-width: 900px; 
+    margin: 0 auto;
+    width: 100%;
+    padding-bottom: 60px;
+}
+
+.content-header h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.content-body p {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    color: #e2e8f0;
+}
+
+.content-body strong {
+    color: #fff;
+}
+
+.exercici-box {
+    margin-top: 50px;
+    padding: 35px;
+    border-radius: 10px;
+}
+
+.exercici-box h3 { 
+    margin-bottom: 20px; 
+    color: #00c4cc; 
+    font-size: 22px;
+}
+
+.pregunta { 
+    font-weight: 500; 
+    margin-bottom: 20px; 
+    font-size: 17px;
+    color: #fff;
+}
+
+.opcio {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s;
+}
+
+.opcio:hover { 
+    border-color: rgba(0, 196, 204, 0.5); 
+    background: rgba(0, 196, 204, 0.1);
+}
+
+.opcio input { 
+    margin-right: 15px; 
+    accent-color: #00c4cc; 
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.btn-submit {
+    background: #00c4cc;
+    color: #fff;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover { background: #00a3a8; }

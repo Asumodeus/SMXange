@@ -2,7 +2,10 @@ import landingPage from "../client/Portada.html"
 import loginPage from "../client/index.html";
 import forgotPswd from "../client/forgotPswd.html"
 import registerPage from "../client/register.html"
-import academiaPage from "../client/academia.html"
+import academiaPage from "../client/academia_1_1.html"
+import academiaPage2 from "../client/academia_1_2.html"
+import academiaPage3 from "../client/academia_1_3.html"
+import academiaPage4 from "../client/academia_1_4.html"
 import * as api from "./api/api_index"
 
 
@@ -23,7 +26,10 @@ Bun.serve({
 
         "/register":  registerPage,
 
-        "/academia":  academiaPage,
+        "/academia1_1":  academiaPage,
+        "/academia1_2":  academiaPage2,
+        "/academia1_3":  academiaPage3,
+        "/academia1_4":  academiaPage4,
 
         "/api/login": async (req) => {
             return await api.loginVerification(req);
