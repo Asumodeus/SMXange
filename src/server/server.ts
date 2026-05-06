@@ -1,12 +1,12 @@
-import landingPage from "../client/Portada.html"
-import loginPage from "../client/index.html";
-import forgotPswd from "../client/forgotPswd.html"
-import registerPage from "../client/register.html"
-import pagina_principal from "../client/pagina_principal.html"
-import academiaPage from "../client/academia_1_1.html"
-import academiaPage2 from "../client/academia_1_2.html"
-import academiaPage3 from "../client/academia_1_3.html"
-import academiaPage4 from "../client/academia_1_4.html"
+import landingPage from "../client/pages/portada/portada.html"
+import loginPage from "../client/pages/login/login.html";
+import forgotPswd from "../client/pages/forgot_pswd/forgot_pswd.html"
+import registerPage from "../client/pages/register/register.html"
+import pagina_principal from "../client/pages/pagina_principal/pagina_principal.html"
+import academiaPage from "../client/pages/academia/academia_1_1.html"
+import academiaPage2 from "../client/pages/academia/academia_1_2.html"
+import academiaPage3 from "../client/pages/academia/academia_1_3.html"
+import academiaPage4 from "../client/pages/academia/academia_1_4.html"
 import * as api from "./api/api_index"
 
 
