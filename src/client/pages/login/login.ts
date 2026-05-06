@@ -2,7 +2,9 @@
 //Aixo es una prova
 const form = document.getElementById("login") as HTMLFormElement;
 const usernameInputField = document.getElementById("uName") as HTMLInputElement;
-const passwordInputField = document.getElementById("uPassword") as HTMLInputElement;
+const passwordInputField = document.getElementById(
+  "uPassword",
+) as HTMLInputElement;
 const msgSpot = document.getElementById("msgSpot") as HTMLInputElement;
 
 async function sendData() {
@@ -17,14 +19,14 @@ async function sendData() {
     return;
   }
 
-  try{
+  try {
     const response = await fetch("/api/login", {
       method: "POST",
       body: JSON.stringify(loginData),
     });
 
     if (response.ok) {
-      window.location.href = "/principal"
+      window.location.href = "/principal";
     } else {
       resetPasswordField();
       const result = await response.json();
@@ -43,14 +45,14 @@ form.addEventListener("submit", (event) => {
 });
 
 function resetPasswordField() {
-  usernameInputField.classList.add('error-vibracion');
-  passwordInputField.classList.add('error-vibracion');
+  usernameInputField.classList.add("error-vibracion");
+  passwordInputField.classList.add("error-vibracion");
   passwordInputField.value = "";
 }
 
-function verifyCredentialValidity(credentials: any ) :boolean {
-  if (!credentials.uName || !credentials.uPassword){
+function verifyCredentialValidity(credentials: any): boolean {
+  if (!credentials.uName || !credentials.uPassword) {
     return false;
   }
   return true;
-} 
+}

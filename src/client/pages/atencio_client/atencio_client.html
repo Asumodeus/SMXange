@@ -1,194 +1,250 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ca">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SMXCHANGE – Atenció al Client</title>
-  <link rel="stylesheet" href="atencio_client.css">
-</head>
-<body class="sc-body">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMXCHANGE – Atenció al Client</title>
+    <link rel="stylesheet" href="atencio_client.css" />
+  </head>
+  <body class="sc-body">
+    <div class="sc-overlay"></div>
 
-  <div class="sc-overlay"></div>
-
-  <nav class="sc-nav">
-    <div class="sc-logo">
-      <div class="sc-logo-box"></div>
-      <span class="sc-logo-txt">SMXCHANGE</span>
-    </div>
-    <div class="sc-nav-links">
-      <a href="#">Historial</a>
-      <a href="#">Ranking</a>
-      <a href="#">Donacions</a>
-      <a href="#" class="act">Atenció al Client</a>
-    </div>
-    <button class="sc-btn-login">Iniciar Sessió</button>
-  </nav>
-
-  <div class="sc-hero">
-    <h1>Atenció al Client</h1>
-    <p>El nostre equip d'especialistes et resoldrà qualsevol dubte sobre criptomonedes.</p>
-  </div>
-
-  <div class="sc-pills">
-    <button class="sc-pill act" onclick="pill(this)">Tots els temes</button>
-    <button class="sc-pill" onclick="pill(this)">Compte i verificació</button>
-    <button class="sc-pill" onclick="pill(this)">Depòsits i retirades</button>
-    <button class="sc-pill" onclick="pill(this)">Seguretat i 2FA</button>
-    <button class="sc-pill" onclick="pill(this)">Comissions</button>
-    <button class="sc-pill" onclick="pill(this)">Trading i ordres</button>
-  </div>
-
-  <div class="sc-cards">
-    <div class="sc-card">
-      <div class="sc-card-ico">🔐</div>
-      <h3>Seguretat del compte</h3>
-      <p>2FA, accés bloquejat o activitat sospitosa.</p>
-    </div>
-    <div class="sc-card">
-      <div class="sc-card-ico">₿</div>
-      <h3>Transaccions crypto</h3>
-      <p>Seguiment d'enviaments, retards o errors d'adreça.</p>
-    </div>
-    <div class="sc-card">
-      <div class="sc-card-ico">🏦</div>
-      <h3>Fiat i pagaments</h3>
-      <p>Ingressos bancaris, retirades en euros i SEPA.</p>
-    </div>
-    <div class="sc-card">
-      <div class="sc-card-ico">📋</div>
-      <h3>KYC i verificació</h3>
-      <p>Documentació, nivells de compte i límits.</p>
-    </div>
-  </div>
-
-  <div class="sc-grid">
-    <div class="sc-wrap">
-      <h2>Envia una sol·licitud</h2>
-      <div id="sc-form">
-        <div class="sc-2col">
-          <div class="sc-ibox"><input type="text" placeholder="Nom"></div>
-          <div class="sc-ibox"><input type="text" placeholder="Cognoms"></div>
-        </div>
-        <div class="sc-ibox">
-          <input type="text" placeholder="Usuari">
-          <i class='bx bxs-user'></i>
-        </div>
-        <div class="sc-ibox">
-          <input type="email" placeholder="Correu electrònic">
-          <i class='bx bx-envelope'></i>
-        </div>
-        <div class="sc-ibox">
-          <select>
-            <option disabled selected>Categoria del problema</option>
-            <option>Seguretat i accés al compte</option>
-            <option>Depòsit o retirada de crypto</option>
-            <option>Ingrés o retirada en euros</option>
-            <option>Verificació KYC</option>
-            <option>Error en trading o ordres</option>
-            <option>Comissions i tarifes</option>
-            <option>Altres consultes</option>
-          </select>
-          <i class='bx bx-chevron-down'></i>
-        </div>
-        <div class="sc-tbox">
-          <textarea placeholder="Descriu el problema amb detall. Inclou IDs de transacció si en tens."></textarea>
-        </div>
-        <button class="sc-btn" onclick="send()">Enviar sol·licitud</button>
+    <nav class="sc-nav">
+      <div class="sc-logo">
+        <div class="sc-logo-box"></div>
+        <span class="sc-logo-txt">SMXCHANGE</span>
       </div>
-      <div class="sc-ok" id="sc-ok">
-        <div class="sc-ok-ico">✓</div>
-        <h3>Sol·licitud enviada!</h3>
-        <p>Et respondrem al correu en menys de 2 hores.</p>
-        <button class="sc-btn" onclick="reset()">Nou missatge</button>
+      <div class="sc-nav-links">
+        <a href="#">Historial</a>
+        <a href="#">Ranking</a>
+        <a href="#">Donacions</a>
+        <a href="#" class="act">Atenció al Client</a>
+      </div>
+      <button class="sc-btn-login">Iniciar Sessió</button>
+    </nav>
+
+    <div class="sc-hero">
+      <h1>Atenció al Client</h1>
+      <p>
+        El nostre equip d'especialistes et resoldrà qualsevol dubte sobre
+        criptomonedes.
+      </p>
+    </div>
+
+    <div class="sc-pills">
+      <button class="sc-pill act" onclick="pill(this)">Tots els temes</button>
+      <button class="sc-pill" onclick="pill(this)">Compte i verificació</button>
+      <button class="sc-pill" onclick="pill(this)">Depòsits i retirades</button>
+      <button class="sc-pill" onclick="pill(this)">Seguretat i 2FA</button>
+      <button class="sc-pill" onclick="pill(this)">Comissions</button>
+      <button class="sc-pill" onclick="pill(this)">Trading i ordres</button>
+    </div>
+
+    <div class="sc-cards">
+      <div class="sc-card">
+        <div class="sc-card-ico">🔐</div>
+        <h3>Seguretat del compte</h3>
+        <p>2FA, accés bloquejat o activitat sospitosa.</p>
+      </div>
+      <div class="sc-card">
+        <div class="sc-card-ico">₿</div>
+        <h3>Transaccions crypto</h3>
+        <p>Seguiment d'enviaments, retards o errors d'adreça.</p>
+      </div>
+      <div class="sc-card">
+        <div class="sc-card-ico">🏦</div>
+        <h3>Fiat i pagaments</h3>
+        <p>Ingressos bancaris, retirades en euros i SEPA.</p>
+      </div>
+      <div class="sc-card">
+        <div class="sc-card-ico">📋</div>
+        <h3>KYC i verificació</h3>
+        <p>Documentació, nivells de compte i límits.</p>
       </div>
     </div>
 
-    <div class="sc-side">
-      <div class="sc-blk">
-        <h4>Estat del servei</h4>
-        <div class="sc-crow">
-          <div class="sc-ico">💬</div>
-          <div>
-            <div class="sc-lbl">Xat en viu</div>
-            <div class="sc-val"><span class="sc-dot"></span>Disponible ara</div>
+    <div class="sc-grid">
+      <div class="sc-wrap">
+        <h2>Envia una sol·licitud</h2>
+        <div id="sc-form">
+          <div class="sc-2col">
+            <div class="sc-ibox"><input type="text" placeholder="Nom" /></div>
+            <div class="sc-ibox">
+              <input type="text" placeholder="Cognoms" />
+            </div>
           </div>
+          <div class="sc-ibox">
+            <input type="text" placeholder="Usuari" />
+            <i class="bx bxs-user"></i>
+          </div>
+          <div class="sc-ibox">
+            <input type="email" placeholder="Correu electrònic" />
+            <i class="bx bx-envelope"></i>
+          </div>
+          <div class="sc-ibox">
+            <select>
+              <option disabled selected>Categoria del problema</option>
+              <option>Seguretat i accés al compte</option>
+              <option>Depòsit o retirada de crypto</option>
+              <option>Ingrés o retirada en euros</option>
+              <option>Verificació KYC</option>
+              <option>Error en trading o ordres</option>
+              <option>Comissions i tarifes</option>
+              <option>Altres consultes</option>
+            </select>
+            <i class="bx bx-chevron-down"></i>
+          </div>
+          <div class="sc-tbox">
+            <textarea
+              placeholder="Descriu el problema amb detall. Inclou IDs de transacció si en tens."
+            ></textarea>
+          </div>
+          <button class="sc-btn" onclick="send()">Enviar sol·licitud</button>
         </div>
-        <div class="sc-crow">
-          <div class="sc-ico">✉</div>
-          <div>
-            <div class="sc-lbl">Correu electrònic</div>
-            <div class="sc-val">suport@smxchange.cat</div>
-          </div>
-        </div>
-        <div class="sc-crow">
-          <div class="sc-ico">📞</div>
-          <div>
-            <div class="sc-lbl">Telèfon (Pro)</div>
-            <div class="sc-val">+34 93 000 12 34</div>
-          </div>
+        <div class="sc-ok" id="sc-ok">
+          <div class="sc-ok-ico">✓</div>
+          <h3>Sol·licitud enviada!</h3>
+          <p>Et respondrem al correu en menys de 2 hores.</p>
+          <button class="sc-btn" onclick="reset()">Nou missatge</button>
         </div>
       </div>
 
-      <div class="sc-blk">
-        <h4>Horari d'atenció</h4>
-        <div class="sc-hrow"><span class="d">Dill. – Div.</span><span>9:00 – 20:00</span></div>
-        <div class="sc-hrow"><span class="d">Dissabte</span><span>10:00 – 15:00</span></div>
-        <div class="sc-hrow"><span class="d">Diumenge</span><span>Tancat</span></div>
-        <div class="sc-hrow"><span class="d">Suport tècnic</span><span><span class="sc-dot"></span>24/7</span></div>
-      </div>
-
-      <div class="sc-blk">
-        <h4>Altres canals</h4>
-        <button class="sc-chbtn">
-          <span class="sc-chbtn-ico">💬</span>
-          <div>
-            <div>Xat en viu</div>
-            <div class="sc-chbtn-sub">Resposta immediata</div>
+      <div class="sc-side">
+        <div class="sc-blk">
+          <h4>Estat del servei</h4>
+          <div class="sc-crow">
+            <div class="sc-ico">💬</div>
+            <div>
+              <div class="sc-lbl">Xat en viu</div>
+              <div class="sc-val">
+                <span class="sc-dot"></span>Disponible ara
+              </div>
+            </div>
           </div>
+          <div class="sc-crow">
+            <div class="sc-ico">✉</div>
+            <div>
+              <div class="sc-lbl">Correu electrònic</div>
+              <div class="sc-val">suport@smxchange.cat</div>
+            </div>
+          </div>
+          <div class="sc-crow">
+            <div class="sc-ico">📞</div>
+            <div>
+              <div class="sc-lbl">Telèfon (Pro)</div>
+              <div class="sc-val">+34 93 000 12 34</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-blk">
+          <h4>Horari d'atenció</h4>
+          <div class="sc-hrow">
+            <span class="d">Dill. – Div.</span><span>9:00 – 20:00</span>
+          </div>
+          <div class="sc-hrow">
+            <span class="d">Dissabte</span><span>10:00 – 15:00</span>
+          </div>
+          <div class="sc-hrow">
+            <span class="d">Diumenge</span><span>Tancat</span>
+          </div>
+          <div class="sc-hrow">
+            <span class="d">Suport tècnic</span
+            ><span><span class="sc-dot"></span>24/7</span>
+          </div>
+        </div>
+
+        <div class="sc-blk">
+          <h4>Altres canals</h4>
+          <button class="sc-chbtn">
+            <span class="sc-chbtn-ico">💬</span>
+            <div>
+              <div>Xat en viu</div>
+              <div class="sc-chbtn-sub">Resposta immediata</div>
+            </div>
+          </button>
+          <button class="sc-chbtn">
+            <span class="sc-chbtn-ico">📱</span>
+            <div>
+              <div>Telegram oficial</div>
+              <div class="sc-chbtn-sub">@SMXchangeSupport</div>
+            </div>
+          </button>
+          <button class="sc-chbtn">
+            <span class="sc-chbtn-ico">📖</span>
+            <div>
+              <div>Centre d'ajuda</div>
+              <div class="sc-chbtn-sub">Guies i tutorials</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sc-faq">
+      <h2>Preguntes freqüents</h2>
+      <div class="sc-fi">
+        <button class="sc-fq" onclick="faq(this)">
+          Com puc recuperar l'accés si he perdut el 2FA?<span class="sc-chv"
+            >⌄</span
+          >
         </button>
-        <button class="sc-chbtn">
-          <span class="sc-chbtn-ico">📱</span>
-          <div>
-            <div>Telegram oficial</div>
-            <div class="sc-chbtn-sub">@SMXchangeSupport</div>
-          </div>
+        <div class="sc-fa">
+          Obre un tiquet seleccionant "Seguretat i accés al compte". Hauràs de
+          verificar la teva identitat amb DNI o passaport i el correu de
+          registre. El procés dura entre 24 i 48 hores laborables.
+        </div>
+      </div>
+      <div class="sc-fi">
+        <button class="sc-fq" onclick="faq(this)">
+          Quant tarda una retirada de Bitcoin a arribar?<span class="sc-chv"
+            >⌄</span
+          >
         </button>
-        <button class="sc-chbtn">
-          <span class="sc-chbtn-ico">📖</span>
-          <div>
-            <div>Centre d'ajuda</div>
-            <div class="sc-chbtn-sub">Guies i tutorials</div>
-          </div>
+        <div class="sc-fa">
+          Les retirades de BTC s'envien a la xarxa en un màxim de 30 minuts. El
+          temps fins a la confirmació depèn de la congestió: normalment entre 10
+          minuts i 2 hores.
+        </div>
+      </div>
+      <div class="sc-fi">
+        <button class="sc-fq" onclick="faq(this)">
+          Per què el meu dipòsit en euros no apareix?<span class="sc-chv"
+            >⌄</span
+          >
         </button>
+        <div class="sc-fa">
+          Els ingressos SEPA es processen en 1-2 dies hàbils. Assegura't d'haver
+          inclòs la referència correcta. Si han passat més de 3 dies, obre un
+          tiquet adjuntant el justificant bancari.
+        </div>
+      </div>
+      <div class="sc-fi">
+        <button class="sc-fq" onclick="faq(this)">
+          Com puc augmentar els límits del meu compte?<span class="sc-chv"
+            >⌄</span
+          >
+        </button>
+        <div class="sc-fa">
+          Completa la verificació KYC de nivell 2 (DNI/NIE + selfie +
+          justificant d'adreça). Un cop verificat, els límits s'amplien
+          automàticament en 24 hores.
+        </div>
+      </div>
+      <div class="sc-fi">
+        <button class="sc-fq" onclick="faq(this)">
+          Quines comissions cobreu per les transaccions?<span class="sc-chv"
+            >⌄</span
+          >
+        </button>
+        <div class="sc-fa">
+          El maker és del 0.1% i el taker del 0.2% per als comptes estàndard.
+          Els comptes Pro disposen de tarifes regressives. Consulta la pàgina de
+          tarifes per als detalls complets.
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="sc-faq">
-    <h2>Preguntes freqüents</h2>
-    <div class="sc-fi">
-      <button class="sc-fq" onclick="faq(this)">Com puc recuperar l'accés si he perdut el 2FA?<span class="sc-chv">⌄</span></button>
-      <div class="sc-fa">Obre un tiquet seleccionant "Seguretat i accés al compte". Hauràs de verificar la teva identitat amb DNI o passaport i el correu de registre. El procés dura entre 24 i 48 hores laborables.</div>
-    </div>
-    <div class="sc-fi">
-      <button class="sc-fq" onclick="faq(this)">Quant tarda una retirada de Bitcoin a arribar?<span class="sc-chv">⌄</span></button>
-      <div class="sc-fa">Les retirades de BTC s'envien a la xarxa en un màxim de 30 minuts. El temps fins a la confirmació depèn de la congestió: normalment entre 10 minuts i 2 hores.</div>
-    </div>
-    <div class="sc-fi">
-      <button class="sc-fq" onclick="faq(this)">Per què el meu dipòsit en euros no apareix?<span class="sc-chv">⌄</span></button>
-      <div class="sc-fa">Els ingressos SEPA es processen en 1-2 dies hàbils. Assegura't d'haver inclòs la referència correcta. Si han passat més de 3 dies, obre un tiquet adjuntant el justificant bancari.</div>
-    </div>
-    <div class="sc-fi">
-      <button class="sc-fq" onclick="faq(this)">Com puc augmentar els límits del meu compte?<span class="sc-chv">⌄</span></button>
-      <div class="sc-fa">Completa la verificació KYC de nivell 2 (DNI/NIE + selfie + justificant d'adreça). Un cop verificat, els límits s'amplien automàticament en 24 hores.</div>
-    </div>
-    <div class="sc-fi">
-      <button class="sc-fq" onclick="faq(this)">Quines comissions cobreu per les transaccions?<span class="sc-chv">⌄</span></button>
-      <div class="sc-fa">El maker és del 0.1% i el taker del 0.2% per als comptes estàndard. Els comptes Pro disposen de tarifes regressives. Consulta la pàgina de tarifes per als detalls complets.</div>
-    </div>
-  </div>
-
-  <script src="./atencio_client.ts"></script>
-
-</body>
+    <script src="./atencio_client.ts"></script>
+  </body>
 </html>

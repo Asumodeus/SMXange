@@ -1,8 +1,8 @@
 /*Página entera*/
-   
+
 body {
   min-height: 100vh;
-  background-image: url('assets/fondo_login.webp');
+  background-image: url("assets/fondo_login.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -13,27 +13,27 @@ body {
   font-family: sans-serif;
 }
 
-   /*Tarjeta central*/
+/*Tarjeta central*/
 
 .card {
   background: rgba(22, 32, 50, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-  border: 2px solid rgba(255, 255, 255, .2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   padding: 30px 40px;
   width: 100%;
   max-width: 420px;
 }
 
-   /*Textos*/
+/*Textos*/
 
 h1 {
   color: #efefef;
   font-weight: 500;
   margin-bottom: 0.5rem;
-} 
+}
 
 p {
   color: #e4dada;
@@ -48,8 +48,8 @@ label {
   margin-bottom: 6px;
 }
 
-   /*Campos de texto*/
-   
+/*Campos de texto*/
+
 input {
   width: 100%;
   background: rgba(13, 27, 42, 0.85);
@@ -67,7 +67,7 @@ input:focus {
   border-color: #378add;
 }
 
-   /*Botones*/
+/*Botones*/
 
 .actions {
   display: flex;

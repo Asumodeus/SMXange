@@ -1,55 +1,53 @@
-<!DOCTYPE html>
-<html lang="es"> 
-<head>
-    <meta charset="UTF-8">
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
     <title>Heu oblidat la contrasenya?</title>
-    <link rel="stylesheet" href="forgot_pswd.css">
-</head>
-<body>
+    <link rel="stylesheet" href="forgot_pswd.css" />
+  </head>
+  <body>
     <script src="./forgot_pswd.ts"></script>
 
     <div class="card">
-        <h1>Restableix la contrasenya</h1>
-        
-        <form id="forgotForm">
-            <input 
-                type="text" 
-                id="Usuario" 
-                name="Usuario" 
-                placeholder="Usuari"
-                required
-            >
+      <h1>Restableix la contrasenya</h1>
 
-            <p>6 caràcters com a mínim, distingeix majúscules de minúscules</p>
-            
-            <input 
-                type="password" 
-                id="newPassword" 
-                name="newPassword" 
-                placeholder="Escriu la nova contrasenya"
-                required
-            >
+      <form id="forgotForm">
+        <input
+          type="text"
+          id="Usuario"
+          name="Usuario"
+          placeholder="Usuari"
+          required
+        />
 
-            <input 
-                type="password" 
-                id="confirmPassword" 
-                name="confirmPassword" 
-                placeholder="Torneu a escriure la contrasenya"
-                required
-            >
+        <p>6 caràcters com a mínim, distingeix majúscules de minúscules</p>
 
-            <p id="msgSpot"></p>
-            
-            <div class="actions">
-                <button type="button" class="btn-cancel" id="cancelButton">
-                    Cancel·lar
-                </button>
+        <input
+          type="password"
+          id="newPassword"
+          name="newPassword"
+          placeholder="Escriu la nova contrasenya"
+          required
+        />
 
-                <button type="submit" class="btn-confirm">
-                    Confirma
-                </button>
-            </div>
-        </form>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="Torneu a escriure la contrasenya"
+          required
+        />
+
+        <p id="msgSpot"></p>
+
+        <div class="actions">
+          <button type="button" class="btn-cancel" id="cancelButton">
+            Cancel·lar
+          </button>
+
+          <button type="submit" class="btn-confirm">Confirma</button>
+        </div>
+      </form>
     </div>
-</body>
+  </body>
 </html>

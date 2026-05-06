@@ -1,92 +1,108 @@
-<!DOCTYPE html>
-<html lang="ca"> 
-<head>
-    <meta charset="UTF-8">
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
     <title>Acadèmia - SMXchange</title>
-    <link rel="stylesheet" href="academia.css">
+    <link rel="stylesheet" href="academia.css" />
     <script src="./academia.ts" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <header class="navbar glass">
-        <div class="navbar-left">
-            <div class="logo">
-                <img src="../../assets/logo.webp" alt="Logo SMXchange">
-            </div>
-            <h1 class="course-title">Acadèmia - Criptomonedes i Blockchain</h1>
+      <div class="navbar-left">
+        <div class="logo">
+          <img src="../../assets/logo.webp" alt="Logo SMXchange" />
         </div>
-        <nav class="menu">
-            <a href="/">Tornar a l'Inici</a>
-        </nav>
+        <h1 class="course-title">Acadèmia - Criptomonedes i Blockchain</h1>
+      </div>
+      <nav class="menu">
+        <a href="/">Tornar a l'Inici</a>
+      </nav>
     </header>
 
     <div class="course-container">
-        
-        <aside class="sidebar glass">
-            <div class="sidebar-header">
-                <h3>Esquema del Curs</h3>
+      <aside class="sidebar glass">
+        <div class="sidebar-header">
+          <h3>Esquema del Curs</h3>
+        </div>
+
+        <div class="sidebar-progress">
+          <div class="progress-info">
+            <span>Mòdul 1: Introducció</span>
+            <span>0% Completat</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="module-list">
+          <a href="/academia1_1" class="module-item active">
+            <span class="icon">●</span>
+            <span>1.1. Introducció al Blockchain</span>
+          </a>
+          <a href="/academia1_2" class="module-item">
+            <span class="icon">○</span>
+            <span>1.2. Què és una criptomoneda?</span>
+          </a>
+          <a href="/academia1_3" class="module-item">
+            <span class="icon">○</span>
+            <span>1.3. Com funciona la mineria?</span>
+          </a>
+          <a href="/academia1_4" class="module-item">
+            <span class="icon">○</span>
+            <span>1.4. Inversió i riscos</span>
+          </a>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <section class="module-section">
+          <div class="content-header">
+            <h2>1.1. Introducció al Blockchain</h2>
+          </div>
+          <div class="content-body">
+            <p>
+              El blockchain és una tecnologia revolucionària que permet
+              l'emmagatzematge i la transmissió d'informació de manera segura,
+              transparent i descentralitzada.
+            </p>
+            <p>
+              En el seu nucli, és una base de dades distribuïda que manté una
+              llista de registres en continu creixement, anomenats blocs. Cada
+              bloc conté un enllaç criptogràfic al bloc anterior, una marca de
+              temps i dades de transaccions.
+            </p>
+            <p>
+              Aquesta estructura garanteix que la informació no pugui ser
+              alterada retroactivament sense alterar tots els blocs posteriors.
+            </p>
+
+            <div class="exercici-box glass-panel">
+              <h3>Posa a prova els teus coneixements</h3>
+              <form action="/academia1_2" method="get">
+                <p class="pregunta">Què és fonamentalment un blockchain?</p>
+
+                <label class="opcio">
+                  <input type="radio" name="resposta" value="a" required /> Un
+                  videojoc descentralitzat
+                </label>
+                <label class="opcio">
+                  <input type="radio" name="resposta" value="b" /> Una base de
+                  dades distribuïda
+                </label>
+                <label class="opcio">
+                  <input type="radio" name="resposta" value="c" /> Una moneda
+                  física
+                </label>
+
+                <button type="submit" class="button btn-submit">
+                  Comprovar i Avançar
+                </button>
+              </form>
             </div>
-
-            <div class="sidebar-progress">
-                <div class="progress-info">
-                    <span>Mòdul 1: Introducció</span>
-                    <span>0% Completat</span>
-                </div>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 0%;"></div>
-                </div>
-            </div>
-
-            <div class="module-list">
-                <a href="/academia1_1" class="module-item active">
-                    <span class="icon">●</span>
-                    <span>1.1. Introducció al Blockchain</span>
-                </a>
-                <a href="/academia1_2" class="module-item">
-                    <span class="icon">○</span>
-                    <span>1.2. Què és una criptomoneda?</span>
-                </a>
-                <a href="/academia1_3" class="module-item">
-                    <span class="icon">○</span>
-                    <span>1.3. Com funciona la mineria?</span>
-                </a>
-                <a href="/academia1_4" class="module-item">
-                    <span class="icon">○</span>
-                    <span>1.4. Inversió i riscos</span>
-                </a>
-            </div>
-        </aside>
-
-        <main class="main-content">
-            <section class="module-section">
-                <div class="content-header">
-                    <h2>1.1. Introducció al Blockchain</h2>
-                </div>
-                <div class="content-body">
-                    <p>El blockchain és una tecnologia revolucionària que permet l'emmagatzematge i la transmissió d'informació de manera segura, transparent i descentralitzada.</p>
-                    <p>En el seu nucli, és una base de dades distribuïda que manté una llista de registres en continu creixement, anomenats blocs. Cada bloc conté un enllaç criptogràfic al bloc anterior, una marca de temps i dades de transaccions.</p>
-                    <p>Aquesta estructura garanteix que la informació no pugui ser alterada retroactivament sense alterar tots els blocs posteriors.</p>
-
-                    <div class="exercici-box glass-panel">
-                        <h3>Posa a prova els teus coneixements</h3>
-                        <form action="/academia1_2" method="get">
-                            <p class="pregunta">Què és fonamentalment un blockchain?</p>
-                            
-                            <label class="opcio">
-                                <input type="radio" name="resposta" value="a" required> Un videojoc descentralitzat
-                            </label>
-                            <label class="opcio">
-                                <input type="radio" name="resposta" value="b"> Una base de dades distribuïda
-                            </label>
-                            <label class="opcio">
-                                <input type="radio" name="resposta" value="c"> Una moneda física
-                            </label>
-
-                            <button type="submit" class="button btn-submit">Comprovar i Avançar</button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        </main>
+          </div>
+        </section>
+      </main>
     </div>
-</body>
+  </body>
 </html>
