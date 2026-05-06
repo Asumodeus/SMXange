@@ -1,7 +1,36 @@
 @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 
-.sc-body{background:linear-gradient(135deg,#0a0f1e 0%,#0d1b3e 40%,#0a0f1e 100%);min-height:100vh;color:#fff;font-family:system-ui,sans-serif;margin:0;padding:0}
-.sc-nav{display:flex;justify-content:space-between;align-items:center;padding:14px 40px;background:rgba(0,0,0,0.25);border-bottom:1px solid rgba(255,255,255,0.08)}
+/* ── FONS ── */
+.sc-body {
+  background: url('fondo_01.png') center center / cover no-repeat fixed;
+  min-height: 100vh;
+  color: #fff;
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.sc-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 10, 22, 0.45);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sc-nav,
+.sc-hero,
+.sc-pills,
+.sc-cards,
+.sc-grid,
+.sc-faq {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── NAV ── */
+.sc-nav{display:flex;justify-content:space-between;align-items:center;padding:14px 40px;background:rgba(0,0,0,0.35);border-bottom:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px)}
 .sc-logo{display:flex;align-items:center;gap:10px}
 .sc-logo-box{width:38px;height:38px;border:2px solid #1e4a8a;border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative}
 .sc-logo-box::before{content:'';position:absolute;width:18px;height:18px;border:1.5px solid #4a90d9;border-radius:3px;transform:rotate(45deg)}
@@ -10,21 +39,31 @@
 .sc-nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:14px;font-weight:500;cursor:pointer;transition:color 0.2s}
 .sc-nav-links a:hover,.sc-nav-links a.act{color:#fff}
 .sc-btn-login{background:#1199fa;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer}
+
+/* ── HERO ── */
 .sc-hero{text-align:center;padding:50px 40px 16px}
 .sc-hero h1{font-size:52px;font-weight:700;margin:0 0 12px}
 .sc-hero p{font-size:17px;color:rgba(255,255,255,0.55);margin:0}
+
+/* ── PILLS ── */
 .sc-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:18px 40px}
 .sc-pill{background:transparent;border:1.5px solid rgba(255,255,255,0.2);border-radius:40px;padding:7px 18px;font-size:13px;color:rgba(255,255,255,0.65);cursor:pointer;transition:all 0.2s;font-family:inherit}
 .sc-pill:hover,.sc-pill.act{background:rgba(17,153,250,0.15);border-color:#1199fa;color:#fff}
+
+/* ── CARDS ── */
 .sc-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:4px 40px 28px}
-.sc-card{backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,0.18);border-radius:10px;padding:20px 18px;cursor:pointer;transition:border-color 0.25s,transform 0.2s}
+.sc-card{background:rgba(10,18,40,0.30);backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,0.18);border-radius:10px;padding:20px 18px;cursor:pointer;transition:border-color 0.25s,transform 0.2s}
 .sc-card:hover{border-color:#1199fa;transform:translateY(-3px)}
 .sc-card-ico{font-size:26px;margin-bottom:10px}
 .sc-card h3{font-size:14px;font-weight:600;color:#fff;margin:0 0 6px}
 .sc-card p{font-size:12px;color:rgba(255,255,255,0.48);line-height:1.55;margin:0}
+
+/* ── GRID PRINCIPAL ── */
 .sc-grid{display:grid;grid-template-columns:1fr 300px;gap:18px;padding:0 40px 36px}
-.sc-wrap{backdrop-filter:blur(20px);border:2px solid rgba(255,255,255,0.2);border-radius:10px;padding:28px 36px}
+.sc-wrap{background:rgba(10,18,40,0.30);backdrop-filter:blur(20px);border:2px solid rgba(255,255,255,0.2);border-radius:10px;padding:28px 36px}
 .sc-wrap h2{font-size:30px;font-weight:600;text-align:center;color:#fff;margin:0 0 20px}
+
+/* ── FORM ── */
 .sc-ibox{position:relative;height:50px;margin:14px 0}
 .sc-ibox input,.sc-ibox select{width:100%;height:100%;background:transparent;border:2px solid rgba(255,255,255,0.2);border-radius:40px;font-size:15px;color:#fff;padding:0 44px 0 20px;outline:none;font-family:inherit;box-sizing:border-box;appearance:none;transition:border-color 0.2s}
 .sc-ibox input::placeholder{color:rgba(255,255,255,0.7)}
@@ -45,8 +84,10 @@
 .sc-ok h3{font-size:22px;color:#1199fa;margin:0}
 .sc-ok p{font-size:13px;color:rgba(255,255,255,0.5);max-width:240px;line-height:1.7;margin:0}
 .sc-ok .sc-btn{max-width:180px}
+
+/* ── SIDE ── */
 .sc-side{display:flex;flex-direction:column;gap:14px}
-.sc-blk{backdrop-filter:blur(20px);border:2px solid rgba(255,255,255,0.18);border-radius:10px;padding:18px}
+.sc-blk{background:rgba(10,18,40,0.30);backdrop-filter:blur(20px);border:2px solid rgba(255,255,255,0.18);border-radius:10px;padding:18px}
 .sc-blk h4{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#1199fa;margin:0 0 14px}
 .sc-crow{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.09)}
 .sc-crow:last-child{border:none}
@@ -63,9 +104,11 @@
 .sc-chbtn:hover{border-color:#1199fa;background:rgba(17,153,250,0.1)}
 .sc-chbtn-ico{font-size:17px;color:#1199fa}
 .sc-chbtn-sub{font-size:10px;color:rgba(255,255,255,0.38)}
+
+/* ── FAQ ── */
 .sc-faq{padding:0 40px 60px}
 .sc-faq h2{font-size:34px;font-weight:700;color:#fff;margin:0 0 16px}
-.sc-fi{backdrop-filter:blur(16px);border:2px solid rgba(255,255,255,0.18);border-radius:10px;margin-bottom:10px;overflow:hidden;transition:border-color 0.2s}
+.sc-fi{background:rgba(10,18,40,0.30);backdrop-filter:blur(16px);border:2px solid rgba(255,255,255,0.18);border-radius:10px;margin-bottom:10px;overflow:hidden;transition:border-color 0.2s}
 .sc-fi.open{border-color:#1199fa}
 .sc-fq{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 22px;background:none;border:none;color:#fff;font-family:inherit;font-size:14px;text-align:left;cursor:pointer;transition:color 0.2s}
 .sc-fi.open .sc-fq{color:#1199fa}
