@@ -20,7 +20,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   align-items: center;
-  background: url(assets/fondo_login.webp);
+  background: url(../../assets/fondo_login.webp);
   background-size: cover;
   background-position: center;
 }

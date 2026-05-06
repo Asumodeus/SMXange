@@ -18,7 +18,7 @@
 
 body {
   height: 100vh;
-  background: url(assets/fondo_01.png) center/cover fixed;
+  background: url(../../assets/fondo_01.png) center/cover fixed;
   background-color: #0f172a;
   color: #fff;
   display: flex;

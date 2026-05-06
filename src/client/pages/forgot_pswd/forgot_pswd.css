@@ -2,7 +2,7 @@
 
 body {
   min-height: 100vh;
-  background-image: url("assets/fondo_login.webp");
+  background-image: url("../../assets/fondo_login.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -16,25 +16,14 @@ body {
 /*Tarjeta central*/
 
 .card {
-<<<<<<< HEAD:src/client/pages/forgot_pswd/forgot_pswd.css
+  width: 420px;
   background: rgba(22, 32, 50, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
-=======
-  background: transparent;  
-  width: 420px;
-  background: blueviolet;
-  color: black;
-  border-radius: 10px;
->>>>>>> main:src/client/styles_forgot.css
   padding: 30px 40px;
-  background: transparent;
-  backdrop-filter: blur(20px);  /*desenfoca el fondo detrás de la tarjeta*/
-  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-  border: 2px solid rgba(255, 255, 255,.2);
 }
 
 /*Textos*/

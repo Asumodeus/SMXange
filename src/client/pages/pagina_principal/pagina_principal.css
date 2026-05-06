@@ -2,7 +2,7 @@ body {
   font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url("assets/fondo_01.png");
+  background-image: url("../../assets/fondo_01.png");
   background-color: #0f172a;
   background-size: cover;
   background-repeat: no-repeat;
