@@ -8,11 +8,7 @@
     background-color: rgba(0, 0, 0, 0.171);
 }
 .logo img {
-    height: 80px; 
-}
-.menu {
-    display: flex;
-    gap: 35px;
+    height: 60px; 
 }
 .menu a {
     color: white;
