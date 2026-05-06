@@ -3,3 +3,4 @@
 export * from "./login.ts";
 export * from "./register.ts";
 export * from "./forgotPswd.ts";
+export * from "./cursos.ts";
