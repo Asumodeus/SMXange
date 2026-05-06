@@ -16,15 +16,25 @@ body {
 /*Tarjeta central*/
 
 .card {
+<<<<<<< HEAD:src/client/pages/forgot_pswd/forgot_pswd.css
   background: rgba(22, 32, 50, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
+=======
+  background: transparent;  
+  width: 420px;
+  background: blueviolet;
+  color: black;
+  border-radius: 10px;
+>>>>>>> main:src/client/styles_forgot.css
   padding: 30px 40px;
-  width: 100%;
-  max-width: 420px;
+  background: transparent;
+  backdrop-filter: blur(20px);  /*desenfoca el fondo detrás de la tarjeta*/
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  border: 2px solid rgba(255, 255, 255,.2);
 }
 
 /*Textos*/
@@ -52,7 +62,7 @@ label {
 
 input {
   width: 100%;
-  background: rgba(13, 27, 42, 0.85);
+  background: rgba(13, 27, 42, 0.85);  /*semitransparente también*/
   border: 1px solid #2a3f5a;
   border-radius: 8px;
   padding: 16px 14px;

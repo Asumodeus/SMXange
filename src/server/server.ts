@@ -29,10 +29,10 @@ Bun.serve({
 
         "/principal": pagina_principal,
 
-        "/academia1_1":  academiaPage,
-        "/academia1_2":  academiaPage2,
-        "/academia1_3":  academiaPage3,
-        "/academia1_4":  academiaPage4,
+        "/academia_1_1":  academiaPage,
+        "/academia_1_2":  academiaPage2,
+        "/academia_1_3":  academiaPage3,
+        "/academia_1_4":  academiaPage4,
 
         "/api/login": async (req) => {
             return await api.loginVerification(req);
