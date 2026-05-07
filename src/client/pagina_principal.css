@@ -17,7 +17,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 60px;
-    background-color: rgba(10, 15, 30, 0.8);
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.171);
     backdrop-filter: blur(15px);
     position: sticky;
     top: 0;
@@ -25,7 +26,7 @@ body {
 }
 
 .logo img {
-    height: 110px;
+    height: 60px;
 }
 
 .menu {
