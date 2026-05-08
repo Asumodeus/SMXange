@@ -1,59 +1,81 @@
-// Per a implementar la base de dades quan la tinguem 
-import { password } from "bun";
 import { createHash } from "crypto";
-import {db} from "./db_connection.ts";
+import { db } from "./db_connection.ts";
 
 function md5(text: string): string {
   return createHash("md5").update(text).digest("hex");
 }
 
+//Gestiona la petició de registre de nou usuari, inserint dades a les taules 'Login' i 'Usuari'.
 export async function registerRequest(req: Request) {
+  try {
+    const data = await req.json();
 
-  const registerParameters = await req.json();
-
-  //Comprobem desde la base de dades si les dades existeixen
-  //Aixó provoca un camp dintre del array userExists anomenat exist que será 0 si no existeix i 1 si sí
-  const userExists = await db`
-  SELECT EXISTS(
-    SELECT 1 FROM Usuari
-    WHERE FKusername = ${registerParameters.Usuario}
-  ) AS exist;`;
-
-  //Si el valor és 0, l'usuari no existeix, i per a tant podem inserir els valors a la base de dades
-  if (userExists[0].exist === 0) {
-
-    if (!(registerParameters.passwordOnce === registerParameters.passwordTwice)) {
+    // Validació bàsica de dades
+    if (!data.Usuario || !data.passwordOnce || !data.email || !data.user || !data.Apellido) {
       return Response.json(
-        {error:"Contrasenya Invlalida"},
-        {status:400}
+        { error: "Falten dades obligatòries" },
+        { status: 400 }
       );
     }
-    
-    const hashedPassword = md5(registerParameters.passwordOnce);
-    console.log(`[REGISTER] User: ${registerParameters.Usuario} | Password hash: ${hashedPassword}`);
-    const user = {
-      Nom: registerParameters.user,
-      Cognom: registerParameters.Apellido,
-      Numero_de_telefon: registerParameters.Telefono,
-      FKusername: registerParameters.Usuario,
-      Password: hashedPassword,
-      Mail: registerParameters.email,
+
+    if (data.passwordOnce !== data.passwordTwice) {
+      return Response.json(
+        { error: "Les contrasenyes no coincideixen" },
+        { status: 400 }
+      );
     }
 
-    await db`
-      INSERT INTO Usuari (Nom, Cognom, Numero_de_telefon, FKusername, Password, Mail)
-      VALUES (${user.Nom}, ${user.Cognom}, ${user.Numero_de_telefon}, ${user.FKusername}, ${user.Password}, ${user.Mail})
+    // Comprovem si l'usuari o el correu ja existeixen
+    const existingUser = await db`
+      SELECT 
+        (SELECT COUNT(*) FROM Login WHERE Username = ${data.Usuario}) as userCount,
+        (SELECT COUNT(*) FROM Usuari WHERE Mail = ${data.email}) as mailCount
     `;
-    
-    return Response.json(
-      {message:"Usuari Registrat"},
-      {status:200}
+
+    if (existingUser[0].userCount > 0) {
+      return Response.json(
+        { error: "El nom d'usuari ja està en ús" },
+        { status: 400 }
       );
     }
 
-  //Si el valor no és 0, podem considerar l'usuari com a registrart.
-  return Response.json(
-    {error:"Ja existeix un compte amb aquest usuari"},
-    {status:400}
-  );
-};
+    if (existingUser[0].mailCount > 0) {
+      return Response.json(
+        { error: "El correu electrònic ja està registrat" },
+        { status: 400 }
+      );
+    }
+
+    const hashed_Password = md5(data.passwordOnce);
+
+    // Comencem la inserció
+    // Inserim a la taula Login
+    const loginResult = await db`
+      INSERT INTO Login (Username, Password)
+      VALUES (${data.Usuario}, ${hashed_Password})
+      RETURNING IDlogin
+    `;
+
+    const idLogin = loginResult[0].IDlogin;
+
+    // Inserim a la taula Usuari
+    await db`
+      INSERT INTO Usuari (Nom, Cognom, Numero_de_telefon, Mail, IDLogin)
+      VALUES (${data.user}, ${data.Apellido}, ${data.Telefono}, ${data.email}, ${idLogin})
+    `;
+
+    console.log(`[REGISTER] Nou usuari registrat: ${data.Usuario} (ID: ${idLogin})`);
+
+    return Response.json(
+      { message: "Usuari registrat amb èxit" },
+      { status: 200 }
+    );
+
+  } catch (error) {
+    console.error("[REGISTER ERROR]", error);
+    return Response.json(
+      { error: "Error en processar el registre" },
+      { status: 500 }
+    );
+  }
+}
