@@ -7,6 +7,7 @@ import academiaPage from "../client/academia_1_1.html"
 import academiaPage2 from "../client/academia_1_2.html"
 import academiaPage3 from "../client/academia_1_3.html"
 import academiaPage4 from "../client/academia_1_4.html"
+import atencioclient from "../client/atencioclient.html"
 import * as api from "./api/api_index"
 
 
@@ -28,6 +29,8 @@ Bun.serve({
         "/register":  registerPage,
 
         "/principal": pagina_principal,
+
+        "/client": atencioclient,
 
         "/academia_1_1":  academiaPage,
         "/academia_1_2":  academiaPage2,
