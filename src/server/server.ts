@@ -1,3 +1,5 @@
+import { authenticator } from 'otplib';
+import QRCode from 'qrcode';
 import landingPage from "../client/Portada.html"
 import loginPage from "../client/index.html"
 import forgotPswd from "../client/forgotPswd.html"
@@ -48,6 +50,20 @@ Bun.serve({
         "/api/forgotPswd": async (req) => {
     return await api.forgotPasswordRequest(req);
 },
+"/api/2fa/setup": async (req) => {
+            const secret = authenticator.generateSecret();
+            // Generem la URL per a l'app de Google Authenticator
+            const otpauth = authenticator.keyuri('usuari', 'SMXange', secret);
+            // Creem l'imatge QR
+            const qrImage = await QRCode.toDataURL(otpauth);
+
+            return new Response(JSON.stringify({
+                qr: qrImage,
+                secret: secret
+            }), {
+                headers: { "Content-Type": "application/json" }
+            });
+        },
 
         //Servim el favicon (El incone de la página) quan el servidor el demana
         "/favicon.ico": Bun.file("./src/client/assets/favicon.ico"),
