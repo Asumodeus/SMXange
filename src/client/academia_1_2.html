@@ -10,9 +10,9 @@
 <header class="navbar glass">
     <div class="navbar-left">
         <div class="logo">
-            <img src="assets/logo.webp" alt="Logo SMXchange">
+            <img id="academia1_2_logoAlt" src="assets/logo.webp" alt="Logo SMXchange">
         </div>
-        <h1 class="course-title">Acadèmia - Criptomonedes i Blockchain</h1>
+        <h1 id="academia1_2_titolHeader" class="course-title">Acadèmia - Criptomonedes i Blockchain</h1>
     </div>
 
     <div class="navbar-right">
@@ -25,7 +25,7 @@
             </select>
         </div>
         <nav class="menu">
-            <a href="/">Tornar a l'Inici</a>
+            <a id="academia1_2_btnInici" href="/">Tornar a l'Inici</a>
         </nav>
     </div>
 </header>
@@ -34,13 +34,13 @@
         
         <aside class="sidebar glass">
             <div class="sidebar-header">
-                <h3>Esquema del Curs</h3>
+                <h3 id="academia1_2_sidebarTitol">Esquema del Curs</h3>
             </div>
 
             <div class="sidebar-progress">
                 <div class="progress-info">
-                    <span>Mòdul 1: Introducció</span>
-                    <span>25% Completat</span>
+                    <span id="academia1_2_modulProgres">Mòdul 1: Introducció</span>
+                    <span id="academia1_2_progresPercent">25% Completat</span>
                 </div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 25%;"></div>
@@ -50,22 +50,22 @@
             <div class="module-list">
                 <a href="/academia_1_1" class="module-item completed">
                     <span class="icon">✓</span>
-                    <span>1.1. Introducció al Blockchain</span>
+                    <span id="academia1_2_modul1_1">1.1. Introducció al Blockchain</span>
                 </a>
                 
                 <a href="/academia_1_2" class="module-item active">
                     <span class="icon">●</span>
-                    <span>1.2. Què és una criptomoneda?</span>
+                    <span id="academia1_2_modul1_2">1.2. Què és una criptomoneda?</span>
                 </a>
 
                 <a href="/academia_1_3" class="module-item">
                     <span class="icon">○</span>
-                    <span>1.3. Com funciona la mineria?</span>
+                    <span id="academia1_2_modul1_3">1.3. Com funciona la mineria?</span>
                 </a>
                 
                 <a href="/academia_1_4" class="module-item">
                     <span class="icon">○</span>
-                    <span>1.4. Inversió i riscos</span>
+                    <span id="academia1_2_modul1_4">1.4. Inversió i riscos</span>
                 </a>
             </div>
         </aside>
@@ -73,29 +73,32 @@
         <main class="main-content">
             <section class="module-section">
                 <div class="content-header">
-                    <h2>1.2. Què és una criptomoneda?</h2>
+                    <h2 id="academia1_2_titolContingut">1.2. Què és una criptomoneda?</h2>
                 </div>
                 <div class="content-body">
-                    <p>El flux de transaccions entre usuaris genera un registre. A diferència dels diners tradicionals, les criptomonedes estan descentralitzades i funcionen mitjançant una tecnologia anomenada <strong>Blockchain</strong>.</p>
-                    <p>Són monedes digitals o virtuals dissenyades per funcionar com a mitjà d'intercanvi. Utilitzen la criptografia per assegurar i verificar les transaccions, així com per controlar la creació de noves unitats.</p>
-                    <p>A diferència de les monedes fiat tradicionals (com l'euro o el dòlar), les criptomonedes generalment no són emeses per cap autoritat central, el que les fa teòricament immunes a la interferència i manipulació governamental.</p>
+                    <p id="academia1_2_paragraf1">El flux de transaccions entre usuaris genera un registre. A diferència dels diners tradicionals, les criptomonedes estan descentralitzades i funcionen mitjançant una tecnologia anomenada <strong>Blockchain</strong>.</p>
+                    <p id="academia1_2_paragraf2">Són monedes digitals o virtuals dissenyades per funcionar com a mitjà d'intercanvi. Utilitzen la criptografia per assegurar i verificar les transaccions, així com per controlar la creació de noves unitats.</p>
+                    <p id="academia1_2_paragraf3">A diferència de les monedes fiat tradicionals (com l'euro o el dòlar), les criptomonedes generalment no són emeses per cap autoritat central, el que les fa teòricament immunes a la interferència i manipulació governamental.</p>
 
                     <div class="exercici-box glass-panel">
-                        <h3>Posa a prova els teus coneixements</h3>
+                        <h3 id="academia1_2_exerciciTitol">Posa a prova els teus coneixements</h3>
                         <form action="academia_1_3.html" method="get">
-                            <p class="pregunta">Quina tecnologia s'utilitza principalment per fer funcionar les criptomonedes?</p>
+                            <p id="academia1_2_pregunta1" class="pregunta">Quina tecnologia s'utilitza principalment per fer funcionar les criptomonedes?</p>
                             
                             <label class="opcio">
-                                <input type="radio" name="resposta" value="a" required> Intel·ligència Artificial
+                                <input type="radio" name="resposta" value="a" required>
+                                <span id="academia1_2_respostaA">Intel·ligència Artificial</span>
                             </label>
                             <label class="opcio">
-                                <input type="radio" name="resposta" value="b"> Blockchain (Cadena de blocs)
+                                <input type="radio" name="resposta" value="b">
+                                <span id="academia1_2_respostaB">Blockchain (Cadena de blocs)</span>
                             </label>
                             <label class="opcio">
-                                <input type="radio" name="resposta" value="c"> Bases de dades tradicionals
+                                <input type="radio" name="resposta" value="c">
+                                <span id="academia1_2_respostaC">Bases de dades tradicionals</span>
                             </label>
 
-                            <button type="submit" class="button btn-submit">Comprovar i Avançar</button>
+                            <button id="academia1_2_btnSubmit" type="submit" class="button btn-submit">Comprovar i Avançar</button>
                         </form>
                     </div>
                 </div>
