@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMXCHANGE</title>
+    <title id="home_titolPage">SMXCHANGE</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="pagina_principal.css">
@@ -17,51 +17,51 @@
     </div>
 
     <nav class="menu">
-        <a href="#">Historial</a>
-        <a href="#">Ranking</a>
-        <a href="#">Donacions</a>
+        <a id="home_menuHistorial" href="#">Historial</a>
+        <a id="home_menuRanking" href="#">Ranking</a>
+        <a id="home_menuDonacions" href="#">Donacions</a>
     </nav>
 </header>
 
 <main class="container">
-    <h1>El teu portal de criptomonedes</h1>
+    <h1 id="home_heroTitol">El teu portal de criptomonedes</h1>
 </main>
 
 <section class="hero-info">
-    <p>
+    <p id="home_heroText">
         Consulta preus en temps real, aprèn trading i segueix les principals monedes del mercat.
     </p>
 
     <div class="hero-stats">
         <div class="stat">
-            <h3>20+</h3>
-            <p>Criptomonedes</p>
+            <h3 id="home_stat1_titol">20+</h3>
+            <p id="home_stat1_text">Criptomonedes</p>
         </div>
 
         <div class="stat">
-            <h3>Temps real</h3>
-            <p>Preus actualitzats</p>
+            <h3 id="home_stat2_titol">Temps real</h3>
+            <p id="home_stat2_text">Preus actualitzats</p>
         </div>
 
         <div class="stat">
-            <h3>SMX</h3>
-            <p>Plataforma educativa</p>
+            <h3 id="home_stat3_titol">SMX</h3>
+            <p id="home_stat3_text">Plataforma educativa</p>
         </div>
     </div>
 </section>
 
 <!-- 💰 CRYPTO TABLE -->
 <section class="seccion-oscura">
-    <h2>Monedes populars</h2>
+    <h2 id="home_cryptoSection">Monedes populars</h2>
 
     <div class="crypto-box">
         <table class="crypto-table">
 
             <thead>
                 <tr>
-                    <th>Moneda</th>
-                    <th>Preu</th>
-                    <th>24h</th>
+                    <th id="home_tableMoneda">Moneda</th>
+                    <th id="home_tablePreu">Preu</th>
+                    <th id="home_table24h">24h</th>
                 </tr>
             </thead>
 
@@ -109,7 +109,7 @@
 
 <!-- 📊 INVESTING WIDGET -->
 <section class="seccion-oscura">
-    <h2>Panell de seguiment en temps real</h2>
+    <h2 id="home_trackingTitol">Panell de seguiment en temps real</h2>
 
     <div class="margen-contenedor">
         <div class="tabla-scroll-intern">
@@ -122,17 +122,17 @@
         </div>
 
         <div class="footer-widget">
-            Dades de <a href="https://es.investing.com/" target="_blank">Investing.com</a>
+            <span id="home_trackingFooter">Dades de</span> <a href="https://es.investing.com/" target="_blank">Investing.com</a>
         </div>
     </div>
 </section>
 
-<!-- 🎓 ACADEMIA (INTACTA) -->
+<!-- 🎓 ACADEMIA -->
 <section class="seccion-oscura">
 
-    <h2>Academia</h2>
+    <h2 id="home_academiaTitol">Academia</h2>
 
-    <p class="academia-texto">
+    <p id="home_academiaText" class="academia-texto">
         Domina el món cripte des de zero fins a nivell avançat.
     </p>
 
@@ -141,12 +141,12 @@
             <div class="imagen-wrapper">
                 <img src="assets/academia_logo.webp">
             </div>
-            <span>Accedeix al curs</span>
+            <span id="home_academiaBtn">Accedeix al curs</span>
         </a>
     </div>
 
 </section>
 
 </body>
-</html>
 <script src="landing.ts"></script>
+</html>
