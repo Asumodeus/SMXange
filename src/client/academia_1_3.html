@@ -12,7 +12,7 @@
         <div class="logo">
             <img src="assets/logo.webp" alt="Logo SMXchange">
         </div>
-        <h1 class="course-title">Acadèmia - Criptomonedes i Blockchain</h1>
+        <h1 class="course-title" id="academia1_3_titolHeader">Acadèmia - Criptomonedes i Blockchain</h1>
     </div>
 
     <div class="navbar-right">
@@ -25,7 +25,7 @@
             </select>
         </div>
         <nav class="menu">
-            <a href="/">Tornar a l'Inici</a>
+            <a href="/" id="academia1_3_btnInici">Tornar a l'Inici</a>
         </nav>
     </div>
 </header>
@@ -34,13 +34,13 @@
         
         <aside class="sidebar glass">
             <div class="sidebar-header">
-                <h3>Esquema del Curs</h3>
+                <h3 id="academia1_3_sidebarTitol">Esquema del Curs</h3>
             </div>
 
             <div class="sidebar-progress">
                 <div class="progress-info">
-                    <span>Mòdul 1: Introducció</span>
-                    <span>50% Completat</span>
+                    <span id="academia1_3_modulProgres">Mòdul 1: Introducció</span>
+                    <span id="academia1_3_progresPercent">50% Completat</span>
                 </div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 50%;"></div>
@@ -50,19 +50,19 @@
             <div class="module-list">
                 <a href="/academia_1_1" class="module-item completed">
                     <span class="icon">✓</span>
-                    <span>1.1. Introducció al Blockchain</span>
+                    <span id="academia1_3_modul1_1">1.1. Introducció al Blockchain</span>
                 </a>
                 <a href="/academia_1_2" class="module-item completed">
                     <span class="icon">✓</span>
-                    <span>1.2. Què és una criptomoneda?</span>
+                    <span id="academia1_3_modul1_2">1.2. Què és una criptomoneda?</span>
                 </a>
                 <a href="/academia_1_3" class="module-item active">
                     <span class="icon">●</span>
-                    <span>1.3. Com funciona la mineria?</span>
+                    <span id="academia1_3_modul1_3">1.3. Com funciona la mineria?</span>
                 </a>
                 <a href="/academia_1_4" class="module-item">
                     <span class="icon">○</span>
-                    <span>1.4. Inversió i riscos</span>
+                    <span id="academia1_3_modul1_4">1.4. Inversió i riscos</span>
                 </a>
             </div>
         </aside>
@@ -70,28 +70,28 @@
         <main class="main-content">
             <section class="module-section">
                 <div class="content-header">
-                    <h2>1.3. Com funciona la mineria?</h2>
+                    <h2 id="academia1_3_titolContingut">1.3. Com funciona la mineria?</h2>
                 </div>
                 <div class="content-body">
-                    <p>La mineria és el procés pel qual s'afegeixen noves transaccions al blockchain. Els miners utilitzen ordinadors potents per resoldre problemes matemàtics complexos.</p>
-                    <p>El primer miner que resol el problema pot afegir el següent bloc a la cadena de blocs i rep una recompensa en forma de criptomonedes de nova creació i comissions de transacció.</p>
+                    <p id="academia1_3_paragraf1">La mineria és el procés pel qual s'afegeixen noves transaccions al blockchain. Els miners utilitzen ordinadors potents per resoldre problemes matemàtics complexos.</p>
+                    <p id="academia1_3_paragraf2">El primer miner que resol el problema pot afegir el següent bloc a la cadena de blocs i rep una recompensa en forma de criptomonedes de nova creació i comissions de transacció.</p>
 
                     <div class="exercici-box glass-panel">
-                        <h3>Posa a prova els teus coneixements</h3>
+                        <h3 id="academia1_3_exerciciTitol">Posa a prova els teus coneixements</h3>
                         <form action="academia_1_4.html" method="get">
-                            <p class="pregunta">Què reben els miners com a recompensa?</p>
+                            <p class="pregunta" id="academia1_3_pregunta1">Què reben els miners com a recompensa?</p>
                             
                             <label class="opcio">
-                                <input type="radio" name="resposta" value="a" required> Diners tradicionals en efectiu
+                                <input id="academia1_3_respostaA" type="radio" name="resposta" value="a" required> Diners tradicionals en efectiu
                             </label>
                             <label class="opcio">
-                                <input type="radio" name="resposta" value="b"> Noves criptomonedes
+                                <input id="academia1_3_respostaB" type="radio" name="resposta" value="b"> Noves criptomonedes
                             </label>
                             <label class="opcio">
-                                <input type="radio" name="resposta" value="c"> Res
+                                <input id="academia1_3_respostaC" type="radio" name="resposta" value="c"> Res
                             </label>
 
-                            <button type="submit" class="button btn-submit">Comprovar i Avançar</button>
+                            <button id="academia1_3_btnSubmit" type="submit" class="button btn-submit">Comprovar i Avançar</button>
                         </form>
                     </div>
                 </div>
