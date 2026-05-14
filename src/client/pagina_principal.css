@@ -252,3 +252,34 @@ body {
     left: 10%;
 }
 
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.lang-selector:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-selector select {
+    background: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.lang-selector select option {
+    background: #1a1a2e; 
+    color: #fff;
+}

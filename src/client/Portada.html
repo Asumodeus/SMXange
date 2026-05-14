@@ -6,23 +6,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo">
-            <img src="assets/logo.webp">
-        </div>
+<header class="navbar">
+    <div class="logo">
+        <img src="assets/logo.webp">
+    </div>
 
-        <nav class="menu">
-            <a id="portada_menuHistorial" href="">Historial</a>
-            <a id="portada_menuRanking" href="">Ranking</a>
-            <a id="portada_menuDonacions" href="">Donacions</a>
-        </nav>
+    <nav class="menu">
+        <a id="portada_menuHistorial" href="">Historial</a>
+        <a id="portada_menuRanking" href="">Ranking</a>
+        <a id="portada_menuDonacions" href="">Donacions</a>
+    </nav>
 
-        <div class="menu2">
-            <a href="/login">
-                <button id="portada_btnLogin" class="login">Iniciar Sessió</button>
-            </a>
+    <div class="menu2" style="display: flex; align-items: center; gap: 15px;">
+        <div class="lang-selector">
+            <i class='bx bx-globe'></i>
+            <select id="languagePicker">
+                <option value="ca" selected>Català</option>
+                <option value="es">Castellano</option>
+                <option value="en">English</option>
+            </select>
         </div>
-    </header>
+        <a href="/login">
+            <button id="portada_btnLogin" class="login">Iniciar Sessió</button>
+        </a>
+    </div>
+</header>
     
     <h1 id="portada_heroTitol">El poder de les criptomonedes<br>en les teves mans</h1>
     <p id="portada_heroText">Uneix-te a una nova economía digital amb la seguretat i confiança de SMXCHANGE</p>
