@@ -9,7 +9,7 @@ import academiaPage3 from "../client/academia_1_3.html"
 import academiaPage4 from "../client/academia_1_4.html"
 import atencioclient from "../client/atencioclient.html"
 import * as api from "./api/api_index"
-import { setup2FA } from "./api_2fa";
+import { setup2FA } from "./api/api_2fa";
 
 //Aixó es el core del servidor web
 Bun.serve({
@@ -46,8 +46,7 @@ Bun.serve({
         },
 
         "/api/forgotPswd": async (req) => {
-    return await api.forgotPasswordRequest(req);
-},
+            return await api.forgotPasswordRequest(req);
         },
 
         //Servim el favicon (El incone de la página) quan el servidor el demana
