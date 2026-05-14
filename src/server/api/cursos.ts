@@ -6,7 +6,7 @@ import { db } from "./db_connection"; // Importa la conexió
 export const getCursos = async () => { // El "async" defineix que la funció és asíncrona.
     try { //Si tot va bé fa aquesta funció
         // Fem la consulta a la taula "Cursos"
-        const [rows] = await db.query("SELECT id, nom, descripcio FROM Cursos"); // El "await" atura l'execució fins a rebre la dada.
+        const [rows] = await db`SELECT id, nom, descripcio FROM Cursos`; // El "await" atura l'execució fins a rebre la dada.
         
        // STATUS 404: Si la taula està buida
         if (rows.length === 0) {
@@ -37,7 +37,7 @@ export const getCursos = async () => { // El "async" defineix que la funció és
 export const getCursoById = async (id: number) => {
     try {
         // Fem servir el '?' per seguretat (evita SQL Injection)
-        const [rows] = await db.query("SELECT * FROM Cursos WHERE id = ?", [id]); // Surten les columnes de els cursos //La interrogació evita atacs de furoners// rows serveix per extreure nomes les dades
+        const [rows] = await db`SELECT * FROM Cursos WHERE id = ${id}`; // Surten les columnes de els cursos //La interrogació evita atacs de furoners// rows serveix per extreure nomes les dades
         
 // STATUS 404: Si l'ID no existeix
         if (rows.length === 0) { // El lenght ens diu quants elemsents hi ha a la taula, si és 0 vol dir que no existeix cap curs amb aquest ID
