@@ -9,7 +9,6 @@ import academiaPage3 from "../client/academia_1_3.html"
 import academiaPage4 from "../client/academia_1_4.html"
 import atencioclient from "../client/atencioclient.html"
 import * as api from "./api/api_index"
-import { setup2FA } from "./api/api_2fa";
 
 //Aixó es el core del servidor web
 Bun.serve({
@@ -27,26 +26,35 @@ Bun.serve({
         "/forgotPswd": forgotPswd,
 
         "/register":  registerPage,
-        "/api/2fa/setup": (req) => setup2FA(req),
+
+        
         "/principal": pagina_principal,
-
+        
         "/client": atencioclient,
-
+        
         "/academia_1_1":  academiaPage,
         "/academia_1_2":  academiaPage2,
         "/academia_1_3":  academiaPage3,
         "/academia_1_4":  academiaPage4,
-
+        
         "/api/login": async (req) => {
             return await api.loginVerification(req);
         },
 
+        "/api/2fa/setup": (req) => { 
+            return api.setup2FA(req)
+        },             
+        
         "/api/register": async (req) => {
             return await api.registerRequest(req);
         },
 
         "/api/forgotPswd": async (req) => {
             return await api.forgotPasswordRequest(req);
+        },
+
+        "/api/translate": async (req) => {
+            return await api.getLiterals(req);
         },
 
         //Servim el favicon (El incone de la página) quan el servidor el demana
