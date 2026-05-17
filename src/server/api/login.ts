@@ -26,8 +26,6 @@ export async function loginVerification(req: Request) {
       WHERE Username = ${credentials.uName}
     `;
 
-    console.log(`Login psswd:\n ${loginData[0].Password} \nand credentials's:\n ${credentials.uPassword}`)
-
     // Si l'usuari no existeix
     if (loginData.length === 0) {
       return Response.json(
@@ -35,6 +33,8 @@ export async function loginVerification(req: Request) {
         { status: 401 }
       );
     }
+
+console.log(`Login psswd:\n ${loginData[0].Password} \nand credentials's:\n ${credentials.uPassword}`)
 
     const hashed_DB_Password = loginData[0].Password;
     const hashed_Password = md5(credentials.uPassword);
