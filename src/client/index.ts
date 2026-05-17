@@ -3,7 +3,7 @@
 const form = document.getElementById("login") as HTMLFormElement;
 const usernameInputField = document.getElementById("uName") as HTMLInputElement;
 const passwordInputField = document.getElementById("uPassword") as HTMLInputElement;
-const msgSpot = document.getElementById("msgSpot") as HTMLInputElement;
+const msgSpot = document.getElementById("login_msgSpot") as HTMLParagraphElement;
 
 async function sendData() {
   // Associate the FormData object with the form element
