@@ -34,7 +34,7 @@ export async function loginVerification(req: Request) {
       );
     }
 
-console.log(`Login psswd:\n ${loginData[0].Password} \nand credentials's:\n ${credentials.uPassword}`)
+console.log(`[LOGIN] Intent de login per usuari: ${credentials.uName}`);
 
     const hashed_DB_Password = loginData[0].Password;
     const hashed_Password = md5(credentials.uPassword);
