@@ -6,3 +6,4 @@ export * from "./forgotPswd.ts";
 export * from "./api_2fa.ts";
 export * from "./translate.ts"; 
 export * from "./api_2fa.ts";
+export * from "./idiomes.ts";
