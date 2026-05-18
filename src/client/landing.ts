@@ -6,14 +6,37 @@ interface Crypto {
 }
 
 async function cargarCriptos(): Promise<void> {
-    const respuesta = await fetch("/api/cryptos");
-    const datos: Crypto[] = await respuesta.json();
+    try {
+        const respuesta = await fetch("/api/cryptos");
 
-    const tbody = document.querySelector(".crypto-table tbody") as HTMLTableSectionElement;
-    tbody.innerHTML = "";
+        if (!respuesta.ok) {
+            const texto = await respuesta.text();
+            console.error("Error en /api/cryptos:", respuesta.status, texto);
+            return;
+        }
 
-    datos.forEach((coin: Crypto) => {
-        tbody.innerHTML += `
+        const contentType = respuesta.headers.get("content-type") || "";
+        let datos: Crypto[] = [];
+
+        if (contentType.includes("application/json")) {
+            datos = await respuesta.json();
+        } else {
+            // Intentamos leer el texto para depurar respuestas inesperadas
+            const texto = await respuesta.text();
+            try {
+                datos = JSON.parse(texto);
+            } catch (err) {
+                console.error("Respuesta inválida de /api/cryptos (no JSON):", texto);
+                return;
+            }
+        }
+
+        const tbody = document.querySelector(".crypto-table tbody") as HTMLTableSectionElement;
+        if (!tbody) return;
+        tbody.innerHTML = "";
+
+        datos.forEach((coin: Crypto) => {
+            tbody.innerHTML += `
             <tr>
                 <td class="coin-name">
                     <img src="${coin.logo}" alt="">
@@ -25,7 +48,10 @@ async function cargarCriptos(): Promise<void> {
                 </td>
             </tr>
         `;
-    });
+        });
+    } catch (err) {
+        console.error("Error cargando criptos:", err);
+    }
 }
 
 cargarCriptos();
