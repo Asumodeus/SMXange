@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modules.indexOf(unlockedModule)
     ) {
         alert("❌ Has de completar el mòdul anterior correctament.");
-        window.location.href = "/1_1";
+        window.location.href = `/academia_${unlockedModule}`;
     }
 
     quizForm.addEventListener("submit", (event) => {
@@ -103,4 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         quizForm.submit();
     });
+
+    // === TOGGLE SIDEBAR ===
+    const sidebarToggle = document.getElementById("sidebarToggle");
+    const sidebar = document.querySelector(".sidebar");
+
+    if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener("click", () => {
+            sidebar.classList.toggle("collapsed");
+        });
+    }
 });
