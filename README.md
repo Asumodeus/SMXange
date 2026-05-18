@@ -2,7 +2,7 @@
 
 ## Com llençar el servidor
 
-Per a fer anar el programa, si esteu a windows, heu de instalar Docker Desktop (les versions v4.71.0 (lloc web) i v4.69.0 (microsoft store) sembla que funcionen (La nova versio 4.73.1 encara no s'ha provat amb el projecte)
+Per a fer anar el programa, si esteu a windows, heu de instalar Docker Desktop (les versions v4.71.0 (lloc web) i v4.69.0 (microsoft store) sembla que funcionen (la nova versio 4.73.1 encara no s'ha provat amb el projecte, si funciona correctament eliminar))
 
 Instruccións per a instalar, junt al instalador, es troben a la documentació official <https://docs.docker.com/desktop/setup/install/windows-install/>
 
