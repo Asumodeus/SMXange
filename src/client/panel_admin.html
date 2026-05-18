@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryptoAcademy - Gestión de Cursos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="panel_admin.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="logo">
+      <a href="pagina_principal.html" class="logo-text">
+        <img src="./assets/logo_dorado2.webp" alt="Logo">
+      </a>  
+    </div>
+    <ul class="menu">
+      <li class="active"><i class="fas fa-graduation-cap"></i> <span>Academia</span></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1>Gestión de Cursos</h1>
+        <p>Añade, edita o elimina los cursos de tu plataforma.</p>
+      </div>
+      <div class="admin-box">
+        <div class="avatar"></div>
+        <span><strong>Alex Smith</strong></span>
+      </div>
+    </header>
+
+    <div class="content-single">
+      <div class="panel">
+        <div class="panel-header">
+          <h2>Listado de Cursos Activos</h2>
+          <button class="btn btn-add" onclick="openModal('add')">
+            <i class="fas fa-plus"></i> Añadir Nuevo Curso
+          </button>
+        </div>
+        <table id="coursesTable">
+          <thead>
+            <tr>
+              <th>Nombre del Curso</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Estado</th>
+              <th style="text-align: center;">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Blockchain Pro</strong></td>
+              <td>Tecnología</td>
+              <td>€199.00</td>
+              <td><span class="status-pill done">Activo</span></td>
+              <td class="actions-cell">
+                <button class="btn-action edit" onclick="openModal('edit', this)"><i class="fas fa-edit"></i></button>
+                <button class="btn-action delete" onclick="deleteCourse(this)"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <div id="courseModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Añadir Curso</h2>
+        <span class="close" onclick="closeModal()">&times;</span>
+      </div>
+      <form id="courseForm">
+        <input type="hidden" id="editIndex">
+        <div class="form-group">
+          <label>Nombre del Curso</label>
+          <input type="text" id="courseName" placeholder="Ej. Bitcoin Avanzado" required>
+        </div>
+        <div class="form-group">
+          <label>Categoría</label>
+          <select id="courseCategory">
+            <option value="Tecnología">Tecnología</option>
+            <option value="Finanzas">Finanzas</option>
+            <option value="Desarrollo">Desarrollo</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Precio (€)</label>
+            <input type="number" id="coursePrice" placeholder="199" required>
+          </div>
+          <div class="form-group">
+            <label>Estado</label>
+            <select id="courseStatus">
+              <option value="Activo">Activo</option>
+              <option value="Borrador">Borrador</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-save">Guardar Cambios</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("courseModal");
+    let currentRow = null;
+
+    function openModal(mode, btn = null) {
+      modal.style.display = "flex";
+      if (mode === 'edit') {
+        document.getElementById("modalTitle").innerText = "Editar Curso";
+        currentRow = btn.closest("tr");
+        document.getElementById("courseName").value = currentRow.cells[0].innerText;
+        document.getElementById("courseCategory").value = currentRow.cells[1].innerText;
+        document.getElementById("coursePrice").value = currentRow.cells[2].innerText.replace('€', '');
+      } else {
+        document.getElementById("modalTitle").innerText = "Añadir Nuevo Curso";
+        document.getElementById("courseForm").reset();
+        currentRow = null;
+      }
+    }
+
+    function closeModal() { modal.style.display = "none"; }
+
+    function deleteCourse(btn) {
+      if(confirm("¿Estás seguro de que deseas eliminar este curso?")) {
+        btn.closest("tr").remove();
+      }
+    }
+
+    document.getElementById("courseForm").onsubmit = function(e) {
+      e.preventDefault();
+      const name = document.getElementById("courseName").value;
+      const cat = document.getElementById("courseCategory").value;
+      const price = document.getElementById("coursePrice").value;
+      const status = document.getElementById("courseStatus").value;
+      const statusClass = status === 'Activo' ? 'done' : 'doing';
+
+      if (currentRow) {
+        // Editar fila existente
+        currentRow.cells[0].innerHTML = `<strong>${name}</strong>`;
+        currentRow.cells[1].innerText = cat;
+        currentRow.cells[2].innerText = `€${price}`;
+        currentRow.cells[3].innerHTML = `<span class="status-pill ${statusClass}">${status}</span>`;
+      } else {
+        // Añadir nueva fila
+        const table = document.getElementById("coursesTable").getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow();
+        newRow.innerHTML = `
+          <td><strong>${name}</strong></td>
+          <td>${cat}</td>
+          <td>€${price}</td>
+          <td><span class="status-pill ${statusClass}">${status}</span></td>
+          <td class="actions-cell">
+            <button class="btn-action edit" onclick="openModal('edit', this)"><i class="fas fa-edit"></i></button>
+            <button class="btn-action delete" onclick="deleteCourse(this)"><i class="fas fa-trash"></i></button>
+          </td>`;
+      }
+      closeModal();
+    };
+
+    window.onclick = function(event) { if (event.target == modal) closeModal(); }
+  </script>
+</body>
+</html>
