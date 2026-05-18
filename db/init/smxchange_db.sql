@@ -1,9 +1,18 @@
 USE smxange;
 
+CREATE TABLE Permisos (
+	IDpermisos INT PRIMARY KEY,
+    Cretae BOOL,
+    Edit BOOL,
+    Erase BOOL,
+    sight BOOL
+    );
 
 CREATE TABLE rols (
 	IDrols INT PRIMARY KEY,
-	NomRol VARCHAR(30) NOT NULL UNIQUE
+	NomRol VARCHAR(30) NOT NULL UNIQUE,
+    IDpermisos INT NOT NULL,
+    FOREIGN KEY (IDpermisos) REFERENCES Permisos(IDpermisos)
 );
 
 
@@ -20,6 +29,8 @@ CREATE TABLE Usuari (
     Cognom VARCHAR(50) NOT NULL,
     Numero_de_telefon VARCHAR(20) UNIQUE,
     Mail VARCHAR(100) NOT NULL UNIQUE,
+    Token VARCHAR(128) NOT NULL,
+    Ultimo_Login DATE,
     IDLogin INT UNIQUE,
     IDrols INT NOT NULL DEFAULT 0,
     FOREIGN KEY (IDLogin) REFERENCES Login(IDlogin),
@@ -116,28 +127,34 @@ CREATE TABLE Literal (
 );
 
 
+INSERT INTO Permisos (IDpermisos, Cretae, Edit, Erase)
+VALUES
+(0, FALSE, FALSE, FALSE),
+(1, TRUE,  TRUE,  TRUE);
+
+
 INSERT INTO Rols (IDrols, NomRol)
 VALUES
 (0, 'User'),
 (1, 'Admin');
 
 
-INSERT INTO Usuari (Nom, Cognom, Numero_de_telefon, Mail, IDrol)
+INSERT INTO Usuari (Nom, Cognom, Numero_de_telefon, Mail, IDrols)
 VALUES 
-('Joan', 'Garcia', '123456789', 'joan.garcia@exemple.com', '1'),
-('Maria', 'Lopez', '987654321', 'maria.lopez@exemple.com', 'DEFAULT'),
-('Carlos', 'Sanchez', '555555555', 'carlos.sanchez@exemple.com', 'DEFAULT'),
-('Ana', 'Martinez', '444444444', 'ana.martinez@exemple.com', 'DEFAULT'),
-('Luis', 'Gomez', '333333333', 'luis.gomez@exemple.com', 'DEFAULT'),
-('David', 'Rodriguez', '111111111', 'david.rodriguez@exemple.com', 'DEFAULT'),
-('Laura', 'Gonzalez', '666666666', 'laura.gonzalez@exemple.com', 'DEFAULT'),
-('Javier', 'Perez', '777777777', 'javier.perez@exemple.com', 'DEFAULT'),
-('Elena', 'Sanchez', '888888888', 'elena.sanchez@exemple.com', 'DEFAULT'),
-('Miguel', 'Diaz', '999999999', 'miguel.diaz@exemple.com', 'DEFAULT'),
-('Isabel', 'Ramirez', '777777777', 'isabel.ramirez@exemple.com', 'DEFAULT'),
-('Pablo', 'Vazquez', '888888888', 'pablo.vazquez@exemple.com', 'DEFAULT'),
-('Sara', 'Mendez', '999999999', 'sara.mendez@exemple.com', 'DEFAULT'),
-('Albert', 'Santos', '111111111', 'albert.santos@exemple.com', 'DEFAULT');
+('Joan', 'Garcia', '123456789', 'joan.garcia@exemple.com',    1),
+('Maria', 'Lopez', '987654321', 'maria.lopez@exemple.com',    DEFAULT),
+('Carlos', 'Sanchez', '555555555', 'carlos.sanchez@exemple.com', DEFAULT),
+('Ana', 'Martinez', '444444444', 'ana.martinez@exemple.com',   DEFAULT),
+('Luis', 'Gomez', '333333333', 'luis.gomez@exemple.com',     DEFAULT),
+('David', 'Rodriguez','111111111', 'david.rodriguez@exemple.com',DEFAULT),
+('Laura', 'Gonzalez', '666666666', 'laura.gonzalez@exemple.com', DEFAULT),
+('Javier', 'Perez', '777777777', 'javier.perez@exemple.com',   DEFAULT),
+('Elena', 'Sanchez', '888888888', 'elena.sanchez@exemple.com',  DEFAULT),
+('Miguel', 'Diaz', '999999999', 'miguel.diaz@exemple.com',    DEFAULT),
+('Isabel', 'Ramirez', '222222222', 'isabel.ramirez@exemple.com', DEFAULT),
+('Pablo', 'Vazquez', '333333334', 'pablo.vazquez@exemple.com',  DEFAULT),
+('Sara', 'Mendez', '444444445', 'sara.mendez@exemple.com',    DEFAULT), 
+('Albert', 'Santos', '555555556', 'albert.santos@exemple.com',  DEFAULT); 
 
 INSERT INTO Login ( Username, Password)
 Values
@@ -854,88 +871,424 @@ Submit request'),
 'Abre un ticket seleccionando "Seguridad y acceso a la cuenta". Deberás verificar tu identidad con DNI o pasaporte y el correo de registro. El proceso dura entre 24 y 48 horas laborables.', 
 'Open a ticket selecting "Account security and access". You will need to verify your identity with ID or passport and your registered email. The process takes 24–48 business hours.'),
 
-('atencioclient_faq2', 'Quant tarda una retirada de Bitcoin a arribar?', '¿Cuánto tarda una retirada de Bitcoin en llegar?', 'How long does a Bitcoin withdrawal take?'),
-('atencioclient_faq2_resp', 'Les retirades de BTC s''envien a la xarxa en un màxim de 30 minuts. El temps fins a la confirmació depèn de la congestió: normalment entre 10 minuts i 2 hores.', 'Las retiradas de BTC se envían a la red en un máximo de 30 minutos. El tiempo de confirmación depende de la congestión: normalmente entre 10 minutos y 2 horas.', 'BTC withdrawals are sent to the network within 30 minutes. Confirmation time depends on congestion: usually between 10 minutes and 2 hours.'),
-('atencioclient_faq3', 'Per què el meu dipòsit en euros no apareix?', '¿Por qué mi depósito en euros no aparece?', 'Why is my euro deposit not showing?'),
-('atencioclient_faq3_resp', 'Els ingressos SEPA es processen en 1-2 dies hàbils. Assegura''t d''haver inclòs la referència correcta. Si han passat més de 3 dies, obre un tiquet adjuntant el justificant bancari.', 'Los ingresos SEPA se procesan en 1-2 días hábiles. Asegúrate de haber incluido la referencia correcta. Si han pasado más de 3 días, abre un ticket adjuntando el justificante bancario.', 'SEPA deposits are processed in 1–2 business days. Make sure you included the correct reference. If more than 3 days have passed, open a ticket with proof of payment.'),
-('atencioclient_faq4', 'Com puc augmentar els límits del meu compte?', '¿Cómo puedo aumentar los límites de mi cuenta?', 'How can I increase my account limits?'),
-('atencioclient_faq4_resp', 'Completa la verificació KYC de nivell 2 (DNI/NIE + selfie + justificant d''adreça). Un cop verificat, els límits s''amplien automàticament en 24 hores.', 'Completa la verificación KYC de nivel 2 (DNI/NIE + selfie + justificante de dirección). Una vez verificado, los límites se amplían automáticamente en 24 horas.', 'Complete KYC level 2 verification (ID + selfie + proof of address). Once verified, limits are increased automatically within 24 hours.'),
-('atencioclient_faq5', 'Quines comissions cobreu per les transaccions?', '¿Qué comisiones cobráis por las transacciones?', 'What fees do you charge for transactions?'),
-('atencioclient_faq5_resp', 'El maker és del 0.1% i el taker del 0.2% per als comptes estàndard. Els comptes Pro disposen de tarifes regressives. Consulta la pàgina de tarifes per als detalls complets.', 'El maker es del 0.1% y el taker del 0.2% para cuentas estándar. Las cuentas Pro tienen tarifas decrecientes. Consulta la página de tarifas para más detalles.', 'Maker fee is 0.1% and taker fee is 0.2% for standard accounts. Pro accounts have reduced fees. Check the fee page for full details.');
-('cookies_titolPage', 'Política de Cookies - CryptoSite', 'Política de Cookies - CryptoSite', 'Cookie Policy - CryptoSite'),
-('cookies_titolPrincipal', 'Política de Cookies', 'Política de Cookies', 'Cookie Policy'),
-('cookies_intro', 'En CryptoSite utilitzem cookies per millorar la teva experiència i analitzar l''ús de la nostra web de criptomonedes.', 'En CryptoSite utilizamos cookies para mejorar tu experiencia y analizar el uso de nuestra web de criptomonedas.', 'At CryptoSite we use cookies to improve your experience and analyze the use of our cryptocurrency website.'),
-('cookies_sec1_titol', 'Què són les cookies?', '¿Qué son las cookies?', 'What are cookies?'),
-('cookies_sec1_text', 'Les cookies són petits arxius que s''emmagatzemen al teu dispositiu quan visites una pàgina web.', 'Las cookies son pequeños archivos que se almacenan en tu dispositivo cuando visitas una página web.', 'Cookies are small files stored on your device when you visit a website.'),
-('cookies_sec2_titol', 'Tipus de cookies que fem servir', 'Tipos de cookies que usamos', 'Types of cookies we use'),
-('cookies_sec2_item1', 'Cookies tècniques: Necessàries per al funcionament de la web.', 'Cookies técnicas: Necesarias para el funcionamiento de la web.', 'Technical cookies: Necessary for the website to function.'),
-('cookies_sec2_item2', 'Cookies d''anàlisi: Ens ajuden a entendre com utilitzes la web.', 'Cookies de análisis: Nos ayudan a entender cómo usas la web.', 'Analytics cookies: Help us understand how you use the website.'),
-('cookies_sec2_item3', 'Cookies de personalització: Milloren la teva experiència.', 'Cookies de personalización: Mejoran tu experiencia.', 'Personalization cookies: Improve your experience.'),
-('cookies_sec3_titol', 'Com gestionar les cookies', 'Cómo gestionar las cookies', 'How to manage cookies'),
-('cookies_sec3_text', 'Pots configurar o desactivar les cookies des del teu navegador en qualsevol moment.', 'Puedes configurar o desactivar las cookies desde tu navegador en cualquier momento.', 'You can configure or disable cookies from your browser at any time.'),
-('cookies_btnAccept', 'Acceptar', 'Aceptar', 'Accept'),
-('cookies_btnReject', 'Rebutjar', 'Rechazar', 'Reject'),
-('cookies_footer', '© 2026 CryptoSite', '© 2026 CryptoSite', '© 2026 CryptoSite');
-('forgot_titolPage', 'Heu oblidat la contrasenya?', '¿Has olvidado la contraseña?', 'Forgot your password?'),
-('forgot_titolHeader', 'Restableix la contrasenya', 'Restablecer la contraseña', 'Reset your password'),
-('forgot_inputUsuari', 'Usuari', 'Usuario', 'Username'),
-('forgot_infoPassword', '6 caràcters com a mínim, distingeix majúscules de minúscules', '6 caracteres como mínimo, distingue mayúsculas de minúsculas', 'At least 6 characters, case sensitive'),
-('forgot_inputPassword', 'Escriu la nova contrasenya', 'Escribe la nueva contraseña', 'Enter the new password'),
-('forgot_msgSpot', '', '', ''),
-('forgot_btnCancel', 'Cancel·lar', 'Cancelar', 'Cancel'),
-('forgot_btnConfirm', 'Confirma', 'Confirmar', 'Confirm');
-('login_titolPage', 'SMXCHANGE', 'SMXCHANGE', 'SMXCHANGE'),
-('login_titolHeader', 'Inici de sessió', 'Inicio de sesión', 'Login'),
-('login_inputUsuari', 'Usuari', 'Usuario', 'Username'),
-('login_inputPassword', 'Contrasenya', 'Contraseña', 'Password'),
-('login_linkForgot', 'Has oblidat la teva contrasenya?', '¿Has olvidado tu contraseña?', 'Forgot your password?'),
-('login_btnSubmit', 'Iniciar Sessió', 'Iniciar Sesión', 'Log In'),
-('login_noAccount', 'No tens un compte?', '¿No tienes una cuenta?', 'Don’t have an account?'),
-('login_linkRegister', 'Registra''t', 'Regístrate', 'Sign up'),
-('login_msgError', 'Usuari o contrasenya incorrectes', 'Usuario o contraseña incorrectos', 'Invalid username or password'),
-('login_msgEmpty', 'Omple tots els camps', 'Rellena todos los campos', 'Please fill in all fields'),
-('login_msgSpot', '', '', '');
-('home_titolPage', 'SMXCHANGE', 'SMXCHANGE', 'SMXCHANGE'),
-('home_menuHistorial', 'Historial', 'Historial', 'History'),
-('home_menuRanking', 'Ranking', 'Ranking', 'Ranking'),
-('home_menuDonacions', 'Donacions', 'Donaciones', 'Donations'),
-('home_heroTitol', 'El teu portal de criptomonedes', 'Tu portal de criptomonedas', 'Your cryptocurrency portal'),
-('home_heroText', 'Consulta preus en temps real, aprèn trading i segueix les principals monedes del mercat.', 'Consulta precios en tiempo real, aprende trading y sigue las principales monedas del mercado.', 'Check real-time prices, learn trading and follow the main market coins.'),
-('home_stat1_titol', '20+', '20+', '20+'),
-('home_stat1_text', 'Criptomonedes', 'Criptomonedas', 'Cryptocurrencies'),
-('home_stat2_titol', 'Temps real', 'Tiempo real', 'Real-time'),
-('home_stat2_text', 'Preus actualitzats', 'Precios actualizados', 'Updated prices'),
-('home_stat3_titol', 'SMX', 'SMX', 'SMX'),
-('home_stat3_text', 'Plataforma educativa', 'Plataforma educativa', 'Educational platform'),
-('home_cryptoSection', 'Monedes populars', 'Monedas populares', 'Popular coins'),
-('home_tableMoneda', 'Moneda', 'Moneda', 'Coin'),
-('home_tablePreu', 'Preu', 'Precio', 'Price'),
-('home_table24h', '24h', '24h', '24h'),
-('home_trackingTitol', 'Panell de seguiment en temps real', 'Panel de seguimiento en tiempo real', 'Real-time tracking panel'),
-('home_trackingFooter', 'Dades de', 'Datos de', 'Data from'),
-('home_academiaTitol', 'Academia', 'Academia', 'Academy'),
-('home_academiaText', 'Domina el món cripte des de zero fins a nivell avançat.', 'Domina el mundo cripto desde cero hasta nivel avanzado.', 'Master the crypto world from beginner to advanced level'),
-('home_academiaBtn', 'Accedeix al curs', 'Accede al curso', 'Access the course');
-('portada_titolPage', 'SMXchange', 'SMXchange', 'SMXchange'),
-('portada_menuHistorial', 'Historial', 'Historial', 'History'),
-('portada_menuRanking', 'Ranking', 'Ranking', 'Ranking'),
-('portada_menuDonacions', 'Donacions', 'Donaciones', 'Donations'),
-('portada_btnLogin', 'Iniciar Sessió', 'Iniciar Sesión', 'Log In'),
-('portada_heroTitol', 'El poder de les criptomonedes en les teves mans', 'El poder de las criptomonedas en tus manos', 'The power of cryptocurrencies in your hands'),
-('portada_heroText', 'Uneix-te a una nova economia digital amb la seguretat i confiança de SMXCHANGE', 'Únete a una nueva economía digital con la seguridad y confianza de SMXCHANGE', 'Join a new digital economy with the security and trust of SMXCHANGE'),
-('portada_btnStart', 'Comença ara', 'Empieza ahora', 'Get started');
-('register_titolPage', 'Crear un compte', 'Crear una cuenta', 'Create an account'),
-('register_inputNom', 'Nom', 'Nombre', 'First name'),
-('register_inputCognom', 'Cognom', 'Apellido', 'Last name'),
-('register_inputUsuari', 'Usuari', 'Usuario', 'Username'),
-('register_inputTelefon', 'Número de telèfon', 'Número de teléfono', 'Phone number'),
-('register_inputEmail', 'Correu electrònic', 'Correo electrónico', 'Email'),
-('register_inputPassword1', 'Contrasenya', 'Contraseña', 'Password'),
-('register_inputPassword2', 'Confirma la contrasenya', 'Confirma la contraseña', 'Confirm password'),
-('register_btnSubmit', 'Registra''t', 'Regístrate', 'Sign up'),
-('register_loginText', 'Ja tens un compte?', '¿Ya tienes una cuenta?', 'Already have an account?'),
-('register_loginLink', 'Inicia sessió', 'Inicia sesión', 'Log in'),
-('register_popupText', 'Missatge', 'Mensaje', 'Message'),
-('register_popupBtn', 'Acceptar', 'Aceptar', 'Accept');
+('atencioclient_faq1_resp', 
+'Obre un tiquet seleccionant "Seguretat i accés al compte". Hauràs de verificar la teva identitat amb DNI o passaport i el correu de registre. El procés dura entre 24 i 48 hores laborables.', 
+'Abre un ticket seleccionando "Seguridad y acceso a la cuenta". Deberás verificar tu identidad con DNI o pasaporte y el correo de registro. El proceso dura entre 24 y 48 horas laborables.', 
+'Open a ticket selecting "Account security and access". You will need to verify your identity with ID or passport and your registered email. The process takes 24–48 business hours.'),
+
+('atencioclient_faq2', 
+'Quant tarda una retirada de Bitcoin a arribar?', 
+'¿Cuánto tarda una retirada de Bitcoin en llegar?', 
+'How long does a Bitcoin withdrawal take?'),
+
+('atencioclient_faq2_resp', 
+'Les retirades de BTC s''envien a la xarxa en un màxim de 30 minuts. El temps fins a la confirmació depèn de la congestió: normalment entre 10 minuts i 2 hores.', 
+'Las retiradas de BTC se envían a la red en un máximo de 30 minutos. El tiempo de confirmación depende de la congestión: normalmente entre 10 minutos y 2 horas.', 
+'BTC withdrawals are sent to the network within 30 minutes. Confirmation time depends on congestion: usually between 10 minutes and 2 hours.'),
+
+('atencioclient_faq3', 
+'Per què el meu dipòsit en euros no apareix?', 
+'¿Por qué mi depósito en euros no aparece?', 
+'Why is my euro deposit not showing?'),
+
+('atencioclient_faq3_resp', 
+'Els ingressos SEPA es processen en 1-2 dies hàbils. Assegura''t d''haver inclòs la referència correcta. Si han passat més de 3 dies, obre un tiquet adjuntant el justificant bancari.', 
+'Los ingresos SEPA se procesan en 1-2 días hábiles. Asegúrate de haber incluido la referencia correcta. Si han pasado más de 3 días, abre un ticket adjuntando el justificante bancario.', 
+'SEPA deposits are processed in 1–2 business days. Make sure you included the correct reference. If more than 3 days have passed, open a ticket with proof of payment.'),
+
+('atencioclient_faq4', 
+'Com puc augmentar els límits del meu compte?', 
+'¿Cómo puedo aumentar los límites de mi cuenta?', 
+'How can I increase my account limits?'),
+
+('atencioclient_faq4_resp', 
+'Completa la verificació KYC de nivell 2 (DNI/NIE + selfie + justificant d''adreça). Un cop verificat, els límits s''amplien automàticament en 24 hores.', 
+'Completa la verificación KYC de nivel 2 (DNI/NIE + selfie + justificante de dirección). Una vez verificado, los límites se amplían automáticamente en 24 horas.', 
+'Complete KYC level 2 verification (ID + selfie + proof of address). Once verified, limits are increased automatically within 24 hours.'),
+
+('atencioclient_faq5', 
+'Quines comissions cobreu per les transaccions?', 
+'¿Qué comisiones cobráis por las transacciones?', 
+'What fees do you charge for transactions?'),
+
+('atencioclient_faq5_resp', 
+'El maker és del 0.1% i el taker del 0.2% per als comptes estàndard. Els comptes Pro disposen de tarifes regressives. Consulta la pàgina de tarifes per als detalls complets.', 
+'El maker es del 0.1% y el taker del 0.2% para cuentas estándar. Las cuentas Pro tienen tarifas decrecientes. Consulta la página de tarifas para más detalles.', 
+'Maker fee is 0.1% and taker fee is 0.2% for standard accounts. Pro accounts have reduced fees. Check the fee page for full details.'),
+
+('cookies_titolPage', 
+'Política de Cookies - CryptoSite', 
+'Política de Cookies - CryptoSite', 
+'Cookie Policy - CryptoSite'),
+
+('cookies_titolPrincipal', 
+'Política de Cookies', 
+'Política de Cookies', 
+'Cookie Policy'),
+
+('cookies_intro', 
+'En CryptoSite utilitzem cookies per millorar la teva experiència i analitzar l''ús de la nostra web de criptomonedes.', 
+'En CryptoSite utilizamos cookies para mejorar tu experiencia y analizar el uso de nuestra web de criptomonedas.', 
+'At CryptoSite we use cookies to improve your experience and analyze the use of our cryptocurrency website.'),
+
+('cookies_sec1_titol', 
+'Què són les cookies?', 
+'¿Qué son las cookies?', 
+'What are cookies?'),
+
+('cookies_sec1_text', 
+'Les cookies són petits arxius que s''emmagatzemen al teu dispositiu quan visites una pàgina web.', 
+'Las cookies son pequeños archivos que se almacenan en tu dispositivo cuando visitas una página web.', 
+'Cookies are small files stored on your device when you visit a website.'),
+
+('cookies_sec2_titol', 
+'Tipus de cookies que fem servir', 
+'Tipos de cookies que usamos', 
+'Types of cookies we use'),
+
+('cookies_sec2_item1', 
+'Cookies tècniques: Necessàries per al funcionament de la web.', 
+'Cookies técnicas: Necesarias para el funcionamiento de la web.', 
+'Technical cookies: Necessary for the website to function.'),
+
+('cookies_sec2_item2', 
+'Cookies d''anàlisi: Ens ajuden a entendre com utilitzes la web.', 
+'Cookies de análisis: Nos ayudan a entender cómo usas la web.', 
+'Analytics cookies: Help us understand how you use the website.'),
+
+('cookies_sec2_item3', 
+'Cookies de personalització: Milloren la teva experiència.', 
+'Cookies de personalización: Mejoran tu experiencia.', 
+'Personalization cookies: Improve your experience.'),
+
+('cookies_sec3_titol', 
+'Com gestionar les cookies', 
+'Cómo gestionar las cookies', 
+'How to manage cookies'),
+
+('cookies_sec3_text', 
+'Pots configurar o desactivar les cookies des del teu navegador en qualsevol moment.', 
+'Puedes configurar o desactivar las cookies desde tu navegador en cualquier momento.', 
+'You can configure or disable cookies from your browser at any time.'),
+
+('cookies_btnAccept', 
+'Acceptar', 
+'Aceptar', 
+'Accept'),
+
+('cookies_btnReject', 
+'Rebutjar', 
+'Rechazar', 
+'Reject'),
+
+('cookies_footer', 
+'© 2026 CryptoSite', 
+'© 2026 CryptoSite', 
+'© 2026 CryptoSite'),
+
+('forgot_titolPage', 
+'Heu oblidat la contrasenya?', 
+'¿Has olvidado la contraseña?', 
+'Forgot your password?'),
+
+('forgot_titolHeader', 
+'Restableix la contrasenya', 
+'Restablecer la contraseña', 
+'Reset your password'),
+
+('forgot_inputUsuari', 
+'Usuari', 
+'Usuario', 
+'Username'),
+
+('forgot_infoPassword', 
+'6 caràcters com a mínim, distingeix majúscules de minúscules', 
+'6 caracteres como mínimo, distingue mayúsculas de minúsculas', 
+'At least 6 characters, case sensitive'),
+
+('forgot_inputPassword', 
+'Escriu la nova contrasenya', 
+'Escribe la nueva contraseña', 
+'Enter the new password'),
+
+('forgot_msgSpot', 
+'', 
+'', 
+''),
+
+('forgot_btnCancel', 
+'Cancel·lar', 
+'Cancelar', 
+'Cancel'),
+
+('forgot_btnConfirm', 
+'Confirma', 
+'Confirmar', 
+'Confirm'),
+
+('login_titolPage', 
+'SMXCHANGE', 
+'SMXCHANGE', 
+'SMXCHANGE'),
+
+('login_titolHeader', 
+'Inici de sessió', 
+'Inicio de sesión', 
+'Login'),
+
+('login_inputUsuari', 
+'Usuari', 
+'Usuario', 
+'Username'),
+
+('login_inputPassword', 
+'Contrasenya', 
+'Contraseña', 
+'Password'),
+
+('login_linkForgot', 
+'Has oblidat la teva contrasenya?', 
+'¿Has olvidado tu contraseña?', 
+'Forgot your password?'),
+
+('login_btnSubmit', 
+'Iniciar Sessió', 
+'Iniciar Sesión', 
+'Log In'),
+
+('login_noAccount', 
+'No tens un compte?', 
+'¿No tienes una cuenta?', 
+'Dont have an account?'),
+
+('login_linkRegister', 
+'Registra''t', 
+'Regístrate', 
+'Sign up'),
+
+('login_msgError', 
+'Usuari o contrasenya incorrectes', 
+'Usuario o contraseña incorrectos', 
+'Invalid username or password'),
+
+('login_msgEmpty', 
+'Omple tots els camps', 
+'Rellena todos los campos', 
+'Please fill in all fields'),
+
+('login_msgSpot', 
+'', 
+'', 
+''),
+
+('home_titolPage', 
+'SMXCHANGE', 
+'SMXCHANGE', 
+'SMXCHANGE'),
+
+('home_menuHistorial', 
+'Historial', 
+'Historial', 
+'History'),
+
+('home_menuRanking', 
+'Ranking', 
+'Ranking', 
+'Ranking'),
+
+('home_menuDonacions', 
+'Donacions', 
+'Donaciones', 
+'Donations'),
+
+('home_heroTitol', 
+'El teu portal de criptomonedes', 
+'Tu portal de criptomonedas', 
+'Your cryptocurrency portal'),
+
+('home_heroText', 
+'Consulta preus en temps real, aprèn trading i segueix les principals monedes del mercat.', 
+'Consulta precios en tiempo real, aprende trading y sigue las principales monedas del mercado.', 
+'Check real-time prices, learn trading and follow the main market coins.'),
+
+('home_stat1_titol', 
+'20+', 
+'20+', 
+'20+'),
+
+('home_stat1_text', 
+'Criptomonedes', 
+'Criptomonedas', 
+'Cryptocurrencies'),
+
+('home_stat2_titol', 
+'Temps real', 
+'Tiempo real', 
+'Real-time'),
+
+('home_stat2_text', 
+'Preus actualitzats', 
+'Precios actualizados', 
+'Updated prices'),
+
+('home_stat3_titol', 
+'SMX', 
+'SMX', 
+'SMX'),
+
+('home_stat3_text', 
+'Plataforma educativa', 
+'Plataforma educativa', 
+'Educational platform'),
+
+('home_cryptoSection', 
+'Monedes populars', 
+'Monedas populares', 
+'Popular coins'),
+
+('home_tableMoneda', 
+'Moneda', 
+'Moneda', 
+'Coin'),
+
+('home_tablePreu', 
+'Preu', 
+'Precio', 
+'Price'),
+
+('home_table24h', 
+'24h', 
+'24h', 
+'24h'),
+
+('home_trackingTitol', 
+'Panell de seguiment en temps real', 
+'Panel de seguimiento en tiempo real', 
+'Real-time tracking panel'),
+
+('home_trackingFooter', 
+'Dades de', 
+'Datos de', 
+'Data from'),
+
+('home_academiaTitol', 
+'Academia', 
+'Academia', 
+'Academy'),
+
+('home_academiaText', 
+'Domina el món cripte des de zero fins a nivell avançat.', 
+'Domina el mundo cripto desde cero hasta nivel avanzado.', 
+'Master the crypto world from beginner to advanced level'),
+
+('home_academiaBtn', 
+'Accedeix al curs', 
+'Accede al curso', 
+'Access the course'),
+
+('portada_titolPage', 
+'SMXchange', 
+'SMXchange', 
+'SMXchange'),
+
+('portada_menuHistorial', 
+'Historial', 
+'Historial', 
+'History'),
+
+('portada_menuRanking', 
+'Ranking', 
+'Ranking', 
+'Ranking'),
+
+('portada_menuDonacions', 
+'Donacions', 
+'Donaciones', 
+'Donations'),
+
+('portada_btnLogin', 
+'Iniciar Sessió', 
+'Iniciar Sesión', 
+'Log In'),
+
+('portada_heroTitol', 
+'El poder de les criptomonedes en les teves mans', 
+'El poder de las criptomonedas en tus manos', 
+'The power of cryptocurrencies in your hands'),
+
+('portada_heroText', 
+'Uneix-te a una nova economia digital amb la seguretat i confiança de SMXCHANGE', 
+'Únete a una nueva economía digital con la seguridad y confianza de SMXCHANGE', 
+'Join a new digital economy with the security and trust of SMXCHANGE'),
+
+('portada_btnStart', 
+'Comença ara', 
+'Empieza ahora', 
+'Get started'),
+
+('register_titolPage', 
+'Crear un compte', 
+'Crear una cuenta', 
+'Create an account'),
+
+('register_inputNom', 
+'Nom', 
+'Nombre', 
+'First name'),
+
+('register_inputCognom', 
+'Cognom', 
+'Apellido', 
+'Last name'),
+
+('register_inputUsuari', 
+'Usuari', 
+'Usuario', 
+'Username'),
+
+('register_inputTelefon', 
+'Número de telèfon', 
+'Número de teléfono', 
+'Phone number'),
+
+('register_inputEmail', 
+'Correu electrònic', 
+'Correo electrónico', 
+'Email'),
+
+('register_inputPassword1', 
+'Contrasenya', 
+'Contraseña', 
+'Password'),
+
+('register_inputPassword2', 
+'Confirma la contrasenya', 
+'Confirma la contraseña', 
+'Confirm password'),
+
+('register_btnSubmit', 
+'Registra''t', 
+'Regístrate', 
+'Sign up'),
+
+('register_loginText', 
+'Ja tens un compte?', 
+'¿Ya tienes una cuenta?', 
+'Already have an account?'),
+
+('register_loginLink', 
+'Inicia sessió', 
+'Inicia sesión', 
+'Log in'),
+
+('register_popupText', 
+'Missatge', 
+'Mensaje', 
+'Message'),
+
+('register_popupBtn', 
+'Acceptar', 
+'Aceptar', 
+'Accept');
 
 commit;
