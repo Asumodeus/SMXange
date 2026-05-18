@@ -1,54 +1,9 @@
-import { createHash, createHmac, randomUUID } from "crypto";
+import { createHash } from "crypto";
 import { db } from "./db_connection.ts";
 
-const SESSION_COOKIE_NAME = "smx_session";
-const SESSION_DURATION_SECONDS = 60 * 60 * 24 * 7;
-
-type SessionPayload = {
-  sub: number;
-  username: string;
-  iat: number;
-  exp: number;
-  jti: string;
-};
 
 function md5(text: string): string {
   return createHash("md5").update(text).digest("hex");
-}
-
-function getSessionSecret(): string {
-  return Bun.env.SESSION_SECRET || "smxchange-dev-session-secret";
-}
-
-function encodeBase64Url(value: string): string {
-  return Buffer.from(value).toString("base64url");
-}
-
-function signToken(value: string): string {
-  return createHmac("sha256", getSessionSecret()).update(value).digest("base64url");
-}
-
-function createSessionToken(payload: SessionPayload): string {
-  const header = encodeBase64Url(JSON.stringify({ alg: "HS256", typ: "JWT" }));
-  const body = encodeBase64Url(JSON.stringify(payload));
-
-  return `${header}.${body}.${signToken(`${header}.${body}`)}`;
-}
-
-function createSessionCookie(token: string, secure: boolean): string {
-  const attributes = [
-    `${SESSION_COOKIE_NAME}=${token}`,
-    "Path=/",
-    "HttpOnly",
-    "SameSite=Lax",
-    `Max-Age=${SESSION_DURATION_SECONDS}`,
-  ];
-
-  if (secure) {
-    attributes.push("Secure");
-  }
-
-  return attributes.join("; ");
 }
 
 
@@ -67,7 +22,7 @@ export async function loginVerification(req: Request) {
 
     // Busquem l'usuari a la taula Login
     const loginData = await db`
-      SELECT IDlogin, Username, Password FROM Login 
+      SELECT Password FROM Login 
       WHERE Username = ${credentials.uName}
     `;
 
@@ -89,27 +44,9 @@ console.log(`[LOGIN] Intent de login per usuari: ${credentials.uName}`);
 
     //We check if the db password matches
     if (hashed_Password === hashed_DB_Password) {
-      const issuedAt = Math.floor(Date.now() / 1000);
-      const sessionToken = createSessionToken({
-        sub: loginData[0].IDlogin,
-        username: loginData[0].Username,
-        iat: issuedAt,
-        exp: issuedAt + SESSION_DURATION_SECONDS,
-        jti: randomUUID(),
-      });
-      const sessionCookie = createSessionCookie(
-        sessionToken,
-        new URL(req.url).protocol === "https:"
-      );
-
       return Response.json(
         { message: "Login exitós" },
-        {
-          status: 200,
-          headers: {
-            "Set-Cookie": sessionCookie,
-          },
-        }
+        { status: 200 }
       );
     }
 
