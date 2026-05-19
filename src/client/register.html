@@ -12,7 +12,7 @@
   <script src="./register.ts"></script>
   <div class="wrapper">
     <header>
-      <h1>Crear un compte</h1>
+      <h1 data-db-id="register_titolPage">Crear un compte</h1>
     </header>
     <main>
       <form id="register">
@@ -59,17 +59,17 @@
         </div>
 
         
-        <button type="submit" class="button">Registra't</button>
+        <button data-db-id="register_btnSubmit" type="submit" class="button">Registra't</button>
       </form>
       <div class="register-link">
-      <p>Ja tens un compte? <a href="/login">Inicia sessió</a></p>
+      <p data-db-id="register_loginText">Ja tens un compte? <a data-db-id="register_loginLink" href="/login">Inicia sessió</a></p>
       </div>
     </main>
   </div>
   <div id="finestraEmergent" class="fons" style="display: none">
     <div class="contingut-finestra">
-      <p id="textFinestra">Missatge</p>
-      <button id="btnAceptarFinestra">Accetar</button>
+      <p data-db-id="register_popupText" id="textFinestra">Missatge</p>
+      <button data-db-id="register_popupBtn" id="btnAceptarFinestra">Accetar</button>
   </div>
 </body>
 </html> 
