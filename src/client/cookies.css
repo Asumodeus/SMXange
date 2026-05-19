@@ -84,7 +84,7 @@ button {
 /* Botón Aceptar - Azul */
 .accept {
     background: #3b82f6;
-    color: rgb(26, 36, 145);
+    color: white;
 }
 
 .accept:hover {
