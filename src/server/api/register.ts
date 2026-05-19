@@ -48,12 +48,13 @@ export async function registerRequest(req: Request) {
 
     const hashed_Password = md5(data.passwordOnce);
 
-const loginResult = await db`
-  INSERT INTO Login (Username, Password)
-  VALUES (${data.Usuario}, ${hashed_Password})
-`;
+    const loginResult = await db`
+      INSERT INTO Login (Username, Password)
+      VALUES (${data.Usuario}, ${hashed_Password})
+      RETURNING IDlogin
+    `;
 
-const idLogin = loginResult.lastInsertRowid;
+    const idLogin = loginResult[0].IDlogin;
 
     // Inserim a la taula Usuari
     await db`
