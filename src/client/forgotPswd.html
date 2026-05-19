@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <title data-db-id="forgot_titolPage">Heu oblidat la contrasenya?</title>
     <link rel="stylesheet" href="styles_forgot.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <script src="./forgotPswd.ts"></script>
 
     <div class="card">
+        <div class="top-bar">
+            <div class="lang-selector">
+                <i class='bx bx-globe'></i>
+                <select id="languagePicker">
+                    <option value="ca" selected>Català</option>
+                    <option value="es">Castellano</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
         <h1 data-db-id="forgot_titolHeader">Restableix la contrasenya</h1>
         
         <form id="forgotForm">
