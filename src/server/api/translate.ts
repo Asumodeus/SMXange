@@ -8,7 +8,7 @@ interface translationObject {
 export async function getLiterals(req: Request) {
     try {
     const reqContent = (await req.json()) as translationObject;
-    const { ids, targetLang } = reqContent;
+    const { targetLang, ids } = reqContent;
     
     if (!ids || !Array.isArray(ids) || ids.length === 0 || !targetLang) {
         return Response.json(
@@ -19,7 +19,7 @@ export async function getLiterals(req: Request) {
 
     const db_dictionary = await db`
     SELECT nom, ${targetLang} 
-    FROM Literals 
+    FROM Literal 
     WHERE nom IN (${ids})
     `;
         

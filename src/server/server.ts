@@ -1,3 +1,4 @@
+//Imports de les págines
 import landingPage from "../client/Portada.html"
 import loginPage from "../client/index.html"
 import forgotPswd from "../client/forgotPswd.html"
@@ -8,6 +9,8 @@ import academiaPage2 from "../client/academia_1_2.html"
 import academiaPage3 from "../client/academia_1_3.html"
 import academiaPage4 from "../client/academia_1_4.html"
 import atencioclient from "../client/atencioclient.html"
+import cookiesPage from "../client/cookies.html";
+
 import * as api from "./api/api_index"
 
 //Aixó es el core del servidor web
@@ -27,6 +30,7 @@ Bun.serve({
 
         "/register":  registerPage,
 
+        "/cookies": cookiesPage,
         
         "/principal": pagina_principal,
         
