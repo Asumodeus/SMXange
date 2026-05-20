@@ -6,7 +6,8 @@ function md5(text: string): string {
 }
 
 export async function forgotPasswordRequest(req: Request) {
-  const data = await req.json();
+  try {
+    const data = await req.json();
 
   if (!data.Usuario || !data.newPassword) {
     return Response.json(
@@ -24,8 +25,8 @@ export async function forgotPasswordRequest(req: Request) {
 
   const userExists = await db`
     SELECT EXISTS(
-      SELECT 1 FROM Usuari
-      WHERE FKusername = ${data.Usuario}
+      SELECT 1 FROM Login
+      WHERE Username = ${data.Usuario}
     ) AS exist;
   `;
 
@@ -39,13 +40,21 @@ export async function forgotPasswordRequest(req: Request) {
   const hashedPassword = md5(data.newPassword);
 
   await db`
-    UPDATE Usuari
+    UPDATE Login
     SET Password = ${hashedPassword}
-    WHERE FKusername = ${data.Usuario};
+    WHERE Username = ${data.Usuario};
   `;
 
   return Response.json(
     { message: "Contrasenya actualitzada correctament" },
     { status: 200 }
   );
+  } catch (error) {
+    console.error("[FORGOT PASSWORD ERROR]", error);
+
+    return Response.json(
+      { error: "Error intern del servidor" },
+      { status: 500 }
+    );
+  }
 }
