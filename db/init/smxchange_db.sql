@@ -119,7 +119,7 @@ CREATE TABLE Literal (
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 
-INSERT INTO Rols (IDrols, NomRol,)
+INSERT INTO Rols (IDrols, NomRol)
 VALUES
 (0, 'User'),
 (1, 'Admin');
