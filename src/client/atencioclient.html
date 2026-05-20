@@ -10,8 +10,7 @@
 
   <nav class="sc-nav">
     <div class="sc-logo">
-      <div class="sc-logo-box"></div>
-      <span class="sc-logo-txt" data-db-id="atencioclient_logoText">SMXCHANGE</span>
+        <img src="assets/logo.webp" alt="Logo SMXchange">
     </div>
     <div class="sc-nav-links">
       <a data-db-id="atencioclient_navHistorial" href="#">Historial</a>
@@ -75,20 +74,20 @@
       <h2 data-db-id="atencioclient_formTitol">Envia una sol·licitud</h2>
       <div id="sc-form">
         <div class="sc-2col">
-          <div data-db-id="atencioclient_inputNom" class="sc-ibox"><input type="text" placeholder="Nom"></div>
-          <div data-db-id="atencioclient_inputCognoms" class="sc-ibox"><input type="text" placeholder="Cognoms"></div>
+          <div data-db-id="atencioclient_inputNom" class="sc-ibox"><input id="inp-nom" type="text" placeholder="Nom"></div>
+          <div data-db-id="atencioclient_inputCognoms" class="sc-ibox"><input id="inp-cognoms" type="text" placeholder="Cognoms"></div>
         </div>
         <div class="sc-ibox">
-          <input data-db-id="atencioclient_inputUsuari" type="text" placeholder="Usuari">
+          <input data-db-id="atencioclient_inputUsuari" id="inp-usuari" type="text" placeholder="Usuari">
           <i class='bx bxs-user'></i>
         </div>
         <div class="sc-ibox">
-          <input data-db-id="atencioclient_inputEmail" type="email" placeholder="Correu electrònic">
+          <input data-db-id="atencioclient_inputEmail" id="inp-email" type="email" placeholder="Correu electrònic">
           <i class='bx bx-envelope'></i>
         </div>
-        <div class="sc-ibox">
-          <select>
-            <option data-db-id="atencioclient_selectCategoria" disabled selected>Categoria del problema</option>
+        <div class="sc-ibox" id="ibox-categoria">
+          <select id="inp-categoria">
+            <option data-db-id="atencioclient_selectCategoria" disabled selected value="">Categoria del problema</option>
             <option data-db-id="atencioclient_optSeguretat">Seguretat i accés al compte</option>
             <option data-db-id="atencioclient_optCrypto">Depòsit o retirada de crypto</option>
             <option data-db-id="atencioclient_optFiat">Ingrés o retirada en euros</option>
@@ -99,8 +98,8 @@
           </select>
           <i class='bx bx-chevron-down'></i>
         </div>
-        <div class="sc-tbox">
-          <textarea data-db-id="atencioclient_textarea" placeholder="Descriu el problema amb detall. Inclou IDs de transacció si en tens."></textarea>
+        <div class="sc-tbox" id="tbox-missatge">
+          <textarea data-db-id="atencioclient_textarea" id="inp-missatge" placeholder="Descriu el problema amb detall. Inclou IDs de transacció si en tens."></textarea>
         </div>
         <button data-db-id="atencioclient_btnEnviar" class="sc-btn" onclick="send()">Enviar sol·licitud</button>
       </div>
@@ -200,8 +199,66 @@
   <script>
     function pill(el){document.querySelectorAll('.sc-pill').forEach(p=>p.classList.remove('act'));el.classList.add('act')}
     function faq(btn){const it=btn.closest('.sc-fi');const op=it.classList.contains('open');document.querySelectorAll('.sc-fi.open').forEach(i=>i.classList.remove('open'));if(!op)it.classList.add('open')}
-    function send(){document.getElementById('sc-form').style.display='none';document.getElementById('sc-ok').classList.add('show')}
-    function reset(){const f=document.getElementById('sc-form');const ok=document.getElementById('sc-ok');f.style.display='block';ok.classList.remove('show');f.querySelectorAll('input,textarea').forEach(e=>e.value='')}
+
+    function setError(el, isError) {
+      if (!el) return;
+      const wrapper = el.closest('.sc-ibox') || el.closest('.sc-tbox');
+      if (!wrapper) return;
+      if (isError) wrapper.classList.add('sc-error');
+      else wrapper.classList.remove('sc-error');
+    }
+
+    function validateEmail(val) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+    }
+
+    function send() {
+      const nom      = document.getElementById('inp-nom');
+      const cognoms  = document.getElementById('inp-cognoms');
+      const usuari   = document.getElementById('inp-usuari');
+      const email    = document.getElementById('inp-email');
+      const cat      = document.getElementById('inp-categoria');
+      const missatge = document.getElementById('inp-missatge');
+
+      let valid = true;
+
+      [nom, cognoms, usuari].forEach(inp => {
+        const empty = !inp.value.trim();
+        setError(inp, empty);
+        if (empty) valid = false;
+      });
+
+      const emailEmpty = !email.value.trim();
+      const emailBad   = !emailEmpty && !validateEmail(email.value.trim());
+      setError(email, emailEmpty || emailBad);
+      if (emailEmpty || emailBad) valid = false;
+
+      const catEmpty = !cat.value;
+      setError(cat, catEmpty);
+      // ibox-categoria needs special treatment (wrapper is the sc-ibox itself)
+      const catBox = document.getElementById('ibox-categoria');
+      if (catEmpty) { catBox.classList.add('sc-error'); valid = false; }
+      else catBox.classList.remove('sc-error');
+
+      const msgEmpty = !missatge.value.trim();
+      setError(missatge, msgEmpty);
+      if (msgEmpty) valid = false;
+
+      if (!valid) return;
+
+      document.getElementById('sc-form').style.display='none';
+      document.getElementById('sc-ok').classList.add('show');
+    }
+
+    function reset(){
+      const f=document.getElementById('sc-form');
+      const ok=document.getElementById('sc-ok');
+      f.style.display='block';
+      ok.classList.remove('show');
+      f.querySelectorAll('input,textarea').forEach(e=>e.value='');
+      f.querySelectorAll('.sc-error').forEach(e=>e.classList.remove('sc-error'));
+      document.getElementById('inp-categoria').selectedIndex=0;
+    }
   </script>
 <script src="./global_translations.ts"></script>
 </body>
