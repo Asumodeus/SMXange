@@ -10,6 +10,7 @@ import academiaPage3 from "../client/academia_1_3.html"
 import academiaPage4 from "../client/academia_1_4.html"
 import atencioclient from "../client/atencioclient.html"
 import cookiesPage from "../client/cookies.html";
+import adminPage from "../client/panel_admin.html"
 
 import * as api from "./api/api_index"
 
@@ -41,6 +42,8 @@ Bun.serve({
         "/academia_1_3":  academiaPage3,
         "/academia_1_4":  academiaPage4,
         
+        "/admin": adminPage,
+
         "/api/login": async (req) => {
             return await api.loginVerification(req);
         },

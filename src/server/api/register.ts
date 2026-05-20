@@ -51,10 +51,9 @@ export async function registerRequest(req: Request) {
     const loginResult = await db`
       INSERT INTO Login (Username, Password)
       VALUES (${data.Usuario}, ${hashed_Password})
-      RETURNING IDlogin
     `;
 
-    const idLogin = loginResult[0].IDlogin;
+    const idLogin = loginResult.insertId;
 
     // Inserim a la taula Usuari
     await db`
