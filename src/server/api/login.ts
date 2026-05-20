@@ -54,7 +54,7 @@ export async function loginVerification(req: Request) {
       const formattedDate = currentDate.toISOString().split('T')[0];
       await db`
         UPDATE Login 
-        SET UltimLogin = ${currentDate}
+        SET Ultimo_Login = ${currentDate}
         WHERE Username = ${db_Username}
       `;
 
