@@ -9,7 +9,7 @@ CREATE TABLE Permisos (
     );
 
 CREATE TABLE Rols (
-	IDrols INT PRIMARY KEY AUTO_INCREMENT,
+	IDrols INT PRIMARY KEY,
 	NomRol VARCHAR(30) NOT NULL UNIQUE,
     IDpermisos INT NOT NULL,
     FOREIGN KEY (IDpermisos) REFERENCES Permisos(IDpermisos)
@@ -133,10 +133,10 @@ VALUES
 (1, TRUE,  TRUE,  TRUE);
 
 
-INSERT INTO Rols (IDrols, NomRol)
+INSERT INTO Rols (IDrols, NomRol, IDPermisos)
 VALUES
-(0, 'User'),
-(1, 'Admin');
+(0, 'User', 0),
+(1, 'Admin', 1);
 
 
 INSERT INTO Usuari (Nom, Cognom, Numero_de_telefon, Mail, IDrols)
