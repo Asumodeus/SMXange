@@ -51,15 +51,14 @@ export async function registerRequest(req: Request) {
     const loginResult = await db`
       INSERT INTO Login (Username, Password)
       VALUES (${data.Usuario}, ${hashed_Password})
-      RETURNING IDlogin
     `;
 
-    const idLogin = loginResult[0].IDlogin;
+    const idLogin = loginResult.insertId;
 
     // Inserim a la taula Usuari
     await db`
       INSERT INTO Usuari (Nom, Cognom, Numero_de_telefon, Mail, IDLogin)
-      VALUES (${data.user}, ${data.Apellido}, ${data.Telefono}, ${data.email}, ${idLogin})
+      VALUES (${data.user}, ${data.Apellido}, ${data.Telefono}, ${data.email}, ${idLogin}, '')
     `;
 
     console.log(`[REGISTER] Nou usuari registrat: ${data.Usuario} (ID: ${idLogin})`);
