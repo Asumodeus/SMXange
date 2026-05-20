@@ -29,7 +29,7 @@ CREATE TABLE Usuari (
     Cognom VARCHAR(50) NOT NULL,
     Numero_de_telefon VARCHAR(20) UNIQUE,
     Mail VARCHAR(100) NOT NULL UNIQUE,
-    Token VARCHAR(128) NOT NULL,
+    Token VARCHAR(64),
     Ultimo_Login DATE,
     IDLogin INT UNIQUE,
     IDrols INT NOT NULL DEFAULT 0,
