@@ -8,7 +8,7 @@ CREATE TABLE Permisos (
     sight BOOL
     );
 
-CREATE TABLE rols (
+CREATE TABLE Rols (
 	IDrols INT PRIMARY KEY,
 	NomRol VARCHAR(30) NOT NULL UNIQUE,
     IDpermisos INT NOT NULL,
