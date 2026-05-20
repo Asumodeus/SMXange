@@ -1,4 +1,4 @@
-USE smxange;
+USE smxchange;
 
 CREATE TABLE Permisos (
 	IDpermisos INT PRIMARY KEY,
@@ -1289,6 +1289,151 @@ Submit request'),
 ('register_popupBtn', 
 'Acceptar', 
 'Aceptar', 
-'Accept');
+'Accept'),
+
+('admin_titolPage',
+'CryptoAcademy - Gestió de Cursos',
+'CryptoAcademy - Gestión de Cursos',
+'CryptoAcademy - Course Management'),
+
+('admin_logoAlt',
+'Logo',
+'Logo',
+'Logo'),
+
+('admin_menuAcademia',
+'Academia',
+'Academia',
+'Academy'),
+
+('admin_headerTitol',
+'Gestió de Cursos',
+'Gestión de Cursos',
+'Course Management'),
+
+('admin_headerDesc',
+'Afegeix, edita o elimina els cursos de la teva plataforma.',
+'Añade, edita o elimina los cursos de tu plataforma.',
+'Add, edit or delete courses on your platform.'),
+
+('admin_userName',
+'Alex Smith',
+'Alex Smith',
+'Alex Smith'),
+
+('admin_panelTitol',
+'Llistat de Cursos Actius',
+'Listado de Cursos Activos',
+'Active Courses List'),
+
+('admin_btnAddCourse',
+'Afegir Nou Curs',
+'Añadir Nuevo Curso',
+'Add New Course'),
+
+('admin_tableNom',
+'Nom del Curs',
+'Nombre del Curso',
+'Course Name'),
+
+('admin_tableCategoria',
+'Categoria',
+'Categoría',
+'Category'),
+
+('admin_tablePreu',
+'Preu',
+'Precio',
+'Price'),
+
+('admin_tableEstat',
+'Estat',
+'Estado',
+'Status'),
+
+('admin_tableAccions',
+'Accions',
+'Acciones',
+'Actions'),
+
+('admin_courseNameExample',
+'Blockchain Pro',
+'Blockchain Pro',
+'Blockchain Pro'),
+
+('admin_categoryTech',
+'Tecnologia',
+'Tecnología',
+'Technology'),
+
+('admin_statusActive',
+'Actiu',
+'Activo',
+'Active'),
+
+('admin_modalAddTitle',
+'Afegir Curs',
+'Añadir Curso',
+'Add Course'),
+
+('admin_modalEditTitle',
+'Editar Curs',
+'Editar Curso',
+'Edit Course'),
+
+('admin_modalAddNewTitle',
+'Afegir Nou Curs',
+'Añadir Nuevo Curso',
+'Add New Course'),
+
+('admin_labelCourseName',
+'Nom del Curs',
+'Nombre del Curso',
+'Course Name'),
+
+('admin_placeholderCourseName',
+'Ex. Bitcoin Avançat',
+'Ej. Bitcoin Avanzado',
+'Ex. Advanced Bitcoin'),
+
+('admin_labelCategory',
+'Categoria',
+'Categoría',
+'Category'),
+
+('admin_categoryFinance',
+'Finances',
+'Finanzas',
+'Finance'),
+
+('admin_categoryDev',
+'Desenvolupament',
+'Desarrollo',
+'Development'),
+
+('admin_labelPrice',
+'Preu (€)',
+'Precio (€)',
+'Price (€)'),
+
+('admin_labelStatus',
+'Estat',
+'Estado',
+'Status'),
+
+('admin_statusDraft',
+'Esborrany',
+'Borrador',
+'Draft'),
+
+('admin_btnSave',
+'Guardar Canvis',
+'Guardar Cambios',
+'Save Changes'),
+
+('admin_confirmDelete',
+'Estàs segur que vols eliminar aquest curs?',
+'¿Estás seguro de que deseas eliminar este curso?',
+'Are you sure you want to delete this course?');
 
 commit;
