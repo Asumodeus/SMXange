@@ -739,8 +739,8 @@ VALUES
 
 ('atencioclient_btnEnviar', 
 'Enviar sol·licitud', 
-'Enviar solicitud', '
-Submit request'),
+ 'Enviar solicitud', 
+ 'Submit request'),
 
 ('atencioclient_okTitol', 
 'Sol·licitud enviada!',
@@ -1270,7 +1270,7 @@ Submit request'),
 ('register_popupText', 
 'Missatge', 
 'Mensaje', 
-'Message'),sessiÃ³
+'Message'),
 
 ('register_popupBtn', 
 'Acceptar', 
