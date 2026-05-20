@@ -9,7 +9,7 @@ CREATE TABLE Permisos (
     );
 
 CREATE TABLE Rols (
-	IDrols INT PRIMARY KEY,
+	IDrols INT PRIMARY KEY AUTO_INCREMENT,
 	NomRol VARCHAR(30) NOT NULL UNIQUE,
     IDpermisos INT NOT NULL,
     FOREIGN KEY (IDpermisos) REFERENCES Permisos(IDpermisos)
