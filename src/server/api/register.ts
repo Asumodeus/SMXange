@@ -58,7 +58,7 @@ export async function registerRequest(req: Request) {
     // Inserim a la taula Usuari
     await db`
       INSERT INTO Usuari (Nom, Cognom, Numero_de_telefon, Mail, IDLogin)
-      VALUES (${data.user}, ${data.Apellido}, ${data.Telefono}, ${data.email}, ${idLogin}, '')
+      VALUES (${data.user}, ${data.Apellido}, ${data.Telefono}, ${data.email}, ${idLogin})
     `;
 
     console.log(`[REGISTER] Nou usuari registrat: ${data.Usuario} (ID: ${idLogin})`);
