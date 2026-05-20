@@ -53,10 +53,13 @@ export async function loginVerification(req: Request) {
       //"YYYY-MM-DD" usando split e ISOString --> Lisandro
       const formattedDate = currentDate.toISOString().split('T')[0];
       await db`
-        UPDATE Login 
+        UPDATE Usuari 
         SET Ultimo_Login = ${currentDate}
-        WHERE Username = ${db_Username}
-      `;
+        WHERE IDLogin = (
+          SELECT IDlogin 
+          FROM Login 
+          WHERE Username = ${db_Username}
+        )`;
 
       console.log(`[LOGIN] Login exitós per: ${db_Username}. Token generat.`);
 
