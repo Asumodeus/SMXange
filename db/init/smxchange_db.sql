@@ -1,18 +1,9 @@
 USE smxchange;
 
-CREATE TABLE Permisos (
-	IDpermisos INT PRIMARY KEY,
-    Cretae BOOL,
-    Edit BOOL,
-    Erase BOOL,
-    sight BOOL
-    );
 
 CREATE TABLE Rols (
 	IDrols INT PRIMARY KEY,
-	NomRol VARCHAR(30) NOT NULL UNIQUE,
-    IDpermisos INT NOT NULL,
-    FOREIGN KEY (IDpermisos) REFERENCES Permisos(IDpermisos)
+	NomRol VARCHAR(30) NOT NULL UNIQUE
 );
 
 
@@ -127,16 +118,10 @@ CREATE TABLE Literal (
 );
 
 
-INSERT INTO Permisos (IDpermisos, Cretae, Edit, Erase)
+INSERT INTO Rols (IDrols, NomRol,)
 VALUES
-(0, FALSE, FALSE, FALSE),
-(1, TRUE,  TRUE,  TRUE);
-
-
-INSERT INTO Rols (IDrols, NomRol, IDPermisos)
-VALUES
-(0, 'User', 0),
-(1, 'Admin', 1);
+(0, 'User'),
+(1, 'Admin');
 
 
 INSERT INTO Usuari (Nom, Cognom, Numero_de_telefon, Mail, IDrols)
