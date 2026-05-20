@@ -17,15 +17,17 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-
 body {
-  background: var(--bg-dark);
-  color: var(--text-main);
-  display: flex;
-  min-height: 100vh;
-  overflow-x: hidden;
+    background-image: url('assets/fondo_01.png');
+    background-size: cover;         /* Fuerza a la imagen a cubrir toda la pantalla */
+    background-position: center;    /* Centra el fondo para que no se desfase */
+    background-repeat: no-repeat;   /* Evita que la imagen se duplique en mosaico */
+    background-attachment: fixed;   /* Opcional: mantiene el fondo fijo si hay scroll */
+    color: var(--text-main);
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
-
 /* EFECTOS DE FONDO */
 body::before,
 body::after {
@@ -55,7 +57,6 @@ body::after {
 /* SIDEBAR */
 .sidebar {
   width: 280px;
-  background: rgba(10, 10, 10, 0.97);
   border-right: 1px solid var(--border-color);
   backdrop-filter: blur(20px);
   padding: 40px 24px;
