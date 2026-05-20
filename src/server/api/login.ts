@@ -1,14 +1,13 @@
 import { createHash } from "crypto";
 import { db } from "./db_connection.ts";
 
-
-function md5(text: string): string {
-  return createHash("md5").update(text).digest("hex");
+/** * He añadido esta función para generar el hash en SHA-256 --> Lisandro
+ * Esto permite crear un token más robusto que el simple MD5 --> Lisandro
+ */
+function sha256(text: string): string {
+  return createHash("sha256").update(text).digest("hex");
 }
 
-
-//Verifica les credencials de l'usuari comparant la contrasenya proporcionada
-//amb la que hi ha a la taula 'Login' de la base de dades. 
 export async function loginVerification(req: Request) {
   try {
     const credentials = await req.json();
@@ -20,13 +19,14 @@ export async function loginVerification(req: Request) {
       );
     }
 
-    // Busquem l'usuari a la taula Login
+    /**
+     * Ahora seleccionamos también el Username de la base de datos para asegurar la integridad de los datos --> Lisandro
+     */
     const loginData = await db`
-      SELECT Password FROM Login 
+      SELECT Username, Password FROM Login 
       WHERE Username = ${credentials.uName}
     `;
 
-    // Si l'usuari no existeix
     if (loginData.length === 0) {
       return Response.json(
         { error: "Credencials Invàlides" },
@@ -34,18 +34,35 @@ export async function loginVerification(req: Request) {
       );
     }
 
-console.log(`[LOGIN] Intent de login per usuari: ${credentials.uName}`);
+    console.log(`[LOGIN] Intent de login per usuari: ${credentials.uName}`);
 
     const hashed_DB_Password = loginData[0].Password;
-    const hashed_Password = md5(credentials.uPassword);
+    const db_Username = loginData[0].Username; // Nombre de usuario extraído directamente de la DB --> Lisandro
+    
+    const hashed_Input_Password = createHash("md5").update(credentials.uPassword).digest("hex");
 
-    //Console logs for debugging purposes
-    console.log(`[LOGIN] User: ${credentials.uName} | Match: ${hashed_Password === hashed_DB_Password}`);
+    if (hashed_Input_Password === hashed_DB_Password) {
+      
+      /** * En esta sección, logré que el token se genere sumando el usuario y la contraseña que ya están guardados en la base de datos --> Lisandro
+       * De esta forma, el token se basa en la información oficial de nuestro sistema y no solo en lo que envía el cliente --> Lisandro
+       */
+      const tokenData = db_Username + hashed_DB_Password;
+      const sessionToken = sha256(tokenData);
 
-    //We check if the db password matches
-    if (hashed_Password === hashed_DB_Password) {
+      const currentDate = new Date();
+      await db`
+        UPDATE Login 
+        SET UltimLogin = ${currentDate}
+        WHERE Username = ${db_Username}
+      `;
+
+      console.log(`[LOGIN] Login exitós per: ${db_Username}. Token generat.`);
+
       return Response.json(
-        { message: "Login exitós" },
+        { 
+          message: "Login exitós",
+          token: sessionToken 
+        },
         { status: 200 }
       );
     }
@@ -57,7 +74,6 @@ console.log(`[LOGIN] Intent de login per usuari: ${credentials.uName}`);
     
 
   } catch (error) {
-    //Console logs for debugging purposes
     console.error("[LOGIN ERROR]", error);
 
     return Response.json(
