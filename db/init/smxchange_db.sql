@@ -1,3 +1,4 @@
+SET NAMES utf8mb4;
 USE smxchange;
 
 
@@ -115,7 +116,7 @@ CREATE TABLE Literal (
     cat TEXT,
     esp TEXT,
     eng TEXT
-);
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 
 INSERT INTO Rols (IDrols, NomRol,)
@@ -259,7 +260,7 @@ VALUES
 ('academia1_1_btnSubmit', 
 'Comprovar i Avançar', 
 'Comprobar y Avanzar', 
-'Check and Continue');
+'Check and Continue'),
 
 ('academia1_2_logoAlt', 
 'Logo SMXchange', 
@@ -359,7 +360,7 @@ VALUES
 ('academia1_2_btnSubmit', 
 'Comprovar i Avançar', 
 'Comprobar y Avanzar', 
-'Check and Continue');
+'Check and Continue'),
 
 ('academia1_3_logoAlt', 
 'Logo SMXchange', 
@@ -454,7 +455,7 @@ VALUES
 ('academia1_3_btnSubmit', 
 'Comprovar i Avançar', 
 'Comprobar y Avanzar', 
-'Check and Continue');
+'Check and Continue'),
 
 ('academia1_4_logoAlt',
 'Logo SMXchange', 
@@ -549,7 +550,7 @@ VALUES
 ('academia1_4_btnSubmit', 
 'Finalitzar Curs', 
 'Finalizar Curso', 
-'Finish Course');
+'Finish Course'),
 
 ('atencioclient_titolPage', 
 'SMXCHANGE – Atenció al Client', 
@@ -1269,7 +1270,7 @@ Submit request'),
 ('register_popupText', 
 'Missatge', 
 'Mensaje', 
-'Message'),
+'Message'),sessiÃ³
 
 ('register_popupBtn', 
 'Acceptar', 
