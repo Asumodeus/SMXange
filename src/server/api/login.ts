@@ -51,7 +51,7 @@ export async function loginVerification(req: Request) {
 
       const currentDate = new Date();ç
       //"YYYY-MM-DD" usando split e ISOString --> Lisandro
-      const formattedDate = dateObject.toISOString().split('T')[0];
+      const formattedDate = currentDate.toISOString().split('T')[0];
       await db`
         UPDATE Login 
         SET UltimLogin = ${currentDate}
