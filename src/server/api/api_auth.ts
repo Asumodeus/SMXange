@@ -10,7 +10,7 @@ export async function authVerification(req: Request) {
         // Comprobamos si el front-end nos ha enviado el token
         if (!clientToken) {
             return Response.json(
-                { success: false, error: "Token no proporcionado" },
+                { error: "Token no proporcionado" },
                 { status: 400 }
             );
         }
