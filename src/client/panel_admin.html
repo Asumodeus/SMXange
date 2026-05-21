@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CryptoAcademy - Gestión de Cursos</title>
+  <title>CryptoAcademy - Gestió de Cursos</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="panel_admin.css">
@@ -24,8 +24,8 @@
   <main class="main">
     <header class="topbar">
       <div>
-        <h1 data-db-id="admin_headerTitol">Gestión de Cursos</h1>
-        <p data-db-id="admin_headerDesc">Añade, edita o elimina los cursos de tu plataforma.</p>
+        <h1 data-db-id="admin_headerTitol">Gestió de Cursos</h1>
+        <p data-db-id="admin_headerDesc">Afegeix, edita o elimina els cursos de la teva plataforma.</p>
       </div>
       <div class="admin-box">
         <div class="avatar"></div>
@@ -48,19 +48,19 @@
     <div class="content-single">
       <div class="panel">
         <div class="panel-header">
-          <h2 data-db-id="admin_panelTitol">Listado de Cursos Activos</h2>
+          <h2 data-db-id="admin_panelTitol">Llista de Cursos Actius</h2>
           <button data-db-id="admin_btnAddCourse" class="btn btn-add" onclick="openModal('add')">
-            <i class="fas fa-plus"></i> Añadir Nuevo Curso
+            <i class="fas fa-plus"></i> Afegir Nou Curs
           </button>
         </div>
         <table id="coursesTable">
           <thead>
             <tr>
-              <th data-db-id="admin_tableNom">Nombre del Curso</th>
+              <th data-db-id="admin_tableNom">Nom del Curs</th>
               <th data-db-id="admin_tableCategoria">Categoría</th>
-              <th data-db-id="admin_tablePreu">Precio</th>
-              <th data-db-id="admin_tableEstat">Estado</th>
-              <th data-db-id="admin_tableAccions" style="text-align: center;">Acciones</th>
+              <th data-db-id="admin_tablePreu">Preu</th>
+              <th data-db-id="admin_tableEstat">Estat</th>
+              <th data-db-id="admin_tableAccions" style="text-align: center;">Accions</th>
             </tr>
           </thead>
           <tbody>
@@ -68,7 +68,7 @@
               <td data-db-id="admin_courseNameExample"><strong>Blockchain Pro</strong></td>
               <td data-db-id="admin_categoryTech">Tecnología</td>
               <td>€199.00</td>
-              <td data-db-id="admin_statusActive"><span class="status-pill done">Activo</span></td>
+              <td data-db-id="admin_statusActive"><span class="status-pill done">Acti</span></td>
               <td class="actions-cell">
                 <button class="btn-action edit" onclick="openModal('edit', this)"><i class="fas fa-edit"></i></button>
                 <button class="btn-action delete" onclick="deleteCourse(this)"><i class="fas fa-trash"></i></button>
@@ -83,37 +83,37 @@
   <div id="courseModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 data-db-id="admin_modalAddTitle" id="modalTitle">Añadir Curso</h2>
+        <h2 data-db-id="admin_modalAddTitle" id="modalTitle">Afegir Curs</h2>
         <span class="close" onclick="closeModal()">&times;</span>
       </div>
       <form id="courseForm">
         <input type="hidden" id="editIndex">
         <div class="form-group">
-          <label data-db-id="admin_labelCourseName">Nombre del Curso</label>
+          <label data-db-id="admin_labelCourseName">Nom del Curs</label>
           <input type="text" id="courseName" placeholder="Ej. Bitcoin Avanzado" required>
         </div>
         <div class="form-group">
           <label data-db-id="admin_labelCategory">Categoría</label>
           <select id="courseCategory">
             <option data-db-id="admin_categoryTech" value="Tecnología">Tecnología</option>
-            <option data-db-id="admin_categoryFinance" value="Finanzas">Finanzas</option>
-            <option data-db-id="admin_categoryDev" value="Desarrollo">Desarrollo</option>
+            <option data-db-id="admin_categoryFinance" value="Finanzas">Finances</option>
+            <option data-db-id="admin_categoryDev" value="Desarrollo">Desenvolupament</option>
           </select>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label data-db-id="admin_labelPrice">Precio (€)</label>
+            <label data-db-id="admin_labelPrice">Preu (€)</label>
             <input type="number" id="coursePrice" placeholder="199" required>
           </div>
           <div class="form-group">
             <label data-db-id="admin_labelStatus">Estado</label>
             <select id="courseStatus">
-              <option data-db-id="admin_statusActive" value="Activo">Activo</option>
-              <option data-db-id="admin_statusDraft" value="Borrador">Borrador</option>
+              <option data-db-id="admin_statusActive" value="Activo">Actiu</option>
+              <option data-db-id="admin_statusDraft" value="Borrador">Esborany</option>
             </select>
           </div>
         </div>
-        <button data-db-id="admin_btnSave" type="submit" class="btn btn-save">Guardar Cambios</button>
+        <button data-db-id="admin_btnSave" type="submit" class="btn btn-save">Guardar Canvis</button>
       </form>
     </div>
   </div>
