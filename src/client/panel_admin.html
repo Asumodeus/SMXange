@@ -17,46 +17,58 @@
       </a>  
     </div>
     <ul class="menu">
-      <li class="active"><i class="fas fa-graduation-cap"></i> <span>Academia</span></li>
+      <li data-db-id="admin_menuAcademia" class="active"><i class="fas fa-graduation-cap"></i> <span>Academia</span></li>
     </ul>
   </aside>
 
   <main class="main">
     <header class="topbar">
       <div>
-        <h1>Gestión de Cursos</h1>
-        <p>Añade, edita o elimina los cursos de tu plataforma.</p>
+        <h1 data-db-id="admin_headerTitol">Gestión de Cursos</h1>
+        <p data-db-id="admin_headerDesc">Añade, edita o elimina los cursos de tu plataforma.</p>
       </div>
       <div class="admin-box">
         <div class="avatar"></div>
-        <span><strong>Alex Smith</strong></span>
+        <span data-db-id="admin_userName"><strong>Alex Smith</strong></span>
+      
+        <div class="top-right-nav">
+          <div class="lang-selector">
+            <i class='bx bx-globe'></i>
+            <select id="languagePicker">
+              <option value="cat" selected>Català</option>
+              <option value="esp">Castellano</option>
+              <option value="eng">English</option>
+            </select>
+          </div>
+        </div>
+        
       </div>
     </header>
 
     <div class="content-single">
       <div class="panel">
         <div class="panel-header">
-          <h2>Listado de Cursos Activos</h2>
-          <button class="btn btn-add" onclick="openModal('add')">
+          <h2 data-db-id="admin_panelTitol">Listado de Cursos Activos</h2>
+          <button data-db-id="admin_btnAddCourse" class="btn btn-add" onclick="openModal('add')">
             <i class="fas fa-plus"></i> Añadir Nuevo Curso
           </button>
         </div>
         <table id="coursesTable">
           <thead>
             <tr>
-              <th>Nombre del Curso</th>
-              <th>Categoría</th>
-              <th>Precio</th>
-              <th>Estado</th>
-              <th style="text-align: center;">Acciones</th>
+              <th data-db-id="admin_tableNom">Nombre del Curso</th>
+              <th data-db-id="admin_tableCategoria">Categoría</th>
+              <th data-db-id="admin_tablePreu">Precio</th>
+              <th data-db-id="admin_tableEstat">Estado</th>
+              <th data-db-id="admin_tableAccions" style="text-align: center;">Acciones</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Blockchain Pro</strong></td>
-              <td>Tecnología</td>
+              <td data-db-id="admin_courseNameExample"><strong>Blockchain Pro</strong></td>
+              <td data-db-id="admin_categoryTech">Tecnología</td>
               <td>€199.00</td>
-              <td><span class="status-pill done">Activo</span></td>
+              <td data-db-id="admin_statusActive"><span class="status-pill done">Activo</span></td>
               <td class="actions-cell">
                 <button class="btn-action edit" onclick="openModal('edit', this)"><i class="fas fa-edit"></i></button>
                 <button class="btn-action delete" onclick="deleteCourse(this)"><i class="fas fa-trash"></i></button>
@@ -71,37 +83,37 @@
   <div id="courseModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 id="modalTitle">Añadir Curso</h2>
+        <h2 data-db-id="admin_modalAddTitle" id="modalTitle">Añadir Curso</h2>
         <span class="close" onclick="closeModal()">&times;</span>
       </div>
       <form id="courseForm">
         <input type="hidden" id="editIndex">
         <div class="form-group">
-          <label>Nombre del Curso</label>
+          <label data-db-id="admin_labelCourseName">Nombre del Curso</label>
           <input type="text" id="courseName" placeholder="Ej. Bitcoin Avanzado" required>
         </div>
         <div class="form-group">
-          <label>Categoría</label>
+          <label data-db-id="admin_labelCategory">Categoría</label>
           <select id="courseCategory">
-            <option value="Tecnología">Tecnología</option>
-            <option value="Finanzas">Finanzas</option>
-            <option value="Desarrollo">Desarrollo</option>
+            <option data-db-id="admin_categoryTech" value="Tecnología">Tecnología</option>
+            <option data-db-id="admin_categoryFinance" value="Finanzas">Finanzas</option>
+            <option data-db-id="admin_categoryDev" value="Desarrollo">Desarrollo</option>
           </select>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Precio (€)</label>
+            <label data-db-id="admin_labelPrice">Precio (€)</label>
             <input type="number" id="coursePrice" placeholder="199" required>
           </div>
           <div class="form-group">
-            <label>Estado</label>
+            <label data-db-id="admin_labelStatus">Estado</label>
             <select id="courseStatus">
-              <option value="Activo">Activo</option>
-              <option value="Borrador">Borrador</option>
+              <option data-db-id="admin_statusActive" value="Activo">Activo</option>
+              <option data-db-id="admin_statusDraft" value="Borrador">Borrador</option>
             </select>
           </div>
         </div>
-        <button type="submit" class="btn btn-save">Guardar Cambios</button>
+        <button data-db-id="admin_btnSave" type="submit" class="btn btn-save">Guardar Cambios</button>
       </form>
     </div>
   </div>

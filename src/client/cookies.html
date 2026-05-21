@@ -50,8 +50,8 @@
         </section>
 
         <div class="buttons">
-            <button class="accept" onclick="window.location.replace('/')">Aceptar</button>
-            <button data-db-id="cookies_btnReject" class="reject">Rebutjar</button>
+            <button class="accept" onclick="window.parent.document.getElementById('cookies-modal').remove()">Aceptar</button>
+            <button data-db-id="cookies_btnReject" class="reject" onclick="window.parent.document.getElementById('cookies-modal').remove()">Rebutjar</button>
         </div>
     
 

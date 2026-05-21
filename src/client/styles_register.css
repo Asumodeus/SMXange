@@ -95,18 +95,28 @@ body {
     font-size: 14px;
     text-align: center;
     margin-top: 20px;
+    display: flex;
+    justify-content: center; /* Centra todo el bloque en el medio del formulario */
+    gap: 5px;               /* Añade un pequeño espacio de 5 píxeles entre los dos textos */
+    align-items: center;    /* Asegura que ambos textos estén alineados verticalmente */
 }
-.register-link p a {
+.register-link p {
     text-decoration: none;
     font-weight: 600;
     color: #fff;
 }
-.register-link p a:hover {
+.register-link a {
+    color: #e2e8f0;            /* Un color blanco roto/gris claro muy natural */
+    text-decoration: none;     /* Quita el molesto subrayado azul */
+    font-weight: bold;         /* Le da un poco de fuerza para que resalte como botón */
+    transition: color 0.3s ease;
     text-decoration: underline;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-.register-link p {
-    color: #fff;
+.register-link a:hover {
+    color: #f59e0b;            /* Cambia a un tono dorado/ámbar suave, a juego con Bitcoin */
 }
+
 .fons {
     position: fixed;
     top: 0; 
