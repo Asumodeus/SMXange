@@ -25,11 +25,12 @@ export async function registerRequest(req: Request) {
       );
     }
 
-    // Comprovem si l'usuari o el correu ja existeixen
+    // Comprovem si l'usuari, el correu o el telèfon ja existeixen
     const existingUser = await db`
       SELECT 
         (SELECT COUNT(*) FROM Login WHERE Username = ${data.Usuario}) as userCount,
-        (SELECT COUNT(*) FROM Usuari WHERE Mail = ${data.email}) as mailCount
+        (SELECT COUNT(*) FROM Usuari WHERE Mail = ${data.email}) as mailCount,
+        (SELECT COUNT(*) FROM Usuari WHERE Numero_de_telefon = ${data.Telefono}) as phoneCount
     `;
 
     if (existingUser[0].userCount > 0) {
@@ -46,14 +47,22 @@ export async function registerRequest(req: Request) {
       );
     }
 
+    if (data.Telefono && existingUser[0].phoneCount > 0) {
+      return Response.json(
+        { error: "El número de telèfon ja està registrat" },
+        { status: 400 }
+      );
+    }
+
     const hashed_Password = md5(data.passwordOnce);
 
-    const loginResult = await db`
+    await db`
       INSERT INTO Login (Username, Password)
       VALUES (${data.Usuario}, ${hashed_Password})
     `;
 
-    const idLogin = loginResult.insertId;
+    const insertedRows: any = await db`SELECT IDlogin FROM Login WHERE Username = ${data.Usuario}`;
+    const idLogin = insertedRows[0].IDlogin;
 
     // Inserim a la taula Usuari
     await db`

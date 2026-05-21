@@ -4,10 +4,7 @@ import loginPage from "../client/index.html"
 import forgotPswd from "../client/forgotPswd.html"
 import registerPage from "../client/register.html"
 import pagina_principal from "../client/pagina_principal.html"
-import academiaPage from "../client/academia_1_1.html"
-import academiaPage2 from "../client/academia_1_2.html"
-import academiaPage3 from "../client/academia_1_3.html"
-import academiaPage4 from "../client/academia_1_4.html"
+import academiaPage from "../client/academia.html"
 import atencioclient from "../client/atencioclient.html"
 import cookiesPage from "../client/cookies.html";
 import adminPage from "../client/panel_admin.html"
@@ -37,10 +34,7 @@ Bun.serve({
         
         "/client": atencioclient,
         
-        "/academia_1_1":  academiaPage,
-        "/academia_1_2":  academiaPage2,
-        "/academia_1_3":  academiaPage3,
-        "/academia_1_4":  academiaPage4,
+        "/academia":  academiaPage,
         
         "/admin": adminPage,
 
@@ -62,6 +56,22 @@ Bun.serve({
 
         "/api/translate": async (req) => {
             return await api.getLiterals(req);
+        },
+
+        "/api/academia/progress": async (req) => {
+            return await api.getUserProgress(req);
+        },
+
+        "/api/academia/submit": async (req) => {
+            return await api.submitAnswer(req);
+        },
+
+        "/api/academia/list": async (req) => {
+            return await api.getAllActivitats(req);
+        },
+
+        "/api/pregunta_academia": async (req) => {
+            return await api.getActivitatDinamica(req);
         },
 
         //Servim el favicon (El incone de la página) quan el servidor el demana

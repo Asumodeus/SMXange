@@ -5,3 +5,5 @@ export * from "./register.ts";
 export * from "./forgotPswd.ts";
 export * from "./api_2fa.ts";
 export * from "./translate.ts"; 
+export * from "./pregunta_academia.ts";
+export * from "./academia_progress.ts";

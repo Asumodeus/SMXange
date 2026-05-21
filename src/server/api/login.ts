@@ -54,7 +54,7 @@ export async function loginVerification(req: Request) {
       const formattedDate = currentDate.toISOString().split('T')[0];
       await db`
         UPDATE Usuari 
-        SET Ultimo_Login = ${currentDate}
+        SET Ultimo_Login = ${currentDate}, Token = ${sessionToken}
         WHERE IDLogin = (
           SELECT IDlogin 
           FROM Login 
@@ -64,11 +64,13 @@ export async function loginVerification(req: Request) {
       console.log(`[LOGIN] Login exitós per: ${db_Username}. Token generat.`);
 
       return Response.json(
+        { message: "Login exitós" },
         { 
-          message: "Login exitós",
-          token: sessionToken 
-        },
-        { status: 200 }
+          status: 200,
+          headers: {
+            "Set-Cookie": `token=${sessionToken}; Path=/; HttpOnly; SameSite=Strict; Max-Age=86400`
+          }
+        }
       );
     }
 

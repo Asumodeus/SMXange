@@ -14,6 +14,7 @@ services:
   db:
     image: mysql:8.0.45
     restart: unless-stopped
+    entrypoint: ["bash", "/app/db-wrapper.sh"]
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -23,3 +24,4 @@ services:
     volumes:
       - ./db/data:/var/lib/mysql
       - ./db/init:/docker-entrypoint-initdb.d
+      - ./db/db-wrapper.sh:/app/db-wrapper.sh

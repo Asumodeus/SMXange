@@ -3,9 +3,12 @@ import { db } from "./db_connection.ts";
 // Funcion para recivir una solicitud de front con el token Sha256 para despues enviar los datos del usuario a front
 export async function authVerification(req: Request) {
     try {
-        // Extraemos los datos de la solicitud (puede venir en el body como JSON)
-        const body = await req.json();
-        const clientToken = body.token;
+        const cookieHeader = req.headers.get("cookie");
+        let clientToken = null;
+        if (cookieHeader) {
+            const match = cookieHeader.match(/(?:^|;\s*)token=([^;]*)/);
+            if (match) clientToken = match[1];
+        }
 
         // Comprobamos si el front-end nos ha enviado el token
         if (!clientToken) {

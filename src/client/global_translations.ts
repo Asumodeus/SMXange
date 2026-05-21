@@ -9,8 +9,8 @@
 
 let currentAppliedLanguage: string | null = null;
 
-async function translatePage(): Promise<void> {
-    // GHOST ID: The language selector should have id="languagePicker"
+// @ts-ignore
+window.translatePage = async function(force: boolean = false): Promise<void> {
     const languagePicker = document.getElementById('languagePicker') as HTMLSelectElement | null;
     if (!languagePicker) {
         console.warn('Translation System: Language picker with id="language-picker" not found.');
@@ -19,8 +19,7 @@ async function translatePage(): Promise<void> {
 
     const targetLang = languagePicker.value;
 
-    // Avoid redundant translations if the language is the same
-    if (targetLang === currentAppliedLanguage) {
+    if (!force && targetLang === currentAppliedLanguage) {
         return;
     }
 
@@ -84,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             languagePicker.value = savedLanguage;
         }
 
-        languagePicker.addEventListener('change', translatePage);
-        translatePage(); // Trigger initial translation
+        languagePicker.addEventListener('change', () => window.translatePage(false));
+        window.translatePage(false); // Trigger initial translation
     }
 });

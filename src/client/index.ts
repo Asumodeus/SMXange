@@ -23,11 +23,11 @@ async function sendData() {
       body: JSON.stringify(loginData),
     });
 
+    const result = await response.json();
     if (response.ok) {
       window.location.href = "/principal"
     } else {
       resetPasswordField();
-      const result = await response.json();
       msgSpot.innerText = result.error || "Usuari o contrasenya incorrectes";
     }
   } catch (error) {

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ca"> 
+<head>
+    <meta charset="UTF-8">
+    <title>Acadèmia - SMXchange</title>
+    <link rel="stylesheet" href="styles_academia.css">
+    <script src="./academia.ts" defer></script>
+</head>
+<body>
+<header class="navbar glass">
+    <div class="navbar-left">
+        <button id="sidebarToggle" class="sidebar-toggle-btn glass-panel" aria-label="Toggle Sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <div class="logo">
+            <img src="assets/logo.webp" alt="Logo SMXchange">
+        </div>
+        <h1 data-db-id="academia_titolHeader" class="course-title">Acadèmia - Criptomonedes i Blockchain</h1>
+    </div>
+
+    <div class="navbar-right">
+        <div class="lang-selector">
+            <i class='bx bx-globe'></i>
+            <select id="languagePicker">
+                <option value="cat" selected>Català</option>
+                <option value="esp">Castellano</option>
+                <option value="eng">English</option>
+            </select>
+        </div>
+        <nav class="menu">
+            <a data-db-id="academia_btnInici" href="/principal">Tornar a l'Inici</a>
+        </nav>
+    </div>
+</header>
+
+    <div class="course-container">
+        
+        <aside class="sidebar glass">
+            <div class="sidebar-progress">
+                <div class="progress-info">
+                    <span data-db-id="academia_modulProgres">Progrés de l'Acadèmia</span>
+                    <span id="progressPercent">0% Completat</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progressBar" class="progress-bar" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <div class="module-list" id="sidebarList">
+                <!-- Injected via academia.ts -->
+            </div>
+        </aside>
+
+        <main class="main-content" id="mainContent" style="display: none;">
+            <section class="module-section">
+                <div class="content-header">
+                    <h2 id="activityTitle">Carregant...</h2>
+                </div>
+                <div class="content-body" id="activityDescription">
+                    <!-- Injected via academia.ts -->
+                </div>
+
+                <div class="exercici-box glass-panel">
+                    <h3 data-db-id="academia_exerciciTitol">Posa a prova els teus coneixements</h3>
+                    
+                    <div id="statusMessage" style="display: none; padding: 15px; margin-bottom: 20px; border-radius: 8px; font-weight: 600;"></div>
+                    
+                    <form id="quizForm">
+                        <p id="activityQuestion" class="pregunta"></p>
+                        
+                        <div id="optionsContainer">
+                            <!-- Injected via academia.ts -->
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="button btn-submit" data-db-id="academia_btnSubmit">Comprovar i Avançar</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Loading overlay or message -->
+        <div id="loadingOverlay" style="flex: 1; display: flex; align-items: center; justify-content: center;">
+            <h2 style="color: #fff;">Carregant contingut...</h2>
+        </div>
+    </div>
+<script src="./global_translations.ts"></script>
+</body>
+</html>
